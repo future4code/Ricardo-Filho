@@ -88,7 +88,7 @@ let resultado = bool1 && bool2
         
     // b) Imprima na console **o resto da divisão** desse número por 2.
 
-        console.log("O resto da divisão do seu numero digita:", numeroPar, "é: ", numeroPar % 2) // o resto desta divisão sempre dará 0 
+        console.log("O resto da divisão do seu numero digitado:", numeroPar, "é: ", numeroPar % 2) // o resto desta divisão sempre dará 0 
 
     // c) Teste o programa com diversos números pares. Você notou um padrão? Escreva em um comentário de código.
         
@@ -113,29 +113,29 @@ let resultado = bool1 && bool2
 /*
 //04) - Faça um programa que pergunte ao usuário dois números. Em seguida, faça as operações e imprima no console as seguintes mensagens:
 
-        let numeroA= Number(prompt("Digite um número por favor"))
-        let numeroB= Number(prompt("Digite outro número por favor"))
+        let numeroA= Number(prompt("Digite um número por favor"));
+        let numeroB= Number(prompt("Digite outro número por favor"));
 
         // O primeiro numero é maior que segundo? true ou false
 
-        console.log("o primeiro número é maior que o segundo?", numeroA > numeroB)
+        console.log("o primeiro número é maior que o segundo? a resposta é: ", numeroA > numeroB);
 
         // O primeiro numero é igual ao segundo? true ou false
 
-        console.log("o primeiro número é maior que o segundo?", numeroA < numeroB)
+        console.log("o primeiro número é igual ao segundo? a resposta é: ", numeroA === numeroB);
 
         // O primeiro numero é divisível pelo segundo? true ou false
 
-        let resto = numeroA % numeroB
+        let resto = numeroA % numeroB;
         
-        console.log("O primeiro numero é divisível pelo segundo: ", resto === 0)
+        console.log("O primeiro numero é divisível pelo segundo? a resposta é: ", resto === 0);
 
         // O segundo numero é divisível pelo primeiro? true ou false
 
-        let resto2 = numeroB % numeroA
-        console.log("O primeiro numero é divisível pelo segundo: ", resto2 === 0)
+        let resto2 = numeroB % numeroA;
+        
+        console.log("O segundo numero é divisível pelo primeiro? a resposta é: ", resto2 === 0);
 
-        //console.log("o primeiro número é maior que o segundo?", )
 */
 // Tnks
         

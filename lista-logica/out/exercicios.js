@@ -135,30 +135,51 @@ function checaIgualdadeDesconsiderandoCase() {
   // escreva seu código aqui
   const string1 = prompt("Digite uma palavra qualquer por favor:")
   const string2 = prompt("Digite outra palavra qualquer por favor:")
-  const stringM1 = string1.length
-  const stringM2 = string2.length
-  
+    
   console.log(string1.toUpperCase() == string2.toUpperCase())  
 }
 
 // Exercício 10 - Ainda não sei como fazer
 function checaRenovacaoRG() {
-  // escreva seu código aqui
+    // escreva seu código aqui
+
+    let anoAtual = Number(prompt('Digite o ano atual: '))
+    let anoNascimento = Number(prompt('Digite o seu ano de nascimento: '))
+    let anoRg = Number(prompt('Digite o ano que foi expedido se RG: '))
+
+     let idade = anoAtual - anoNascimento
+     let anoRg2 = anoAtual - anoRg
+
+     let renovaRg5 = idade <= 20 && anoRG2 >= 5
+     let renovaRg10 = idade > 20 && idade < 50 && anoRG2 >= 10
+     let renovaRg15 = idade >= 50 && anoRG2 >= 15
+     
+    
+    let renovaSouN = renovaRg5 || renovaRg10 || renovaRg15
+    return renovaSouN
+   
 }
+
+ 
 
 // Exercício 11 - Ainda não sei como fazer
 function checaAnoBissexto() {
-  // escreva seu código aqui
+  let bissexto = Number(prompt('Digite um ano para saber se ele é bissexto'))
+  let anoBissexto = (bissexto % 4 == 0) && (bissexto % 100 !== 0) || (bissexto % 400 == 0)
+    console.log(anoBissexto)
 }
 
 // Exercício 12
 function checaValidadeInscricaoLabenu() {
   // escreva seu código aqui
-  const idadeUsuario = prompt("Você tem mais de 18 anos? (Responsa apenas Sim ou Não)")
-  const ensinoMedio = prompt("Você tem ensino médio completo? (responda apenas Sim ou Não)")
-  const disponibilidaHorario = prompt("Você tem disponibilidade de horário para fazer o curso na Labenu? (Horário das 18:00 às 22:00")
- 
+  let idadeUsuario = prompt("Você tem mais de 18 anos? (Responsa apenas Sim ou Não)")
+  let ensinoMedio = prompt("Você tem ensino médio completo? (responda apenas Sim ou Não)").toLowerCase()
+  let disponibilidaHorario = prompt("Você tem disponibilidade de horário para fazer o curso na Labenu? (Horário das 18:00 às 22:00").toLowerCase()
 
-    
+  let idadeLimite = idadeUsuario == "sim"
+  let respEnsMedio = ensinoMedio == "sim"
+  let dispHorario = disponibilidaHorario == "sim"
 
+  let respostas = idadeLimite && respEnsMedio && dispHorario
+  console.log(respostas)
 }

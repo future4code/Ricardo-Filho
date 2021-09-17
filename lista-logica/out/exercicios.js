@@ -150,13 +150,13 @@ function checaRenovacaoRG() {
      let idade = anoAtual - anoNascimento
      let anoRg2 = anoAtual - anoRg
 
-     let renovaRg5 = idade <= 20 && anoRG2 >= 5
-     let renovaRg10 = idade > 20 && idade < 50 && anoRG2 >= 10
-     let renovaRg15 = idade >= 50 && anoRG2 >= 15
+     let renovaRg5 = idade <= 20 && anoRg2 >= 5
+     let renovaRg10 = idade > 20 && idade < 50 && anoRg2 >= 10
+     let renovaRg15 = idade >= 50 && anoRg2 >= 15
      
     
     let renovaSouN = renovaRg5 || renovaRg10 || renovaRg15
-    return renovaSouN
+    console.log(renovaSouN)
    
 }
 

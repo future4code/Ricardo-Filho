@@ -1,0 +1,88 @@
+------------------------------- EXERCICIO 01 ------------------------------- 
+const filme = {
+	nome: "Auto da Compadecida", 
+	ano: 2000, 
+	elenco: [
+		"Matheus Nachtergaele", "Selton Mello", "Denise Fraga", 
+		"Virginia Cavendish"
+		], 
+	transmissoesHoje: [
+		{canal: "Telecine", horario: "21h"}, 
+		{canal: "Canal Brasil", horario: "19h"}, 
+		{canal: "Globo", horario: "14h"}
+		]
+}
+
+console.log(filme.elenco[0]) \\ Matheus Nachtergaele
+console.log(filme.elenco[filme.elenco.length - 1])\\ ????? Não entendi direito mas acho que é o nome do elenco Virginia Cavendish
+console.log(filme.transmissoesHoje[2]) \\ Canal: Globo Horário: 14h
+------------------------------- EXERCICIO 02 ------------------------------- 
+const cachorro = {
+	nome: "Juca", 
+	idade: 3, 
+	raca: "SRD"
+}
+
+const gato = {...cachorro, nome: "Juba"}
+
+const tartaruga = {...gato, nome: gato.nome.replaceAll("a", "o")}
+
+console.log(cachorro)
+console.log(gato)  
+console.log(tartaruga) 
+
+a) - O que vai ser impresso no console?
+\\ nome: Juca idade:3 raca:SRD
+\\nome:Juba idade:3 raca:SRD
+\\ nome:Jubo idade:3 raca:SRD
+b) O que faz a sintaxe dos três pontos antes do nome de um objeto?
+os 3 pontos se refere ao espalhameto, copiando do objeto mencionado para
+outro objeto, adicionando ou mudando qualquer propriedade. no caso do
+exercicio mudou o nome de "Juca" do cachorro para "Juba" do gato e
+depois de Juba, copiou e alterou trocando (replaceAll) a letra "a" por
+"o" e dando o nome de "Jubo" para a tartaruga, mas mantendo as outras
+propriedades para todos.
+------------------------------- EXERCICIO 03 ------------------------------- 
+Leia o código abaixo
+
+function minhaFuncao(objeto, propriedade) {
+	return objeto[propriedade]
+}
+
+const pessoa = {
+  nome: "Caio", 
+  idade: 23, 
+  backender: false
+}
+
+console.log(minhaFuncao(pessoa, "backender"))
+console.log(minhaFuncao(pessoa, "altura"))
+
+function minhaFuncao(objeto, propriedade) {
+	return objeto[propriedade]
+}
+
+const pessoa = {
+  nome: "Caio", 
+  idade: 23, 
+  backender: false
+}
+
+console.log(minhaFuncao(pessoa, "backender"))
+console.log(minhaFuncao(pessoa, "altura"))
+
+a) - O que vai ser impresso no console
+Vai ser impresso
+false
+undefined
+
+b) Explique o valor impresso no console. Você sabe por que isso aconteceu?
+False foi impresso pq no console.log pede para imprimir o conteudo de backender.
+undefined pq não existe "altura" então ele não tem de onde buscar o valor.
+
+
+
+
+
+
+

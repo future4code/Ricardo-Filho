@@ -1,0 +1,66 @@
+Exercícios de interpretação de código
+01) - Leia o código abaixo:
+
+const respostaDoUsuario = prompt("Digite o número que você quer testar") \\ prompt para pedir uma entrada ao usuário
+const numero = Number(respostaDoUsuario)\\ como na variável de cima foi apenas pedido uma string esta variável vai transformar string em numero.
+
+if (numero % 2 === 0) {
+  console.log("Passou no teste.")
+} else { 
+  console.log("Não passou no teste.")
+} 
+
+a) - Explique o que o código faz. Qual o teste que ele realiza?
+if (numero % 2 === 0) {\\ Se o Resto da divisão da variável numero for igual a 0
+  console.log("Passou no teste.")\\ imprima no consolo a frase "Passou no teste."
+} else { \\se o Resto da divisão não for igual a 0, Então
+  console.log("Não passou no teste.")\\ imprima no console a frase "Não passou no teste."
+} 
+b) - Para que tipos de números ele imprime no console "Passou no teste"?
+    R: somente para 0 e os números interiros multiplos de 2 e seus pares (2, 4, 6, 8, ...)
+c) - Para que tipos de números a mensagem é "Não passou no teste"? 
+    R: Não passarão no teste numeros impares e/ou numeros não inteiros
+
+02) - O código abaixo foi feito por uma pessoa desenvolvedora, contratada para automatizar algumas tarefas de um supermercado:
+    let fruta = prompt("Escolha uma fruta")
+    let preco
+    switch (fruta) {
+    case "Laranja":
+        preco = 3.5
+        break;
+    case "Maçã":
+        preco = 2.25
+        break;
+    case "Uva":
+        preco = 0.30
+        break;
+    case "Pêra":
+        preco = 5.5
+        break; // BREAK PARA O ITEM c.
+    default:
+        preco = 5
+        break;
+    }
+    console.log("O preço da fruta ", fruta, " é ", "R$ ", preco)
+    a) Para que serve o código acima?
+    R: Serve para perguntar ao usuário qual fruta ele escolheu e mostrar seu valor.
+    b) Qual será a mensagem impressa no console, se o valor de fruta for `"Maçã"`?
+    R: A mensagem será: "O preço da furta Maçã é R$ 2.25"
+    c) Considere que um usuário queira comprar uma Pêra, qual seria a mensagem impressa no console se retirássemos o break que está logo acima do default (o break indicado pelo comentário "BREAK PARA O ITEM c.")?
+    R: Como não têmos o break, a "vida" - (código) - segue e será impresso o próximo valor de preco. "O preço da furta Pêra é R$ 5"
+
+03) - Leia o código abaixo:
+    const numero = Number(prompt("Digite o primeiro número."))
+
+    if(numero > 0) {
+    console.log("Esse número passou no teste")
+        let mensagem = "Essa mensagem é secreta!!!"
+    }
+
+    console.log(mensagem)
+a) O que a primeira linha está fazendo?
+    R: Pedindo ao usuário para que entre com um número e convertendo string para número.
+b) Considere um usuário digitou o número 10. Qual será a mensagem do terminal? E se fosse o número -10?
+    R: Digitando o numeral 10 a resposta será: "Esse número passou no teste" e se for digita -10 nada acontecerá.
+c) - Haverá algum erro no console? Justifique usando os conceitos de bloco ou escopo.
+    R: Sim teremos um erro na última linha do código, a variável mensagem está presa dentro do bloco if, e ela está sendo chamada fora, portanto ela é inacessível pois para o código ela não foi definida.

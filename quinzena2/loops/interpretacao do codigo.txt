@@ -1,0 +1,53 @@
+01) - O que o código abaixo está fazendo? Qual o resultado impresso no console?
+
+let valor = 0
+for(let i = 0; i < 5; i++) {
+  valor += i
+}
+console.log(valor)
+
+Resposta: 
+O código pega o valor da variável valor = 0 e parte para o bloco for,
+identifica que o valor de i é 0, faz uma checagem para saber se i é menor que 5,
+e soma 1, agora valor assume 1, agora volta a fazer valor + 1 e valor passa a valer 2,
+novamente o código repete o bloco e agora com valor em 2 + 1 valor para para 3 e i vale 3
+somados valor agora vale 6 enquanto i agora vale 4, a soma dará 10, então o valor é maior que 5 e 
+meu console é impresso com o valor de 10 e termina o programa.
+
+02) - Leia o código abaixo:
+const lista = [10, 11, 12, 15, 18, 19, 21, 23, 25, 27, 30]
+for (let numero of lista) {
+  if (numero > 18) {
+		console.log(numero)
+	}
+}
+Resposta:
+a) - O que vai ser impresso no console?
+Resposta:
+Enquanto meu numero for menor que 18 ele desconsidera, quando numero for maior que 18
+ele imprime no console o valor encontrador dentro do array até o último número.
+19
+21
+23
+25
+27
+30
+b) - Não sei
+
+03) - Qual seria o resultado impresso no console, se o usuário digitasse o número 4 ?
+const quantidadeTotal = Number(prompt("Digite a quantidade de linhas: "))
+let quantidadeAtual = 0
+while(quantidadeAtual < quantidadeTotal){
+  let linha = ""
+  for(let asteriscos = 0; asteriscos < quantidadeAtual + 1; asteriscos++){
+    linha += "*"
+  }
+  console.log(linha)
+  quantidadeAtual++
+}
+Resposta:
+Só sei a resposta pq rodei no JavaScript Tutor
+*
+**
+***
+****

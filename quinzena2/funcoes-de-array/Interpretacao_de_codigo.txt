@@ -1,0 +1,57 @@
+Exercícios de interpretação de código
+01) -  Leia o código abaixo
+
+const usuarios = [
+  { nome: "Amanda Rangel", apelido: "Mandi" },
+  { nome: "Laís Petra", apelido: "Laura" },
+  { nome: "Letícia Chijo", apelido: "Chijo" }
+]
+const novoArrayA = usuarios.map((item, index, array) => {
+   console.log(item, index, array)
+})
+
+a) O que vai ser impresso no console?
+    Resposta:
+        Será impresso cada item (objeto) da minha array original (usuarios)
+        {nome: "Amanda Rangel", apelido: "Mandi"},
+        {nome: "Laís Petra", apelido: "Laura"},
+        {nome: "Letícia Chijo", apelido: "Chijo"}
+
+02) - Leia o código abaixo
+
+const usuarios = [
+  { nome: "Amanda Rangel", apelido: "Mandi" },
+  { nome: "Laís Petra", apelido: "Laura" },
+  { nome: "Letícia Chijo", apelido: "Chijo" },
+]
+
+const novoArrayB = usuarios.map((item, index, array) => {
+   return item.nome
+})
+
+console.log(novoArrayB)
+
+a) O que vai ser impresso no console?
+    Resposta:
+    Será impresso apenas os nomes dos usuários em uma array novo(novaArrayB).
+    {'Amanda Rangel', 'Laís Petra', 'Letícia Chijo'}
+
+03) - Leia o código abaixo
+
+const usuarios = [
+  { nome: "Amanda Rangel", apelido: "Mandi" },
+  { nome: "Laís Petra", apelido: "Laura" },
+  { nome: "Letícia Chijo", apelido: "Chijo" },
+]
+
+const novoArrayC = usuarios.filter((item, index, array) => {
+   return item.apelido !== "Chijo"
+})
+
+console.log(novoArrayC)
+
+a) O que vai ser impresso no console?
+    Resposta 01: (este errei a interpretação, tive que executar para entender, eu achei que iria imprimir ps apelidos.)
+    Resposta 02: Serão impressos todos os usuário menos os que tenham apelido "Chijo".
+        { nome: "Amanda Rangel", apelido: "Mandi" }
+        { nome: "Laís Petra", apelido: "Laura" }

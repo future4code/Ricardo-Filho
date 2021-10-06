@@ -1,0 +1,23 @@
+Os 7 passos para resolução de problemas:
+
+01 - Ter atenão no enunciado
+	Ler atentamente e tentar entender oq nos é pedido
+
+02 - Retirar as informações relevantes
+	Procurar por palavras chaves que se tornaram variáveis e objetos em nosso código
+
+03 - Pensar nas Entradas e Sapidas
+	Pensar noq teremos de entradas e quais seram as possíveis saídas, retornos depois do processo realizado.
+
+04 - Fazer um esquema visual
+	Poder ser um esquema ou fluxograma visual mental ou escrito, mostrando a "lógica" por trás do raciocínio.
+
+05 - Criar código feio
+	Seria a parte onde começa a esboçar um rascunho do processo, para tentar colocar em código sua ideia criada.
+
+06 - Testar na Força-Bruta
+	Rodar o código atrás de bugs e verificar se e oq funciona.
+
+07 - Refatorar
+	Melhorar as informações dentro do seu código, dar nomes bons para as variáveis e funções, separar as funções de cada elemento, implementando um código mais bonito.
+		

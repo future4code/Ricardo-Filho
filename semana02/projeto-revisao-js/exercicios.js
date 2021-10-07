@@ -76,8 +76,23 @@ function retornaNNumerosPares(n) {
 
 // EXERCÍCIO 08
 function checaTriangulo(a, b, c) {
-  
- }
+  let ladoA = a
+  let ladoB = b
+  let ladoC = c
+ 
+ const osTresladosIguais = "Equilátero"
+ const osDoisladosIguais = "Isósceles"
+ const nenhumladoIgual = "Escaleno"
+ 
+   if (ladoA===ladoB && ladoB===ladoC){
+   return osTresladosIguais
+   } 
+   if (ladoA===ladoB || ladoA===ladoC || ladoB===ladoC){
+   return osDoisladosIguais
+   }
+   if (ladoA!==ladoB && ladoB!==ladoC && c!==ladoA){
+   return nenhumladoIgual
+ }}
 
 
 // EXERCÍCIO 09

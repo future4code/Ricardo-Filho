@@ -64,24 +64,25 @@ function retornaExpressoesBooleanas() {
 
 // EXERCÍCIO 07
 function retornaNNumerosPares(n) {
+  const arrayDePares= []
 
+  for(let i = 0; arrayDePares.length < n; i++) {
+      if(i % 2 === 0) {
+          arrayDePares.push(i)
+      }
+  }
+  return arrayDePares
 }
 
 // EXERCÍCIO 08
 function checaTriangulo(a, b, c) {
-  // return 'Escaleno'
-  // return 'Equilátero'
-  // return 'Isósceles'
-}
+  
+ }
+
 
 // EXERCÍCIO 09
 function comparaDoisNumeros(num1, num2) {
-  // Formato do objeto a ser retornado:
-  // {
-  //   maiorNumero: X,
-  //   maiorDivisivelPorMenor: Y,
-  //   diferenca: Z
-  // }
+
 }
 
 // EXERCÍCIO 10

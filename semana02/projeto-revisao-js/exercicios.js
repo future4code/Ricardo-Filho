@@ -140,11 +140,20 @@ function segundoMaiorEMenor(array) {
   return arrayDosSegundos
 }
 
-
-
 // EXERCÍCIO 11
 function ordenaArray(array) {
+  let novaArray = []
 
+  for (item of array){
+    let contador = 0
+    for (comparandoItem of array){
+      if (item > comparandoItem){
+      contador ++
+    }
+  }
+  novaArray[contador] = item
+}
+  return (novaArray)
 }
 
 // EXERCÍCIO 12

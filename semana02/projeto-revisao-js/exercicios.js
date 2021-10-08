@@ -173,6 +173,16 @@ let oFilme = {
 // EXERCÍCIO 13
 function imprimeChamada() {
   // "Venha assistir ao filme NOME_DO_FILME, de ANO, dirigido por DIRECAO e estrelado por ELENCO."
+  let oFilme = {
+    nome: "O Diabo Veste Prada",
+    ano: 2006,
+    diretor: "David Frankel",
+    atores: ["Meryl Streep",
+            "Anne Hathaway",
+            "Emily Blunt",
+            "Stanley Tucci"]}
+      let venhaAssistiroFilme = `Venha assistir ao filme ${oFilme.nome}, de ${oFilme.ano}, dirigido por ${oFilme.diretor} e estrelado por ${oFilme.atores[0]}, ${oFilme.atores[1]}, ${oFilme.atores[2]}, ${oFilme.atores[3]}.`
+        return venhaAssistiroFilme
 }
 
 // EXERCÍCIO 14

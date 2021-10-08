@@ -198,7 +198,11 @@ return retangulo
 
 // EXERCÍCIO 15
 function anonimizaPessoa(pessoa) {
-
+const aPessoa = {
+  ...pessoa,
+  nome: "ANÔNIMO"
+}
+return aPessoa
 }
 
 // EXERCÍCIO 16A

@@ -123,7 +123,24 @@ function comparaDoisNumeros(num1, num2) {
 // EXERCÍCIO 10
 function segundoMaiorEMenor(array) {
 
+  let novaArray = []
+  
+
+  for(item of array){
+    let contador = 0
+    for(compradoItem of array){
+      if(item>compradoItem){
+        contador ++
+      }
+    }
+    novaArray[contador] = item
+    
+  }
+  let arrayDosSegundos = [novaArray[novaArray.length-2], (novaArray[1])]
+  return arrayDosSegundos
 }
+
+
 
 // EXERCÍCIO 11
 function ordenaArray(array) {

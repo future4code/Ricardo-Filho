@@ -78,7 +78,9 @@ domestico = `---Dados da compra---\nNome do Cliente : ${nome}\nTipo de jogo: ${n
 internacional = `---Dados da compra---\nNome: ${nome}\nTipo de jogo: ${nascionalidadeDoJogo}\nEtapa do jogo: ${etapasDoJogo}\ncategoria: ${categoria}\nQuantidade de ingressos: ${quantIngressos} ingressos\n---Valores---\nValor do ingresso: U$ ${ingresso}\nValor total: U$ ${totalDosIngressos}`
 
 if (tipoDeJogo === "DO"){
-    console.log (domestico)
+    alert.log (domestico)
+//console.log (domestico)
 }else{
-    console.log (internacional)
+    alert (internacional)
+//console.log (internacional)
 }

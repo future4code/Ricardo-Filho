@@ -207,7 +207,17 @@ return aPessoa
 
 // EXERCÍCIO 16A
 function maioresDe18(arrayDePessoas) {
-
+let pessoasMariores = []
+  for (item of arrayDePessoas){
+    let contador = 0
+    for (comparandoIdade of array){
+      if (item > comparandoIdade){
+      contador ++
+    }
+  }
+  pessoasMariores[contador] = item
+}
+  return (pessoasMariores)
 }
 
 // EXERCÍCIO 16B

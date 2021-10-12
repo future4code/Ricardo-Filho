@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Adicionar Produto</title>
+</head>
+<body>
+    <center>
+        <img src="imagens/index/logo.jpg" alt="rickhardwares"><br>
+            <div>
+                <a href="index.html">Página Inicial</a> &nbsp;
+                <a href="ctrl-estoque.html">Controle de Estoque</a> &nbsp;
+                <a href="add-produto.html">Adicionar Produto</a> &nbsp;
+                <a href="funcionarios.html">Funcionários</a>
+            </div>
+
+        
+ <table>
+     <tr><h2>Adicionar Produto</h2></tr>
+     <td align="left">
+        <form action="#">
+            <div>
+                <label for="link-foto">Link para foto: </label>
+                <input type="url" id="link-foto" name="link-foto" required="required">
+            </div>
+            
+            <div>
+                <label for="descricao">Descrição do produto: </label>
+                <!-- Adicione o id apropriado para o input abaixo -->
+                <input type="text" id="descricao" name="descrição" min="0" max="1000" required="required">
+            </div>
+            
+            <div>
+                <label for="preco">Preço (em R$): </label>
+                <!-- Adicione o id apropriado e o type para receber números abaixo -->
+                <input type="number" min="0" max="1000" value="Preencha" name="preço" id="preco" required="required" step="0.1"/>
+            </div>
+            
+            <div>
+                <!-- Preencha as propriedades necessárias para os elementos abaixo -->
+                <label for="quantidade">Quantidade disponível: </label>
+                <input type="number" id="quantidade" name="quantidade" min="0" max="2" required="required">
+            </div>
+
+            <div class="form-add">
+                <!-- Adicione ao type do botão abaixo o valor para que ele submeta o formulário -->
+                <button type="submit">Adicionar</button>
+            </div>
+        </form>
+    </td>
+</table><br>
+<img src="imagens/index/down.jpg" alt="rickhardwares">
+</center>
+</body>
+</html>

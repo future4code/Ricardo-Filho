@@ -19,6 +19,10 @@ h2 {
 input {
     height: 20px;
     width: 500px;
+	border-bottom: 20;
+	border-top: 0;
+	border-left: 0;
+	border-right: 0;
 }
 
 button:focus {
@@ -47,9 +51,11 @@ div img {
     font-size: 20px;
     color: black;
 }
+
 .botao-amarelo:active {
 	color: white;
 }
+
 .botao-amarelo:hover {
     background-color: #c44f00;
 }

@@ -28,13 +28,15 @@ button:focus {
 img {
     width: 70px;
 }
-
+#buscar {
+    width: 20px;
+}
 div>p:first-child {
     display: inline;
 }
 
 div img {
-    background: black;
+    
 }
 
 .botao-amarelo {

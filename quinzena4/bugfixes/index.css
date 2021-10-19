@@ -64,6 +64,8 @@ div img {
     height: 500px;
     text-align: center;
 	padding: 20px;
+	font-family:roboto;
+	font-size: 30px;
 }
 
 .icone {
@@ -84,7 +86,10 @@ div img {
 
 #container-de-descricao>ol {
     padding: 15px 0px;
+    width: 400px;
+    margin: auto;
 }
+
 
 #container-para-comprar {
     background-color: #e7eb90;

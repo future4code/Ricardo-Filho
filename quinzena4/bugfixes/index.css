@@ -41,13 +41,15 @@ div img {
 
 .botao-amarelo {
     background-color: #ffaf43;
-    width: 250px;
+    width: 150px;
     height: 40px;
     border-radius: 5px;
     font-size: 20px;
-    color: white;
+    color: black;
 }
-
+.botao-amarelo:active {
+	color: white;
+}
 .botao-amarelo:hover {
     background-color: #c44f00;
 }

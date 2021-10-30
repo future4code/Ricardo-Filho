@@ -1,0 +1,160 @@
+/** 
+  *
+  *  ESTILOS GERAIS 
+  *
+  **/
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+h2 {
+    background-color: #fe7e02;
+    padding: 10px 5px 10px 5px;
+    color: white;
+    text-align: center;
+}
+
+input {
+    height: 20px;
+    width: 500px;
+	border-bottom: 20;
+	border-top: 0;
+	border-left: 0;
+	border-right: 0;
+}
+
+button:focus {
+    color: white;
+}
+
+img {
+    width: 70px;
+}
+#buscar {
+    width: 20px;
+}
+
+#buscar:hover{
+    width: 30px;
+	
+}
+div>p:first-child {
+    display: inline;
+}
+
+div img {
+    
+}
+
+.botao-amarelo {
+    background-color: #ffaf43;
+    width: 150px;
+    height: 40px;
+    border-radius: 5px;
+    font-size: 20px;
+    color: black;
+}
+
+.botao-amarelo:active {
+	color: white;
+}
+
+.botao-amarelo:hover {
+    background-color: #c44f00;
+}
+
+.container {
+    height: 500px;
+    text-align: center;
+	padding: 20px;
+	font-family:roboto;
+	font-size: 30px;
+}
+
+.icone {
+    height: 15px;
+}
+
+
+/** 
+  *
+  *  ESTILOS HOME 
+  *
+  **/
+
+#container-de-descricao {
+    background-color: #2274a5;
+    color: white;
+}
+
+#container-de-descricao>ol {
+    padding: 15px 0px;
+    width: 400px;
+    margin: auto;
+}
+
+
+#container-para-comprar {
+    background-color: #e7eb90;
+}
+
+#container-para-comprar>p {
+    color: #c44f00;
+    padding: 100px 0;
+    font-size: 60px;
+}
+
+
+/**
+  *
+  *  ESTILOS COMPRAR 
+  *
+  **/
+
+div:nth-child(2),
+div:last-child {
+    text-align: center;
+}
+
+table {
+    width: 60%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+td button {
+    background-color: #fadf63;
+    width: 150px;
+    height: 30px;
+    border-radius: 5px;
+    color: black;
+	
+}
+
+.container-do-search {
+    margin-top: 20px;
+    height: 100px;
+}
+
+
+#back-button {
+    background-color: white;
+    width: 100px;
+    height: 20px;
+    border: 1px solid black;
+    border-radius: 5px;
+    font-size: 10px;
+    color: black;
+	
+}
+
+#back-button:hover {
+    background-color: #635a3d
+}
+.nome-itens-centralizado{
+	text-align: center;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+	font-size: 20px;
+}

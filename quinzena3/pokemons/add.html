@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/stylePagsSec.css">
+    <title>Pokemons-Store</title>
+</head>
+<body class = "cor-do-fundo body-toda">
+	<table width="90%" align="center">
+		<div  id = "cor-da-div" class = "tamanho-logo-topo">
+			<a href="index.html"><img src="imagens/pagina/logopokemon.png" alt="logo-pokemon"/></a>
+	  <img src="imagens/pagina/logo2.png" alt="logo-pokemon2"/>
+		</div>
+	</table>
+<table width="100" align="center">
+			<div>
+			<tr>
+				<th>
+					<div class = "tamanho-logo">
+						<a href="fire.html"><img src="imagens/pagina/fire.png" alt="logo-pokemon"/></a>
+					</div>
+				</th>
+				<th>
+					<div class = "tamanho-logo">
+						<a href="water.html"><img src="imagens/pagina/water.png" alt="logo-pokemon"/></a>
+					</div>
+				</th>
+				  <th>
+					<div class = "tamanho-logo">
+						<a href="eletric.html"><img src="imagens/pagina/eletric.png" alt="logo-pokemon"/></a>
+					</div>
+				</th>
+				<th>
+					<div class = "tamanho-logo">
+						<a href="water.html"></a>
+					</div>
+				</th>
+				<th>
+					<div class = "tamanho-logo">
+						<a href="grass.html"><img src="imagens/pagina/grass.png" alt="logo-pokemon"/></a>
+					</div>
+				</th>
+				<th>
+					<div class = "tamanho-logo">
+						<a href="store.html"><img src="imagens/pagina/store.png" alt="logo-loja"/></a>
+					</div>
+				</th>
+				<th>
+					<div class = "tamanho-logo-atual">
+						<a href="add.html"><img src="imagens/pagina/add.png" alt="logo-add-itens"/></a>
+					</div>
+				</th>
+				<th>
+					<div class = "tamanho-logo">
+						<a href="index.html"><img src="imagens/pagina/home.png" alt="logo-index"/></a>
+					</div>
+				</th>
+				<th>
+					<div class = "tamanho-logo">
+						<a href="funcionarios.html"><img src="imagens/pagina/funcionarios.png" alt="logo-funcionarios"/></a>
+					</div>
+				</th>
+			</tr>
+		</div>
+	</table>
+	<!--inicio corpo do site -->
+<center>
+<table>
+     <tr><h2>Adicionar Produto</h2></tr>
+     <td align="left">
+        <form action="#">
+            <div>
+                <label for="link-foto">Link para foto: </label>
+                <input type="url" id="link-foto" name="link-foto" required="required">
+            </div>
+            
+            <div>
+                <label for="descricao">Movimentos do Pokémon: </label>
+                <!-- Adicione o id apropriado para o input abaixo -->
+                <input type="text" id="descricao" name="descrição" min="0" max="1000" required="required">
+            </div>
+            
+            <div>
+                <label for="preco">Preço (em R$): </label>
+                <!-- Adicione o id apropriado e o type para receber números abaixo -->
+                <input type="number" min="0" max="1000" value="Preencha" name="preço" id="preco" required="required" step="0.1"/>
+            </div>
+            
+            <div>
+                <!-- Preencha as propriedades necessárias para os elementos abaixo -->
+                <label for="quantidade">Quantidade disponível: </label>
+                <input type="number" id="quantidade" name="quantidade" min="0" max="2" required="required">
+            </div>
+
+            <div class="form-add">
+                <!-- Adicione ao type do botão abaixo o valor para que ele submeta o formulário -->
+                <button type="submit">Adicionar</button>
+            </div>
+        </form>
+    </td>
+</table><br>
+</center>
+	<!--fim corpo do site -->
+	<table class = "rodape" width="100%">
+		<tr>
+			<td>
+				<div class= "logo-social" id = "cor-da-div">
+					<a href="https://www.instagram.com/pokemon/" target="new"><img src="imagens/pagina/insta.png" alt="logo instagran"/></a>
+					<a href="https://www.facebook.com/Pokemon" target="new"><img src="imagens/pagina/face.png" alt="Logo facebook"/></a>
+					<a href="https://twitter.com/Pokemon" target="new"><img src="imagens/pagina/twiter.png" alt="logo twiter"/></a><br>
+				  Copyright (c) 2021 Company Name / All Rights Reserved/ RickHard´Wares HomePages
+				</div>
+			</td>
+		</tr>
+	</table>
+</body>
+</html>

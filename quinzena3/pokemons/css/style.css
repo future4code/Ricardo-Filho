@@ -1,0 +1,63 @@
+.cor-do-fundo{
+	background-color: orangered
+}
+.tamanho-logo img {
+	margin:0;
+    max-width: 150px;
+    width: auto;
+    height: auto;
+		
+}
+.tamanho-logo {
+    clear: both;
+	text-align: center;
+}
+img {
+    vertical-align: top;
+	
+}
+
+.logo-social img {
+	max-width: 50px;
+    max-height: 50px;
+   
+	
+}
+.logo-social {
+    clear: both;
+	text-align: center;
+}
+
+
+
+.texto-loja1{
+	font-family: Baskerville, "Palatino Linotype", Palatino, "Century Schoolbook L", "Times New Roman", "serif";
+	text-align: center;
+	font-size: 100px;
+	font-style:italic;
+	font-weight: bold;
+	color: white;
+	text-shadow: #101010 2px 3px 2px;
+	padding-bottom:  5px;
+}
+
+.texto-loja2{
+	font-family: Baskerville, "Palatino Linotype", Palatino, "Century Schoolbook L", "Times New Roman", "serif";
+	text-align: center;
+	font-size: 40px;
+	font-style:italic;
+	font-weight: bold;
+	color: white;
+	text-shadow: #101010 2px 3px 2px;
+}
+
+#conteudo {
+	padding-bottom: 5px;
+	}
+
+.rodape {
+	    bottom: 0px;
+	color:white;
+	padding-top: 10px;
+    
+	}

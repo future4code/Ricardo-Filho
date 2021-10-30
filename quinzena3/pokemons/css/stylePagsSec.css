@@ -1,0 +1,178 @@
+.body-toda{
+	position: absolute;
+    width: 100%;
+    min-height: 100%;
+    padding: 0px;
+    margin: 0px;
+}
+.cor-do-fundo{
+	background-color: white
+}
+.tamanho-logo-topo img {
+	margin:0;
+    max-width: 200px;
+    max-height:250px;
+    width: auto;
+    height: auto;
+	
+}
+.tamanho-logo-topo {
+    clear: both;
+	text-align: center;
+}
+img {
+    vertical-align: top;
+}
+
+.tamanho-logo img {
+	margin:0;
+    max-width: 100px;
+    max-height: 150px;
+    width: auto;
+    height: auto;
+	
+}
+.tamanho-logo {
+    clear: both;
+	text-align: center;
+}
+img {
+    vertical-align: top;
+}
+
+.tamanho-logo-atual img {
+	margin:0;
+    max-width: 150px;
+    max-height: 200px;
+    width: auto;
+    height: auto;
+	
+}
+.tamanho-logo-atual {
+    clear: both;
+	text-align: center;
+}
+img {
+    vertical-align: top;
+}
+
+
+.logo-social img {
+	max-width: 50px;
+    max-height: 50px;
+   
+	
+}
+.logo-social {
+    clear: both;
+	text-align: center;
+}
+
+#conteudo {
+	padding-bottom: 30px;
+	}
+
+#cor-da-div{
+	background-color: orangered
+}
+.formato-do-texto{
+	font-family: Baskerville, "Palatino Linotype", Palatino, "Century Schoolbook L", "Times New Roman", "serif";
+	color: darkred
+}
+
+.personagens img {
+	margin:0;
+    max-width: 200px;
+    max-height:250px;
+    width: auto;
+    height: auto;
+	
+}
+.personagens {
+	font-family: Constantia, "Lucida Bright", "DejaVu Serif", Georgia, "serif";
+	font-size: 20px;
+	color: darkred;
+    clear: both;
+	text-align: center;
+}
+img {
+    vertical-align: top;
+}
+#valor-do-item{
+	font-family:Impact, Haettenschweiler, "Franklin Gothic Bold", "Arial Black", "sans-serif";
+	font-size: 20px;
+}
+#nome-do-item{
+	font-family:Constantia, "Lucida Bright", "DejaVu Serif", Georgia, "serif";
+	font-size: 20px;
+	color: brown;
+}
+
+.card{
+	box-shadow: 1px 1px 5px #ccc;
+	background-color: white;
+	padding: 30px;
+	border-radius: 5px;
+		
+}
+
+.formulario-senha{
+	width: 400px;
+	margin: auto;
+	padding-top: 40px;
+	padding-bottom: 40px;
+}
+
+.card-top{
+	text-align: center;
+}
+
+.poque-bola {
+	width: 150px;
+}
+
+.cor-titulo-card{
+	color:darkred;
+	font-family:"Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, "sans-serif"
+}
+.card-texto-form {
+margin-bottom: 10px;
+}
+
+.card-texto-form > label {
+	width: 100%;
+	color: darkslategray;
+	display: block;
+	
+}
+
+.card-texto-form > input {
+	outline: 0;
+	border-radius: 5px;
+	width: 100%;
+	height: 25px;
+	padding: 3px;
+	
+	
+}
+.card-texto-form > button {
+	background-image: linear-gradient(to right, orange, orangered);
+	color: white;
+	width: 100%;
+	height: 40px;
+	border-radius: 30px;
+	border: 0px;
+	outline: 0px;
+		
+}
+.btn button:hover{
+	background-image: linear-gradient(to right, orangered, orange);
+	
+}
+
+.rodape {
+	    bottom: 0px;
+	color:white;
+    
+	}
+

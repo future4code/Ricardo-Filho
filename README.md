@@ -1,21 +1,21 @@
-Alunos(as), sejam bem-vindos(as)!
+<h1>Alunos(as), sejam bem-vindos(as)!</h1>
 
 Esse repositório vai acompanhar vocês até o final do curso, para mantermos a organização, sugerimos que vocês sigam a seguinte estrutura:
 
 ```
 .
 ├── quinzena-1
-│   ├── aula1
-│   ├── aula2
-│   ├── aula3
-│   ├── aula4
-│   └── projeto-nome
+│   ├── aula1 - Conhecendo o Computador e o Terminal - OK
+│   ├── aula2 - Git - OK
+│   ├── aula3 - Variáveis - OK
+│   ├── aula4 - Operadores e Lógica de Programação - OK
+│   └── projeto-nome - assassinato-na-linha-de-comando - OK
 |
 ├── quinzena-2
-│   ├── aula5
-│   ├── aula6
-│   ├── aula7
-│   ├── aula8
+│   ├── aula5 - Strings e Arrays - OK
+│   ├── aula6 - Funções - OK
+│   ├── aula7 - Objetos - OK
+│   ├── aula8 - Condicionais - OK
 │   └── projeto-nome
 |
 ├── quinzena-3

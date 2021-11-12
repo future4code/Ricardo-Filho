@@ -1,0 +1,39 @@
+.small-container {
+    display: flex;
+    align-items: center;
+    border: 1px solid red;
+    border-radius: 20px;
+    padding: 20px 10px;
+    margin-bottom: 10px;
+   
+}
+
+.imagens{
+    margin-left: 70px;
+}
+.small-container > div > #tamanho-arroba{
+    width: 40px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+.link-mail{
+    text-decoration: none;
+}
+
+.small-container > div > #tamanho-zap{
+    width: 25px;
+    margin-right: 10px;
+    margin-left: 5px;
+}
+
+.small-container h4 {
+    margin-bottom: 15px;
+}
+
+.small-container > div {
+    display: flex;
+    flex-direction: column;
+    justify-items: flex-start;
+}
+

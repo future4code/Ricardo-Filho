@@ -1,20 +1,21 @@
 .small-container {
     display: flex;
     align-items: center;
+    padding: 15px 30px;
+    margin: 10px auto;
+    flex-direction: column;
+    justify-content: center;
     border: 1px solid red;
     border-radius: 20px;
-    padding: 20px 10px;
-    margin-bottom: 10px;
-   
+    width: 20em;   
 }
 
 .imagens{
-    margin-left: 70px;
+    align-items: center;
+    justify-content: space-evenly;
 }
 .small-container > div > #tamanho-arroba{
     width: 40px;
-    margin-right: 10px;
-    margin-bottom: 10px;
 }
 
 .link-mail{
@@ -23,17 +24,17 @@
 
 .small-container > div > #tamanho-zap{
     width: 25px;
-    margin-right: 10px;
-    margin-left: 5px;
+    justify-content: center;
 }
 
 .small-container h4 {
-    margin-bottom: 15px;
+    justify-items: center;
 }
 
 .small-container > div {
-    display: flex;
-    flex-direction: column;
-    justify-items: flex-start;
+    display: flex;   
 }
-
+.texto-contatos{
+    align-items: center;
+    margin-inline: auto;
+}

@@ -17,17 +17,16 @@
 }
 
 .page-section-container > h3 {
-  text-align: center;
   margin-bottom: 20px;
 }
 
 .page-section-container-small {
   width: 40vw;
   margin: 10px 0;
+  justify-content: center;
 }
 
 .page-section-container-small > h3 {
-  text-align: center;
   margin-bottom: 20px;
 }
 

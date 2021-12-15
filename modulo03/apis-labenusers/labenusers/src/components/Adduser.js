@@ -1,32 +1,11 @@
 import axios from 'axios';
 import React from 'react';
 
- export default class App extends React.Component {
+export default class App extends React.Component {
     state = {
-      users: [],
       nomeInput:'',
       emailInput: ''
     }
-    componentDidMount() {
-    this.chamaUsuario ()
-        }
-  
-        chamaUsuario = () => {
-    axios.get('https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users',
-    { 
-      headers:{
-        Authorization: "ricardo-ribeiro-joy"
-      }
-  
-    })
-    .then((res) => {
-      this.setState({ users: res.data })
-      // console.log(res.data)
-    })
-    .catch((err) => {
-      // console.log(err.response.data)
-    })
-  }
   
   mudaNome = (e) => {
     this.setState({nomeInput: e.target.value });
@@ -57,26 +36,21 @@ import React from 'react';
          this.pegaUsuario();
     })
     .catch((err) => {
-      // console.log(err.response.data);
     });
   
   }
   
-    render () {
   
-      const lista = this.state.users.map((user) =>{
-        return<p key = {user.id}>{user.name}</p>
-  
-      })
+    render () {     
   
       return (
         <div>
-          <button>Trocar de Tela</button>
+          
         <div>
           <input 
           placeholder={'Digite o nome do usuário'}
           type = 'Text'
-          size = '25'
+          size = '30'
           value = {this.state.nomeInput}
           onChange = {this.mudaNome}
           />
@@ -84,7 +58,7 @@ import React from 'react';
   
           <div>
           <input
-          placeholder = {'Digite o seu e-mail'}
+          placeholder = {'Digite um e-mail válido'}
           type = 'email'
           size = '30'
           value = {this.state.emailInput}
@@ -92,8 +66,6 @@ import React from 'react';
           />
           </div>
          <button onClick={this.criarUsuario}>Enviar</button>
-  
-        {lista}
         </div>
       );
     }

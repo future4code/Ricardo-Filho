@@ -1,20 +1,36 @@
 import React from 'react';
-import Connect from './components/Connect'
-// import User from './components/User';
+import Adduser from './components/Adduser';
+import User from './components/User';
+
 
 export default class App extends React.Component {
   state = {
-    mudar: "page"
+    mudar: "user",
+    user:{}
   }
 
-  mudarPage = () =>{
-    
-  }
-  render () {
+  changePage = () =>{
+    if (this.state.mudar ==="user") {
+      this.setState({mudar: "connect"});
+    } else if (this.state.mudar === "connect") {
+      this.setState({mudar: "user" });
+    }
+    }
   
+
+  render () {
+
+    const mudarPagina = this.state.mudar === "user" ? <Adduser/> : <User/>
+
    return (
+     <div>
       <div>
-        <Connect/>
+       <button onClick={this.changePage}>Trocar de Tela</button>
       </div>
-    )}
+      <div>
+         {mudarPagina}
+       </div>
+      </div>
+    );
   }
+}

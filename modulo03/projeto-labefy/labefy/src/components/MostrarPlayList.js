@@ -1,11 +1,12 @@
 import React from 'react';
-import axios from 'axios'
-import styled from 'styled-components'
-import AddMusic from './AddMusic'
+import axios from 'axios';
+import styled from 'styled-components';
+import AddMusic from './AddMusic';
+import DetalhesPlay from './DetalhesPlay';
 
 const Container = styled.div`
   display: grid;
-  grid-template-columns: 300px 500px 200px;
+  grid-template-columns: 300px 600px 200px;
   align-items: center;
   `
 const Titulo = styled.h2`
@@ -69,7 +70,9 @@ export default class App extends React.Component {
 
     state = {
         playlists: [],
-        idPlaylist: ''
+        idPlaylist: '',
+        mostraLista: false,
+        mostraDetalhe: false,
     }
 
     componentDidMount() {
@@ -106,32 +109,60 @@ export default class App extends React.Component {
           console.log(err.response.data)
         })
       }
-
+      addMusicNaPlay = (id) => {
+      this.state.mostraLista
+      ? this.setState({ mostraLista: false })
+      : this.setState({ mostraLista: true })
+  }
+      detalhesDaPlay = (id) => {
+      this.state.mostraDetalhe
+      ? this.setState({ mostraDetalhe: false })
+      : this.setState({ mostraDetalhe: true })
+  }
     render() {
-        
+      let mostraLista = <h1>Página de erro</h1>
+    if (this.state.mostraLista) {
+      mostraLista = <AddMusic />
+    } else {
+      mostraLista = ''
+    }
+
+      let mostraDetalhe = <h1>Página de erro</h1>
+      if (this.state.mostraDetalhe) {
+      mostraDetalhe = <DetalhesPlay />
+    } else {
+      mostraDetalhe = ''
+    }
           let playListsMap = this.state.playlists.map((playlist)=>{
             return<Container>
             <CardButton>
                 <Box1>Play List: {playlist.name}</Box1>
-                <Box2><Button>Detalhes da Playlist</Button></Box2>
-                <Box3><Button>Adicionar Música</Button></Box3>
+                <Box2>
+                <Button onClick={() => this.detalhesDaPlay(playlist.id)}>
+              Detalhes
+                </Button>
+                </Box2>
+                <Box3>
+                <Button onClick={this.addMusicNaPlay}>
+              AddMusic
+                </Button>
+              </Box3>
+          
                 
             </CardButton>
               <div>
                 <Button onClick={() => this.deletePlay(playlist.id)}>X</Button>
-                
-              </div>
+               </div>
               </Container>
         })
 
         return(
             <div key={playListsMap.id}>
                 <Titulo> Quantidade de playlists: {playListsMap.length} </Titulo>
-
                 <PdeP>
                 {playListsMap} 
-                <AddMusic />
                 </PdeP>
+                
             </div>
         )
     }

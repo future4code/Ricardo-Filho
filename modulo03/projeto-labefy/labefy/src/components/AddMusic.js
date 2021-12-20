@@ -20,7 +20,7 @@ changeUrl = (event) => {
   this.setState({urlMusic: event.target.value})
 }
 AddMusic = (id) =>{
-  let url = `https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/${id}/tracks`
+  let url = `https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/${this.props.idPlaylist}/tracks`
   
   let body = {
     name: this.state.nameMusic,
@@ -33,9 +33,10 @@ AddMusic = (id) =>{
       authorization: "ricardo-ribeiro-joy"
   }
 }
-axios.post(url, body, autorizacao).then((response) => {
-  this.setState({nameArtist:"", nameMusic:"", urlMusic:""})
-  alert("Adicionado com sucesso na sua PlayList")
+axios.post(url, body, autorizacao)
+.then((response) => {
+this.setState({nameArtist:"", nameMusic:"", urlMusic:""})
+alert("Adicionado com sucesso na sua PlayList")
 })
 .catch((error) =>{alert(error)})
 }

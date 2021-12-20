@@ -1,5 +1,6 @@
 import React from 'react'
 import './App.css'
+import axios from 'axios';
 import CriarPlayList from './components/CriarPlayList'
 import MostrarPlayList from './components/MostrarPlayList'
 import styled, { createGlobalStyle } from 'styled-components'
@@ -73,14 +74,27 @@ export default class App extends React.Component {
   state = {
     mostraLista: false
   }
-
+  componentDidMount() {
+    this.pegaPlaylists()
+}
   mudaCondicionalDeLista = () => {
     this.state.mostraLista
       ? this.setState({ mostraLista: false })
       : this.setState({ mostraLista: true })
   }
 
-  render() {
+  pegaPlaylists = () =>{
+    let URL= "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists"
+    let autorizacao = {
+        headers: {
+            authorization: "ricardo-ribeiro-joy"
+        }
+    }
+    axios.get(URL, autorizacao)
+    .then((response)=>{ this.setState({playlists: response.data.result.list})})
+    .catch((error)=>{console.log(error)})
+  }
+    render() {
     let mostraLista = <h1>Página de erro</h1>
     if (this.state.mostraLista) {
       mostraLista = <MostrarPlayList />

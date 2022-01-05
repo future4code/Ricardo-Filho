@@ -5,15 +5,14 @@ import styled from "styled-components"
 const AppContainer = styled.div `
   display: flex;
   justify-content: center;
-  flex-direction: col;
+  flex-direction: column;
   align-items: center;
   flex-wrap: wrap;
  `
  const AppBox = styled.div `
     margin: 5px;
     padding: 5px;
-    width: 300px;
-    height: 330px;
+    
 `
 const Topo = styled.header`
   height: 100px;
@@ -28,7 +27,7 @@ const Base = styled.header`
   text-align: center;
   background-color: #ccc;
   font-size: 20px;
-  position:fixed;
+  position: bottom, unset;
 	bottom:0;
 	width:100%;
 

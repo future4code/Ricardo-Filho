@@ -43,23 +43,23 @@ const StyledButton = styled.div`
     text-decoration: none;
   }
 `
-const Imagens = styled.img`
+const Images = styled.img`
   width: 60px;
   height: 60px;
   border-radius: 50%;
   border: 0;
 `
-export default function Footer({ postMatch, atualizaCont }) {
+export default function Footer({ postMatch, countUpdate }) {
   return (
     <StyledButton>
       <abbr title="Não gostei">
-        <button onClick={atualizaCont} className="grow1">
-          <Imagens src="/img/x1.png" />
+        <button onClick={countUpdate} className="grow1">
+          <Images src="/img/x1.png" />
         </button>
       </abbr>
       <abbr title="Gostei">
         <button onClick={() => postMatch()} className="grow2">
-          <Imagens src="/img/y1.png" />
+          <Images src="/img/y1.png" />
         </button>
       </abbr>
     </StyledButton>

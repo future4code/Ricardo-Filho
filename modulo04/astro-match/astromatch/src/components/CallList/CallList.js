@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useReducer } from 'react'
 import styled from 'styled-components'
 import axios from 'axios'
 
@@ -11,8 +11,9 @@ const Container = styled.div`
   width: 350px;
   height: 600px;
   border: 1px solid black;
-  border-radius: 5px;
+  border-radius: 10px;
   font-family: 'Roboto', sans-serif;
+  box-shadow: 0 0 10px 0 rgba(28, 28, 28, 0.99);
 
   @media (max-width: 420px) {
     height: 90vh;
@@ -31,6 +32,13 @@ const Container = styled.div`
     background-color: transparent;
     cursor: pointer;
   }
+
+  .threed1 {
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+  }
+
   .threed2 {
     filter: invert(100%);
   }
@@ -85,7 +93,7 @@ const Tinder = styled.div`
     height: 30px;
   }
 `
-const Imagem = styled.img`
+const Image = styled.img`
   height: 100%;
   width: 50px;
   margin-right: 10px;
@@ -93,7 +101,7 @@ const Imagem = styled.img`
   background-position: center center;
   background-size: 100%;
 `
-const Lista = styled.ul`
+const List = styled.ul`
   padding: 0 10px;
 `
 const Item = styled.li`
@@ -129,7 +137,7 @@ const Item = styled.li`
     }
   }
 `
-const Texto = styled.p`
+const Text = styled.p`
   user-select: none;
 `
 const StyleButtonDelete = styled.div`
@@ -153,7 +161,7 @@ const Button = styled.button`
   }
 `
 
-export default function ChamaLista({ ListaChamada, listMach }) {
+export default function CallList({ CalledList }) {
   const [matchList, setMatchList] = useState([])
 
   const getMatchs = async () => {
@@ -186,15 +194,26 @@ export default function ChamaLista({ ListaChamada, listMach }) {
       <Container>
         <Tinder>
           <div>
-            <button className="threed1">
-              <img src="/img/tinder.png" aria-label="Tinder" alt="Tinder" />
+            <button>
+              <a
+                href="https://github.com/RickHardBR/RickHardBR"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <img
+                  className="threed1"
+                  src="/img/GitHub.png"
+                  aria-label="GitHub"
+                  alt="GitHub"
+                />
+              </a>
             </button>
           </div>
           <div>
-            <h1 className="white-with-blue-shadow">astromatch</h1>
+            <h1 className="white-with-blue-shadow">ASTRO💕MATCH</h1>
           </div>
           <div>
-            <button className="threed1" onClick={ListaChamada}>
+            <button onClick={CalledList}>
               <img
                 className="threed2"
                 src="/img/peoples.png"
@@ -208,12 +227,16 @@ export default function ChamaLista({ ListaChamada, listMach }) {
         <SubContainer>
           {matchList.map(match => {
             return (
-              <Lista>
+              <List>
                 <Item key={match.id}>
-                  <Imagem src={match.photo} alt="Foto do Match" />
-                  <Texto>{match.name}</Texto>
+                  <Image
+                    src={match.photo}
+                    alt="Foto do Match"
+                    aria-label={matchList.name}
+                  />
+                  <Text>{match.name}</Text>
                 </Item>
-              </Lista>
+              </List>
             )
           })}
         </SubContainer>

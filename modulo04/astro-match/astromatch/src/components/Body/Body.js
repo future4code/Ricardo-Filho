@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import ChamaLista from '../ChamaLista/ChamaLista.js'
+import CallList from '../CallList/CallList.js'
 import styled from 'styled-components'
 import Footer from '../Footer/Footer'
 import axios from 'axios'
@@ -13,10 +13,17 @@ const Container = styled.div`
   width: 350px;
   height: 600px;
   border: 1px solid black;
-  border-radius: 5px;
+  border-radius: 10px;
   font-family: 'Roboto', sans-serif;
+  box-shadow: 0 0 10px 0 rgba(28, 28, 28, 0.99);
 
-  .white-with-red-shadow {
+  .threed1 {
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+  }
+
+  .white-with-blue-shadow {
     text-shadow: 2px 2px 3px black, 0 0 1em black, 0 0 0.2em blue;
     color: black;
     font: 1.5em Roboto;
@@ -41,13 +48,13 @@ const SubContainer = styled.div`
   height: 450px;
   border-radius: 15px;
 `
-const Imagem = styled.img`
+const Image = styled.img`
   border-radius: 15px;
   width: 300px;
   height: 450px;
   margin-bottom: -130px;
 `
-const Bloco = styled.div`
+const Block = styled.div`
   border: 0;
   background-color: black;
   border-radius: 15px;
@@ -97,7 +104,7 @@ export default function Body(props) {
   const [user, setUser] = useState({})
   const [noMatch, setNoMatch] = useState(0)
 
-  const ListaChamada = () => {
+  const CalledList = () => {
     setChanceScreen(!chanceScreen)
   }
 
@@ -114,7 +121,7 @@ export default function Body(props) {
       })
   }
 
-  const atualizaCont = () => {
+  const countUpdate = () => {
     setNoMatch(noMatch + 1)
   }
 
@@ -141,7 +148,7 @@ export default function Body(props) {
         setListMach(res.data)
       })
       .catch(error => {
-        alert(error)
+        alert('Erro de autenticação')
       })
   }
 
@@ -151,17 +158,26 @@ export default function Body(props) {
         <Container>
           <Tinder>
             <div>
-              <button className="threed1">
-                <img src="/img/tinder.png" aria-label="Tinder" alt="Tinder" />
+              <button>
+                <a
+                  href="https://github.com/RickHardBR/RickHardBR"
+                  target="_blank" rel="noreferrer"
+                >
+                  <img
+                  className="threed1"
+                  src="/img/GitHub.png"
+                  aria-label="GitHub"
+                  alt="GitHub" 
+                  />
+                </a>
               </button>
             </div>
             <div>
-              <h1 className="white-with-blue-shadow">astromatch</h1>
+              <h1 className="white-with-blue-shadow">ASTRO💕MATCH</h1>
             </div>
             <div>
-              <button className="threed1" onClick={ListaChamada}>
+              <button onClick={CalledList}>
                 <img
-                  className="threed2"
                   src="/img/peoples.png"
                   alt="Users"
                   aria-label="Users"
@@ -170,21 +186,21 @@ export default function Body(props) {
             </div>
           </Tinder>
           <hr size="1" color="black" />
-          <Bloco>
+          <Block >
             <SubContainer>
-              <FontBorder className="white-with-red-shadow">
-                <Imagem className="Bloco" src={user.photo} />
+              <FontBorder className="white-with-blue-shadow">
+                <Image className="Block " src={user.photo} />
                 <DateUser>
                   {user.name} {user.age}
                 </DateUser>
                 <BioUser>{user.bio}</BioUser>
               </FontBorder>
             </SubContainer>
-          </Bloco>
-          <Footer postMatch={postMatch} atualizaCont={atualizaCont} />
+          </Block >
+          <Footer postMatch={postMatch} countUpdate={countUpdate} />
         </Container>
       ) : (
-        <ChamaLista ListaChamada={ListaChamada} listMach={listMach} />
+        <CallList CalledList={CalledList} listMach={listMach} />
       )}
     </>
   )

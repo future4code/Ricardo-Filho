@@ -1,7 +1,5 @@
-import React from 'react'
 import styled from 'styled-components'
-import axios from 'axios';
-import react, {useState, useEffect} from 'react';
+import React from 'react'
 
 const StyledButton = styled.div`
   display: flex;
@@ -11,44 +9,26 @@ const StyledButton = styled.div`
   align-items: center;
   justify-content: space-around;
   font-family: 'Roboto', sans-serif;
-  
 
   button {
     width: 70px;
     height: 70px;
     border: 0.5px;
-    border-radius: 100px;
-    font-size: 30px;
+    border-radius: 100%;
     background-color: transparent;
     cursor: pointer;
-  }
-  .grow1{
-    border:0.1px solid;
-    border-color: red;
-  }
-  .grow2{
-    border:0.1px solid;
-    border-color: green;
-  }
-  .grow3{
-    border:0.1px solid;
-    border-color: blue;
   }
 
   .grow1:hover {
     -webkit-transform: scale(1.3);
     -ms-transform: scale(1.3);
     transform: scale(1.1);
-    background: red;
-    color: white;
     border: 0px;
   }
   .grow2:hover {
     -webkit-transform: scale(1.3);
     -ms-transform: scale(1.3);
     transform: scale(1.1);
-    background: green;
-    color: white;
     border: 0px;
   }
   .grow3:hover {
@@ -58,24 +38,29 @@ const StyledButton = styled.div`
     background: blue;
     color: white;
     border: 0px;
-  };
+  }
   abbr[title] {
-  text-decoration: none;
-}
-
+    text-decoration: none;
+  }
 `
-export default function Footer() {
+const Imagens = styled.img`
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 0;
+`
+export default function Footer({ postMatch, atualizaCont }) {
   return (
     <StyledButton>
       <abbr title="Não gostei">
-      <button className="grow1">
-      👎
-      </button>
+        <button onClick={atualizaCont} className="grow1">
+          <Imagens src="/img/x1.png" />
+        </button>
       </abbr>
       <abbr title="Gostei">
-      <button className="grow2">
-        👍
-      </button>
+        <button onClick={() => postMatch()} className="grow2">
+          <Imagens src="/img/y1.png" />
+        </button>
       </abbr>
     </StyledButton>
   )

@@ -11,14 +11,21 @@ const Container = styled.div`
   justify-content: space-between;
   color: black;
   width: 350px;
-  height: 650px;
+  height: 600px;
   border: 1px solid black;
   border-radius: 5px;
   font-family: 'Roboto', sans-serif;
 
+  .white-with-red-shadow {
+    text-shadow: 2px 2px 3px black, 0 0 1em black, 0 0 0.2em blue;
+    color: black;
+    font: 1.5em Roboto;
+  }
+
   @media (max-width: 420px) {
     height: 90vh;
   }
+
   hr {
     width: 99.5%;
     margin-top: -5px;
@@ -31,44 +38,34 @@ const FontBorder = styled.div`
 `
 const SubContainer = styled.div`
   width: 300px;
-  height: 500px;
-  background-color: gray;
+  height: 450px;
   border-radius: 15px;
-  font-family: 'Roboto';
-  font border: 2px;
-  #bloco{
-		background-color: black;
-		box-shadow: 0 5px 20px 0 rgba(28,28,28,0.99);
-	};
-  .white-with-red-shadow {
-   text-shadow: 1px 1px 2px black, 0 0 1em red, 0 0 0.2em blue;
-   color: white;
-   font: 1.5em Roboto,
 `
 const Imagem = styled.img`
-  margin-bottom: -13.5px;
   border-radius: 15px;
   width: 300px;
   height: 450px;
   margin-bottom: -130px;
 `
-const NomeUser = styled.div`
-  color: white;
-  font-size: 1.7rem;
-  margin: 8px;
+const Bloco = styled.div`
+  border: 0;
+  background-color: black;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px 0 rgba(28, 28, 28, 0.99);
 `
-const CidadeUser = styled.div`
-  font-family: 'Roboto';
-  color: white;
-  font-size: 1.6rem;
-  margin: 8px;
-`
-const IntereseUser = styled.div`
-  font-family: 'Roboto';
+
+const DateUser = styled.div`
   color: white;
   font-size: 1.3rem;
   margin: 8px;
 `
+const BioUser = styled.div`
+  font-family: 'Roboto';
+  color: white;
+  font-size: 1.1rem;
+  margin: 8px;
+`
+
 const Tinder = styled.div`
   display: flex;
   align-items: center;
@@ -94,40 +91,63 @@ const Tinder = styled.div`
     cursor: pointer;
   }
 `
-
 export default function Body(props) {
-  const [mudaTela, setMudaTela] = useState(true)
+  const [chanceScreen, setChanceScreen] = useState(true)
+  const [listMach, setListMach] = useState({})
   const [user, setUser] = useState({})
+  const [noMatch, setNoMatch] = useState(0)
+
+  const ListaChamada = () => {
+    setChanceScreen(!chanceScreen)
+  }
+
+  const getProfile = async () => {
+    await axios
+      .get(
+        'https://us-central1-missao-newton.cloudfunctions.net/astroMatch/ribeiro/person'
+      )
+      .then(res => {
+        setUser(res.data.profile)
+      })
+      .catch(error => {
+        alert('Erro de autenticação')
+      })
+  }
+
+  const atualizaCont = () => {
+    setNoMatch(noMatch + 1)
+  }
 
   useEffect(() => {
-    pegaUser()
-  }, [user])
+    getProfile()
+  }, [listMach, noMatch])
 
-  const pegaUser = () => {
+  const postMatch = () => {
+    const body = {
+      id: user.id,
+      choice: true
+    }
     axios
-      .get(
-        'https://us-central1-missao-newton.cloudfunctions.net/astroMatch/ricardo-ribeiro/person'
+      .post(
+        `https://us-central1-missao-newton.cloudfunctions.net/astroMatch/ricardo-ribeiro/choose-person`,
+        body,
+        {
+          headers: {
+            Autorization: 'ricardo-ribeiro'
+          }
+        }
       )
-      .then(response => {
-        setUser(response.data)
+      .then(res => {
+        setListMach(res.data)
       })
       .catch(error => {
         alert(error)
       })
-  };
-  const ListaChamada = () => {
-    setMudaTela(!mudaTela)
   }
-  
-  const fotosUser = () => {
-    const novas = user.map((nova) => {
-      return console.log(nova)
-    })
-  }
-  
+
   return (
     <>
-      {mudaTela ? (
+      {chanceScreen ? (
         <Container>
           <Tinder>
             <div>
@@ -150,18 +170,21 @@ export default function Body(props) {
             </div>
           </Tinder>
           <hr size="1" color="black" />
-          <SubContainer>
-            <FontBorder className="white-with-red-shadow">
-              {fotosUser}
-              <NomeUser>Nome: Ricardo</NomeUser>
-              <CidadeUser>Cidade: Conc. dos Ouros</CidadeUser>
-              <IntereseUser>Interesse: Dev</IntereseUser>
-            </FontBorder>
-          </SubContainer>
-          <Footer />
+          <Bloco>
+            <SubContainer>
+              <FontBorder className="white-with-red-shadow">
+                <Imagem className="Bloco" src={user.photo} />
+                <DateUser>
+                  {user.name} {user.age}
+                </DateUser>
+                <BioUser>{user.bio}</BioUser>
+              </FontBorder>
+            </SubContainer>
+          </Bloco>
+          <Footer postMatch={postMatch} atualizaCont={atualizaCont} />
         </Container>
       ) : (
-        <ChamaLista ListaChamada={ListaChamada} />
+        <ChamaLista ListaChamada={ListaChamada} listMach={listMach} />
       )}
     </>
   )

@@ -1,26 +1,17 @@
-import Body from './components/Body/Body';
-import styled from 'styled-components';
-import axios from 'axios';
-import react, {useState, useEffect} from 'react';
-
+import Body from './components/Body/Body'
+import styled from 'styled-components'
 
 const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  color: black;
+  height: 600px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 `
-const DivMeio = styled.div`
-  margin-top: 50px;
-`
-
 export default function App() {
   return (
-     <Container>
-       <DivMeio>
-      <Body/>
-      </DivMeio>
+    <Container>
+      <Body />
     </Container>
-     );
+  )
 }
-

@@ -3,6 +3,7 @@ import CallList from '../CallList/CallList.js'
 import styled from 'styled-components'
 import Footer from '../Footer/Footer'
 import axios from 'axios'
+import swal from 'sweetalert';
 
 const Container = styled.div`
   display: flex;
@@ -145,7 +146,9 @@ export default function Body(props) {
         }
       )
       .then(res => {
-        setListMach(res.data)
+        if(res.data.isMatch){
+          swal(`Você deu Match com: ${user.name}`)}
+          setListMach(res.data)
       })
       .catch(error => {
         alert('Erro de autenticação')

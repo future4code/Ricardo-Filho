@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useReducer } from 'react'
 import styled from 'styled-components'
 import axios from 'axios'
+import swal from 'sweetalert';
 
 const Container = styled.div`
   display: flex;
@@ -14,6 +15,7 @@ const Container = styled.div`
   border-radius: 10px;
   font-family: 'Roboto', sans-serif;
   box-shadow: 0 0 10px 0 rgba(28, 28, 28, 0.99);
+
 
   @media (max-width: 420px) {
     height: 90vh;
@@ -184,11 +186,27 @@ export default function CallList({ CalledList }) {
         'https://us-central1-missao-newton.cloudfunctions.net/astroMatch/ricardo-ribeiro/clear'
       )
       .then(res => {
-        alert('Você apagou todos os Matchs')
+        swal('😭Você apagou todos os Matchs😭')
         setMatchList([])
       })
   }
-
+  const confirmDelete = () => {
+    
+      swal({
+      title: "Você quer mesmo excluir seus Matchs?",
+      text: "Uma vez excluído você não verá mais estes Matchs",
+      text: "💔",
+      buttons: true,
+      dangerMode: true,
+    })
+    .then((willDelete) => {
+      if (willDelete) {
+        clearMatch()
+      } else {
+        swal("Seus Matchs estão salvos!");
+      }
+    });
+  }
   return (
     <>
       <Container>
@@ -227,8 +245,8 @@ export default function CallList({ CalledList }) {
         <SubContainer>
           {matchList.map(match => {
             return (
-              <List>
-                <Item key={match.id}>
+              <List key={match.id}>
+                <Item >
                   <Image
                     src={match.photo}
                     alt="Foto do Match"
@@ -244,7 +262,7 @@ export default function CallList({ CalledList }) {
       <StyleButtonDelete>
         <div></div>
         <div>
-          <Button onClick={clearMatch}>Limpar Matchs</Button>
+          <Button onClick={confirmDelete}>Limpar Matchs</Button>
         </div>
         <div></div>
       </StyleButtonDelete>

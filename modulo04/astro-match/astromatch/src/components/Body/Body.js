@@ -12,7 +12,7 @@ const Container = styled.div`
   justify-content: space-between;
   color: black;
   width: 350px;
-  height: 600px;
+  height: 93%;
   border: 1px solid black;
   border-radius: 10px;
   font-family: 'Roboto', sans-serif;
@@ -30,9 +30,7 @@ const Container = styled.div`
     font: 1.5em Roboto;
   }
 
-  @media (max-width: 420px) {
-    height: 90vh;
-  }
+  
 
   hr {
     width: 99.5%;

@@ -10,16 +10,11 @@ const Container = styled.div`
   justify-content: space-between;
   color: black;
   width: 350px;
-  height: 600px;
+  height: 93%;
   border: 1px solid black;
   border-radius: 10px;
   font-family: 'Roboto', sans-serif;
   box-shadow: 0 0 10px 0 rgba(28, 28, 28, 0.99);
-
-
-  @media (max-width: 420px) {
-    height: 90vh;
-  }
 
   .white-with-blue-shadow {
     text-shadow: 1px 1px 2px black, 0 0 1em blue, 0 0 0.2em blue;
@@ -60,14 +55,14 @@ const SubContainer = styled.div`
   font-family: 'Roboto';
   padding: 10px;
   border: 0;
-  box-shadow: 0 0 10px 0 rgba(28, 28, 28, 0.99);
+  /* box-shadow: 0 0 10px 0 rgba(28, 28, 28, 0.99); */
   overflow-y: auto;
 
   ::-webkit-scrollbar {
     width: 5px;
   }
   ::-webkit-scrollbar-button {
-    width: 1px;
+    width: 10px;
   }
 
   ::-webkit-scrollbar-track {
@@ -152,6 +147,7 @@ const Button = styled.button`
   cursor: pointer;
   border-radius: 5px;
   border: 0;
+  font-size: 15px;
   color: #fff;
   box-shadow: 0 0 40px 40px #3498db inset, 0 0 0 0 #3498db;
   -webkit-transition: all 150ms ease-in-out;

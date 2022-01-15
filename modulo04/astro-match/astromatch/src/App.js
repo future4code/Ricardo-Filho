@@ -7,6 +7,10 @@ const Container = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+
+  @media (max-width: 420px) {
+    height: 91vh;
+  }
 `
 export default function App() {
   return (

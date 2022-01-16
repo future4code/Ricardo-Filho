@@ -44,13 +44,13 @@ const FontBorder = styled.div`
 `
 const SubContainer = styled.div`
   width: 300px;
-  height: 450px;
+  height: 430px;
   border-radius: 15px;
 `
 const Image = styled.img`
   border-radius: 15px;
   width: 300px;
-  height: 450px;
+  height: 430px;
   margin-bottom: -130px;
 `
 const Block = styled.div`
@@ -174,7 +174,7 @@ export default function Body(props) {
               </button>
             </div>
             <div>
-              <h1 className="white-with-blue-shadow">ASTRO💕MATCH</h1>
+              <h1 className="white-with-blue-shadow">UAI💕MATCH</h1>
             </div>
             <div>
               <button onClick={CalledList}>

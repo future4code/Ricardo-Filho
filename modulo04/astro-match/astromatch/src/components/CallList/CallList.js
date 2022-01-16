@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useReducer } from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import axios from 'axios'
 import swal from 'sweetalert';
@@ -224,7 +224,7 @@ export default function CallList({ CalledList }) {
             </button>
           </div>
           <div>
-            <h1 className="white-with-blue-shadow">ASTRO💕MATCH</h1>
+            <h1 className="white-with-blue-shadow">UAI💕MATCH</h1>
           </div>
           <div>
             <button onClick={CalledList}>

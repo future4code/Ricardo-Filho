@@ -16,6 +16,10 @@ const Container = styled.div`
   font-family: 'Roboto', sans-serif;
   box-shadow: 0 0 10px 0 rgba(28, 28, 28, 0.99);
 
+  abbr[title] {
+    text-decoration: none;
+  }
+
   .white-with-blue-shadow {
     text-shadow: 1px 1px 2px black, 0 0 1em blue, 0 0 0.2em blue;
     color: white;
@@ -209,6 +213,7 @@ export default function CallList({ CalledList }) {
         <Tinder>
           <div>
             <button>
+            <abbr title="Meu GitHub">
               <a
                 href="https://github.com/RickHardBR/RickHardBR"
                 target="_blank"
@@ -221,6 +226,7 @@ export default function CallList({ CalledList }) {
                   alt="GitHub"
                 />
               </a>
+              </abbr>
             </button>
           </div>
           <div>
@@ -228,12 +234,14 @@ export default function CallList({ CalledList }) {
           </div>
           <div>
             <button onClick={CalledList}>
+            <abbr title="Voltar">
               <img
                 className="threed2"
                 src="/img/peoples.png"
                 alt="Users"
                 aria-label="Users"
               />
+              </abbr>
             </button>
           </div>
         </Tinder>

@@ -160,6 +160,7 @@ export default function Body(props) {
           <Tinder>
             <div>
               <button>
+              <abbr title="Meu GitHub">
                 <a
                   href="https://github.com/RickHardBR/RickHardBR"
                   target="_blank" rel="noreferrer"
@@ -171,6 +172,7 @@ export default function Body(props) {
                   alt="GitHub" 
                   />
                 </a>
+                </abbr>
               </button>
             </div>
             <div>
@@ -178,11 +180,13 @@ export default function Body(props) {
             </div>
             <div>
               <button onClick={CalledList}>
+              <abbr title="Lista dos Matchs">
                 <img
                   src="/img/peoples.png"
                   alt="Users"
                   aria-label="Users"
                 />
+                </abbr>
               </button>
             </div>
           </Tinder>

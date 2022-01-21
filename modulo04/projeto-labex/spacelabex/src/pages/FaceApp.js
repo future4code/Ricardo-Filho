@@ -1,26 +1,26 @@
-import axios from "axios";
-import styled from "styled-components";
-import swal from "sweetalert";
-import img from "../images/fundo.jpg"
+import React from 'react'
+import styled from 'styled-components'
+import img from '../images/fundo.jpg'
 import { useHistory } from 'react-router-dom'
 
 const Container = styled.div`
   font-size: 5vh;
   font-family: 'Roboto';
-  color: #FDFDFD;
+  color: #fdfdfd;
   text-align: center;
 `
 const Logo = styled.img`
-  width:25vw;
+  width: 25vw;
 `
 const Background = styled.div`
-position: relative;
-background-color: #FFFFF0;
-background-image: url(${img});
-width: 100vw;
-height: 100vh;
-background-size: cover;
+  position: relative;
+  background-color: #fffff0;
+  background-image: url(${img});
+  width: 100vw;
+  height: 100vh;
+  background-size: cover;
 `
+
 const Button = styled.div`
   cursor: pointer;
 
@@ -29,25 +29,25 @@ const Button = styled.div`
     width: 9vw;
     height: 2vh;
     top: 0%;
-    /* left: 50%; */
-    transform: translate(0%, -50%);
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
   .btn {
     position: relative;
     display: block;
     color: white;
-    font-size: 14px;
+    font-size: 20px;
     font-family: 'Roboto';
     text-decoration: none;
     margin: 30px 0;
-    border: 2px solid #8b4513;
-    padding: 14px 20px;
+    border: 2px solid #ff7675;
+    padding: 14px 40px;
     text-transform: uppercase;
     overflow: hidden;
     transition: 1s all ease;
   }
   .btn::before {
-    background: #6495ed;
+    background: #ff7675;
     content: '';
     position: absolute;
     top: 50%;
@@ -66,23 +66,25 @@ const Button = styled.div`
     width: 100%;
   }
 `
-export default function AppFP() {
 
+export default function FaceApp(props) {
   const history = useHistory()
-  const goToList = () => {
-    history.push('/List')
+  const goToHome = () => {
+    history.push('/home')
   }
 
   return (
     <Container>
       <Background>
-     <div>
-     Para o usuário se candidatar à viagens, página que vai ter o formulário de inscrição
-     </div>
-     <Button onClick={goToList}>
-          <div className="middle btn btn1">Voltar</div>
-        </Button>
+        <header>
+          <Logo src="/logospacelabex.png" alt="logo" />
+          <p>SpaceLabex - Travels</p>
+          <p>Te levando a lugares onde só os Deuses estiveram.</p>
+          <Button onClick={goToHome}>
+            <div className="middle btn btn1">Decolar</div>
+          </Button>
+        </header>
       </Background>
     </Container>
-  );
+  )
 }

@@ -81,10 +81,9 @@ const Button = styled.div`
 
   .middle {
     position: absolute;
-    width: 9vw;
+    /* width: 9vw; */
     height: 1.5vh;
-    top: 0%;
-    transform: translate(-0%, -10%);
+    transform: translate(-10, -25%);
   }
   .btn {
     position: relative;
@@ -100,6 +99,7 @@ const Button = styled.div`
     overflow: hidden;
     transition: 1s all ease;
   }
+
   .btn::before {
     background: #6495ed;
     content: '';
@@ -163,10 +163,10 @@ export default function ListTrips() {
       </Main>
       <Buttons>
         <Button onClick={goToHome}>
-          <div className="middle btn btn1">Voltar</div>
+          <div className="middle btn btn2">Voltar</div>
         </Button>
         <Button onClick={goToAppFP}>
-          <div className="middle btn btn1">Inscrição</div>
+          <div className="middle btn btn2">Inscrição</div>
         </Button>
       </Buttons>
       <Footer>

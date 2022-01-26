@@ -44,13 +44,15 @@ const Buttons = styled.div`
   flex-direction: row;
   justify-content: center;
   background-color: none;
+  
 `
 const Button = styled.div`
   cursor: pointer;
+  
 
   .middle {
     position: absolute;
-    width: 9vw;
+    width: 150px;
     height: 2vh;
     top: 0%;
     /* left: 50%; */
@@ -69,6 +71,7 @@ const Button = styled.div`
     text-transform: uppercase;
     overflow: hidden;
     transition: 1s all ease;
+    
   }
   .btn::before {
     background: #6495ed;
@@ -79,6 +82,7 @@ const Button = styled.div`
     transform: translate(-50%, -50%);
     z-index: -1;
     transition: all 0.6s ease;
+    
   }
 
   .btn1::before {

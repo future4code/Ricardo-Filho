@@ -66,7 +66,7 @@ const Main = styled.div`
     '. . .';
 `
 const LogoHeader = styled.img`
-  width: 5vw;
+  width: 50px;
 `
 const Buttons = styled.div`
   display: flex;
@@ -81,7 +81,7 @@ const Button = styled.div`
 
   .middle {
     position: absolute;
-    width: 9vw;
+    /* width: 9vw; */
     height: 1.5vh;
     transform: translate(-10, -25%);
   }

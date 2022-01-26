@@ -23,11 +23,12 @@ const Background = styled.div`
 
 const Button = styled.div`
   cursor: pointer;
+  
 
   .middle {
     position: absolute;
-    width: 9vw;
-    height: 2vh;
+    width: 150px;
+    /* height: 2vh; */
     top: 0%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -36,12 +37,12 @@ const Button = styled.div`
     position: relative;
     display: block;
     color: white;
-    font-size: 20px;
+    font-size: 0.6em;
     font-family: 'Roboto';
     text-decoration: none;
     margin: 30px 0;
     border: 2px solid #ff7675;
-    padding: 14px 40px;
+    padding: 5px 10px;
     text-transform: uppercase;
     overflow: hidden;
     transition: 1s all ease;

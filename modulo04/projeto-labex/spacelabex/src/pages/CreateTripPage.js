@@ -62,7 +62,7 @@ const Main = styled.div`
   align-items: center;
 `
 const LogoHeader = styled.img`
-  width: 5vw;
+  width: 50px;
 `
 const Buttons = styled.div`
   display: flex;

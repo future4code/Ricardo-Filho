@@ -8,6 +8,7 @@ const Container = styled.div`
   font-family: 'Roboto';
   color: #fdfdfd;
   text-align: center;
+  
 `
 const Logo = styled.img`
   width: 25vw;
@@ -23,7 +24,6 @@ const Background = styled.div`
 
 const Button = styled.div`
   cursor: pointer;
-  
 
   .middle {
     position: absolute;
@@ -32,6 +32,7 @@ const Button = styled.div`
     top: 0%;
     left: 50%;
     transform: translate(-50%, -50%);
+    border-radius: 20px;
   }
   .btn {
     position: relative;
@@ -78,7 +79,7 @@ export default function FaceApp(props) {
     <Container>
       <Background>
         <header>
-          <Logo src="/logospacelabex.png" alt="logo" />
+          <Logo src="images/logospacelabex.png" alt="logo" />
           <p>SpaceLabex - Travels</p>
           <p>Te levando a lugares onde só os Deuses estiveram.</p>
           <Button onClick={goToHome}>

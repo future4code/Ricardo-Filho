@@ -12,20 +12,20 @@ const Container = styled.div`
   position: absolute;
   background-color: #fffff0;
   background-image: url(${img});
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 99.99%;
   background-size: cover;
-  font-size: 5vh;
+  font-size: 6vh;
   font-family: 'Roboto';
   color: #fdfdfd;
   text-align: center;
+  justify-items: center;
 `
 const Header = styled.div`
-  display: grid;
-  grid-auto-columns: 1fr;
-  grid-template-columns: 0.1fr 1fr 1fr;
-  grid-template-rows: 1fr;
-  gap: 0px 0px;
+  display: flex;
+  width: 99.99%;
+  font-size: 9vh;
+  justify-content: space-between;
   align-items: center;
   background: rgba(0, 0, 0, 0.5);
 
@@ -36,21 +36,21 @@ const Header = styled.div`
     font-family: 'Roboto';
   }
 `
-
-const Footer = styled.div`
-  background: rgba(0, 0, 0, 0.5);
-  display: grid;
-  grid-auto-columns: 1fr;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr;
-  gap: 0px 0px;
-
-  .textFooter {
-    margin-top: 2px;
-    color: #fffff0;
-    font-size: 0.3em;
-    font-family: 'Roboto';
-  }
+const BorderButton = styled.button`
+  background: none;
+  width: 4vw;
+  height: 4vw;
+  border: 1px solid;
+  border-radius: 50%;
+  margin: 5px;
+  border-color: rgba(255, 255, 255, 0.5);
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+`
+const ImgsButtons = styled.img`
+  width: 50%;
+  height: 50%;
 `
 const Main = styled.div`
   display: flex;
@@ -61,7 +61,6 @@ const Main = styled.div`
 const Comps = styled.div`
   display: flex;
   justify-content: center;
-  
 `
 const Trip = styled.div`
   border: 1px solid;
@@ -69,14 +68,13 @@ const Trip = styled.div`
   height: 400px;
   border-radius: 20px;
   overflow-y: auto;
-  
 `
 const TripClean = styled.div`
   width: 200px;
   height: 200px;
 `
 const TextContainer = styled.div`
-  text-align:left;
+  text-align: left;
   font-size: 20px;
 `
 const Sucess = styled.div`
@@ -107,9 +105,11 @@ const Button = styled.div`
 
   .middle {
     position: absolute;
-    width: 9vw;
-    height: 1.5vh;
-    transform: translate(-10, -25%);
+    width: 100px;
+    height: 2vh;
+    top: 0%;
+    transform: translate(0%, -50%);
+    border-radius: 20px;
   }
   .btn {
     position: relative;
@@ -145,6 +145,24 @@ const Button = styled.div`
     width: 100%;
   }
 `
+const Footer = styled.div`
+  margin-bottom: 0px;
+  background: rgba(0, 0, 0, 0.5);
+  height: 99.99%;
+  width: 99.99%;
+  display: grid;
+  grid-auto-columns: 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  gap: 0px 0px;
+
+  .textFooter {
+    margin-top: 2px;
+    color: #fffff0;
+    font-size: 0.3em;
+    font-family: 'Roboto';
+  }
+`
 export default function TripDet() {
   const history = useHistory()
   const goToAdmin = () => {
@@ -154,40 +172,66 @@ export default function TripDet() {
   return (
     <Container>
       <Header>
-        <LogoHeader src="/logospacelabex.png" alt="logo" />
+        <LogoHeader src="images/logospacelabex.png" alt="logo" />
         <div className="textHeader">
-        Te levando a lugares onde só os Deuses estiveram
+          Te levando a lugares onde só os Deuses estiveram
         </div>
         <div className="textHeader">
           <Buttons>
-            <Button>
-              <div className="middle btn btn1">TESTE</div>
-            </Button>
-            <Button>
-              <div className="middle btn btn1">TESTE</div>
-            </Button>
-            <Button>
-              <div className="middle btn btn1">TESTE</div>
-            </Button>
+            <BorderButton>
+              <a
+                href="https://www.linkedin.com/in/ricardo-rickhardwares/"
+                target="_blank"
+              >
+                <ImgsButtons
+                  src="images/linkedin.png"
+                  alt="linkedin"
+                  aria-label="linkdin"
+                />
+              </a>
+            </BorderButton>
+            <BorderButton>
+              <a
+                href="https://github.com/RickHardBR/RickHardBR"
+                target="_blank"
+              >
+                <ImgsButtons
+                  src="images/github.png"
+                  alt="github"
+                  aria-label="github"
+                />
+              </a>
+            </BorderButton>
+            <BorderButton>
+              <a href="https://www.facebook.com/RickHardL" target="_blank">
+                <ImgsButtons
+                  src="images/facebook.png"
+                  alt="facebook"
+                  aria-label="facebook"
+                />
+              </a>
+            </BorderButton>
           </Buttons>
         </div>
       </Header>
       <Main>
         <Comps>
           <Trip>
-            
             <div>Viagens</div>
             <hr />
             <TextContainer>
-            <div>Nome: MilkWay Tour</div>
-            <hr />
-            <div>Planeta: Netuno</div>
-            <hr />
-            <div>Descrição: Tour pela Milk Way toda, da Terra até Netuno (Não passaremos em Plutão que não é mais um planeta)</div>
-            <hr />
-            <div>Data: 2022-02-20</div>
-            <hr />
-            <div>Duração: 365 dias</div>
+              <div>Nome: MilkWay Tour</div>
+              <hr />
+              <div>Planeta: Netuno</div>
+              <hr />
+              <div>
+                Descrição: Tour pela Milk Way toda, da Terra até Netuno (Não
+                passaremos em Plutão que não é mais um planeta)
+              </div>
+              <hr />
+              <div>Data: 2022-02-20</div>
+              <hr />
+              <div>Duração: 365 dias</div>
             </TextContainer>
           </Trip>
           <TripClean></TripClean>
@@ -195,11 +239,11 @@ export default function TripDet() {
             <div>Pendentes</div>
             <hr />
             <TextContainer>
-            <div>Nome:</div>
-            <div>profissão:</div>
-            <div>Idade:</div>
-            <div>País:</div>
-            <div>Mensagem:</div>
+              <div>Nome:</div>
+              <div>profissão:</div>
+              <div>Idade:</div>
+              <div>País:</div>
+              <div>Mensagem:</div>
             </TextContainer>
           </Trip>
         </Comps>

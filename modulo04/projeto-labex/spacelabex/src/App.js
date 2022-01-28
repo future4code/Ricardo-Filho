@@ -9,10 +9,12 @@ import CreateTrip from './pages/CreateTripPage'
 import ListTrips from './pages/ListTripsPage'
 import Login from './pages/LoginPage'
 import TripDet from './pages/TripDetailsPage'
+import GlobalStyle from './Components/GlobalStyle'
 
 export default function Decolar() {
   return (
     <BrowserRouter>
+      <GlobalStyle />
       <Switch>
         <Route exact path={'/'}>
           <FaceApp />
@@ -25,17 +27,17 @@ export default function Decolar() {
         </Route>
         <Route exact path={'/Login'}>
           <Login />
-          </Route>
-          <Route exact path={'/Admin'}>
+        </Route>
+        <Route exact path={'/Admin'}>
           <Admin />
-          </Route>
-          <Route exact path={'/AppFP'}>
+        </Route>
+        <Route exact path={'/AppFP'}>
           <AppFP />
-          </Route>
-          <Route exact path={'/CreateTrip'}>
+        </Route>
+        <Route exact path={'/CreateTrip'}>
           <CreateTrip />
-          </Route>
-          <Route exact path={'/TripDet'}>
+        </Route>
+        <Route exact path={'/TripDet'}>
           <TripDet />
         </Route>
         <Route>

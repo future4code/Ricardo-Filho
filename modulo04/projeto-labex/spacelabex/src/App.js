@@ -11,6 +11,8 @@ import Login from './pages/LoginPage'
 import TripDet from './pages/TripDetailsPage'
 import GlobalStyle from './Components/GlobalStyle'
 
+
+
 export default function Decolar() {
   return (
     <BrowserRouter>

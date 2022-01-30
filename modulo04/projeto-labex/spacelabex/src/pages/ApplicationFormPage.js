@@ -225,12 +225,8 @@ export default function AppFP() {
           <Form>
             <Select>
               <option>Escolha uma viagem</option>
-              <option>Viagem da minha vida</option>
-              <option>Viagem da Labenu</option>
-              <option>Ao infinito e Além</option>
-              <option>Escolha uma viágem</option>
+              <option >teste</option>
             </Select>
-
             <Input placeholder="Nome" required />
             <Input placeholder="Idade" required />
             <Input placeholder="Texto de Candidatura" required />

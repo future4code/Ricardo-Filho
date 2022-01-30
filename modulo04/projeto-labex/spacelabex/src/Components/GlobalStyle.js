@@ -9,6 +9,7 @@ const GlobalStyle = createGlobalStyle`
     ::-webkit-scrollbar {
     width: 15px;
   }
+  
   ::-webkit-scrollbar-button {
     width: 1px;
   }

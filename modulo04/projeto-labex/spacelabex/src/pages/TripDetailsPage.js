@@ -1,3 +1,4 @@
+import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import styled from 'styled-components'
 import img from '../images/fundo.jpg'
@@ -164,10 +165,42 @@ const Footer = styled.div`
   }
 `
 export default function TripDet() {
-  const history = useHistory()
+const [detail, setDetail] = useState([])
+  
+useEffect((id) => {
+    axios
+    .get(
+      `https://us-central1-labenu-apis.cloudfunctions.net/labeX/ricardo-ribeiro/trip/${id}`,{ headers: { Auth: localStorage.getItem('token') } })
+    .then(({ trip }) => {
+      setDetail(trip.id)
+      console.log(trip)
+    })
+    .catch(error => {
+    })
+  },[])
+
+ const history = useHistory()
   const goToAdmin = () => {
     history.push('/Admin')
   }
+
+  const detailMap = detail.map(trip =>{
+    return(
+      <div key={trip.id}>
+        <p>
+          <strong>{trip.name}</strong>
+        </p>
+        <p>
+          <strong>Nome:</strong>
+          {trip.name}
+        </p>
+        <p>
+          <strong>Planeta:</strong>
+          {trip.planet}
+        </p>
+      </div>
+    )
+  })
 
   return (
     <Container>
@@ -181,7 +214,7 @@ export default function TripDet() {
             <BorderButton>
               <a
                 href="https://www.linkedin.com/in/ricardo-rickhardwares/"
-                target="_blank"
+                target="_blank" rel="noreferrer"
               >
                 <ImgsButtons
                   src="images/linkedin.png"
@@ -193,7 +226,7 @@ export default function TripDet() {
             <BorderButton>
               <a
                 href="https://github.com/RickHardBR/RickHardBR"
-                target="_blank"
+                target="_blank" rel="noreferrer"
               >
                 <ImgsButtons
                   src="images/github.png"
@@ -203,11 +236,11 @@ export default function TripDet() {
               </a>
             </BorderButton>
             <BorderButton>
-              <a href="https://www.facebook.com/RickHardL" target="_blank">
+              <a href="https://www.facebook.com/RickHardL" target="_blank" rel="noreferrer">
                 <ImgsButtons
                   src="images/facebook.png"
                   alt="facebook"
-                  aria-label="facebook"
+                  aria-label="facebook" rel="noreferrer"
                 />
               </a>
             </BorderButton>
@@ -220,18 +253,7 @@ export default function TripDet() {
             <div>Viagens</div>
             <hr />
             <TextContainer>
-              <div>Nome: MilkWay Tour</div>
-              <hr />
-              <div>Planeta: Netuno</div>
-              <hr />
-              <div>
-                Descrição: Tour pela Milk Way toda, da Terra até Netuno (Não
-                passaremos em Plutão que não é mais um planeta)
-              </div>
-              <hr />
-              <div>Data: 2022-02-20</div>
-              <hr />
-              <div>Duração: 365 dias</div>
+              {detailMap}
             </TextContainer>
           </Trip>
           <TripClean></TripClean>

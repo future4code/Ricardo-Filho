@@ -61,7 +61,7 @@ const Main = styled.div`
   justify-items: center;
   grid-auto-columns: 1fr;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   align-items: center;
   overflow: auto;
   grid-template-areas:
@@ -69,10 +69,11 @@ const Main = styled.div`
     '. . .';
 
   ::-webkit-scrollbar {
-    width: 15px;
+    width: 10px;
   }
   ::-webkit-scrollbar-button {
-    width: 1px;
+    height: 0px;
+    background-color: none;
   }
 
   ::-webkit-scrollbar-track {
@@ -86,22 +87,29 @@ const Main = styled.div`
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: rgba(210,105,30, 0.5);
+    background: rgba(210, 105, 30, 0.5);
   }
 `
 const ListStyled = styled.div`
   display: flex;
-  flex-direction: column;
-  justify-content: space-around;
+  flex-direction: row;
+  justify-content: space-between;
   padding: 5px;
+  margin-top: 5px;
   font-size: 0.3em;
-  background: rgba(255, 255, 255, 0.4);
+  background: rgba(50, 50, 50, 0.4);
   width: 25vw;
-  height: 25vh;
+  height: 5vh;
+  align-items: center;
   border: 1px solid;
   border-radius: 10px;
   text-align: left;
   overflow: auto;
+  
+  :hover {
+    box-shadow: 2px 2px 0 0 rgba(255, 255, 255, 0.4);
+    cursor: pointer;
+  }
 
   > p {
     font-family: 'Roboto';
@@ -110,6 +118,15 @@ const ListStyled = styled.div`
 `
 const LogoHeader = styled.img`
   width: 5vw;
+`
+const TrashDel = styled.img`
+  width: 2.3vw;
+  
+  :hover {
+    width: 2.5vw;
+    cursor: pointer;
+    
+  }
 `
 const Buttons = styled.div`
   display: flex;
@@ -184,7 +201,7 @@ const Footer = styled.div`
 export default function Admin() {
   const [list, setList] = useState([])
 
-  useEffect(() => {
+  const updateTrips = () => {
     axios
       .get(
         'https://us-central1-labenu-apis.cloudfunctions.net/labeX/ricardo-ribeiro/trips'
@@ -193,9 +210,32 @@ export default function Admin() {
         setList(data.trips)
       })
       .catch(err => {
-        alert('Se fudeu')
+        alert('mudar para sweet')
       })
+  }
+
+  useEffect(() => {
+    updateTrips()
   }, [])
+
+  const logoutAdmin = () => {
+    setTimeout(() => {
+      localStorage.removeItem('token')
+      checkState()
+    }, 1000)
+  }
+
+  const checkState = () => {
+    if (localStorage.getItem('token') !==null) {
+      history.push('/Admin')
+    } else {
+      history.push('/login')
+    }
+  }
+
+  useEffect(() => {
+    checkState()
+  }, [logoutAdmin])
 
   const history = useHistory()
   const goToHome = () => {
@@ -204,30 +244,42 @@ export default function Admin() {
   const goToCreate = () => {
     history.push('/CreateTrip')
   }
+  const viewDetail = () => {
+    history.push('/TripDet')
+  }
+
+  const deletTrip = id => {
+    axios
+      .delete(
+        `https://us-central1-labenu-apis.cloudfunctions.net/labeX/ricardo-ribeiro/trips/${id}`,
+        { headers: { Auth: localStorage.getItem('token') } }
+      )
+      .then(res => {
+        alert('Você está apagando sua Trip')
+        updateTrips()
+      })
+      .catch(error => {
+        alert(error)
+      })
+  }
 
   const listMap = list.map(trips => {
     return (
-      <ListStyled key={trips.id}>
-        <p>
-          <strong>Nome: </strong>
-          {trips.name}
-        </p>
-        <p>
-          <strong>Descrição: </strong>
-          {trips.description}
-        </p>
-        <p>
-          <strong>Planeta: </strong>
-          {trips.planet}
-        </p>
-        <p>
-          <strong>Duração: </strong>
-          {trips.durationInDays}
-        </p>
-        <p>
-          <strong>Data: </strong>
-          {trips.date}
-        </p>
+      <ListStyled
+      key={trips.id}>
+        <div>
+          <p>
+            <strong onClick={viewDetail}>{trips.name}</strong>
+            
+          </p>
+        </div>
+        <div>
+        <TrashDel onClick={() => deletTrip(trips.id)}
+          src="images/lixeira.png"
+          alt="logo"
+          aria-label="Logo"
+        />
+        </div>
       </ListStyled>
     )
   })
@@ -280,6 +332,8 @@ export default function Admin() {
       <h4>Painel Administrativo</h4>
       <Main>
         {listMap}
+        {listMap}
+        {listMap}
       </Main>
       <Buttons>
         <Button onClick={goToHome}>
@@ -288,7 +342,7 @@ export default function Admin() {
         <Button onClick={goToCreate}>
           <div className="middle btn btn1">Criar</div>
         </Button>
-        <Button>
+        <Button onClick={logoutAdmin}>
           <div className="middle btn btn1">Logout</div>
         </Button>
       </Buttons>

@@ -154,12 +154,43 @@ const Footer = styled.div`
 `
 
 export default function Login() {
+const [email, setEmail] = useState("")
+const [senha, setSenha] = useState("")
+
+const mudaEmail = (e) =>{
+  setEmail(e.target.value)
+}
+const mudasenha = (e) =>{
+  setSenha(e.target.value)
+}
+
+  const fazerLogin = () =>{
+    const body = {
+      email: email,
+      password: senha,
+    }
+    axios.post("https://us-central1-labenu-apis.cloudfunctions.net/labeX/ricardo-ribeiro/login",
+    body)
+    .then(({ data }) => {
+      localStorage.setItem("token", data.token);
+      history.push("/Admin")
+    })
+    .catch(err => {
+      alert('Você entrou com e-mail ou senha errados')
+    })
+  }
+  
+  useEffect(()=>{
+    if(localStorage.getItem("token") != null){
+      history.push('/Admin')
+    }else {
+      history.push('/login')
+    }
+  })
+
   const history = useHistory()
   const goToHome = () => {
     history.push('/home')
-  }
-  const goToAdmin = () => {
-    history.push('/Admin')
   }
   return (
     <Container>
@@ -208,9 +239,11 @@ export default function Login() {
       </Header>
       <Main>
         <p>Login para Área do Administrador</p>
-        <Form onSubmit={'funcao'}>
+        <Form onSubmit={fazerLogin}>
           <div>
             <Inputes
+            value={email}
+            onChange={mudaEmail}
               placeholder={'E-mail'}
               type="email"
               pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
@@ -218,10 +251,12 @@ export default function Login() {
             />
           </div>
           <div>
-            <Inputes
+            <Inputes 
+            value={senha}
+            onChange={mudasenha}
               placeholder={'Senha'}
               type="password"
-              pattern={'^.{8,}'}
+              pattern={'^.{6,}'}
               required
             />
           </div>
@@ -229,7 +264,7 @@ export default function Login() {
             <Button onClick={goToHome}>
               <div className="middle btn btn1">Voltar</div>
             </Button>
-            <Button onClick={goToAdmin}>
+            <Button onClick={fazerLogin}>
               <div className="middle btn btn1">Login</div>
             </Button>
           </Buttons>

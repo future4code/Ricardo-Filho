@@ -70,10 +70,11 @@ const Main = styled.div`
     ;
 
     ::-webkit-scrollbar {
-    width: 15px;
+    width: 10px;
   }
   ::-webkit-scrollbar-button {
-    width: 1px;
+    height: 13px;
+    background-color: none;
   }
 
   ::-webkit-scrollbar-track {
@@ -94,7 +95,8 @@ const ListStyled = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  padding: 5px;
+  padding: 10px;
+  margin-top: 25px;
   font-size: 0.3em;
   background: rgba(255, 255, 255, 0.4);
   width: 25vw;
@@ -194,7 +196,7 @@ export default function ListTrips() {
         setList(data.trips)
       })
       .catch(err => {
-        alert('Se fudeu')
+        alert('Deu ruim')
       })
   }, [])
 
@@ -202,6 +204,7 @@ export default function ListTrips() {
   const goToHome = () => {
     history.push('/home')
   }
+  
   const goToAppFP = () => {
     history.push('/AppFP')
   }
@@ -275,6 +278,11 @@ export default function ListTrips() {
       </Header>
       <h4>Lista de Viagens</h4>
       <Main>
+        {listMap}
+        {listMap}
+        {listMap}
+        {listMap}
+        {listMap}
         {listMap}
         </Main>
       <Buttons>

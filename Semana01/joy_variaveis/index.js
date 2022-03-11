@@ -28,8 +28,24 @@
 
 //conversao de tipos
 
-const idade = 49
-console.log(typeof idade)
+// const idade = 49
+// console.log(typeof idade)
 
-const idadeTexto = idade.toString()
-console.log(typeof idadeTexto)
+// const idadeTexto = idade.toString()
+// console.log(typeof idadeTexto)
+
+
+const numbers = [10, 21, 5, 9, 32, 15]
+
+const max = Math.max(...numbers)
+
+function somar() {
+  let soma = 0
+  for(let i in numbers) {
+    soma += numbers[i]
+  }
+  return soma
+  
+}
+  console.log(`O maior numero do Array é: ${max}`)
+  console.log(`A Média do array é: ${somar()/numbers.length}`)

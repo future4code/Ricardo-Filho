@@ -1,0 +1,12 @@
+{
+  "name": "aula-node",
+  "version": "1.0.0",
+  "description": "Primeiras aulas de node",
+  "main": "nomes.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./index.js"
+  },
+  "author": "Ricardo Ribeiro - Labenu<rickhard@bol.com.br>",
+  "license": "ISC"
+}

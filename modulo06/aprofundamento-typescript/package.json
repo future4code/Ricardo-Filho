@@ -1,0 +1,21 @@
+{
+  "dependencies": {
+    "typescript": "^4.6.2"
+  },
+  "name": "aprofundamento-typescript",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "start1": "tsc && node ./build/exercicio1.js",
+    "start2": "tsc && node ./build/exercicio2.js",
+    "start3": "tsc && node ./build/exercicio3.js",
+    "start4": "tsc && node ./build/exercicio4.js",
+    "start-4": "tsc && node ./build/exercicio-4.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Ricardo Ribeiro <rickhard@bol.com.br>",
+  "license": "ISC",
+  "description": ""
+}

@@ -1,0 +1,31 @@
+{
+  "dependencies": {
+    "typescript": "^4.6.3"
+  },
+  "name": "listatypescript",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {
+    "@types/node": "^17.0.23",
+    "i": "^0.3.7",
+    "npm": "^8.5.5"
+  },
+  "scripts": {
+    "exec1": "tsc && node ./build/exercicio1.js",
+    "exec2": "tsc && node ./build/exercicio2.js",
+    "exec3": "tsc && node ./build/exercicio3.js",
+    "exec4": "tsc && node ./build/exercicio4.js",
+    "exec5": "tsc && node ./build/exercicio5.js",
+    "exec6": "tsc && node ./build/exercicio6.js",
+    "exec7": "tsc && node ./build/exercicio7.js",
+    "exec8": "tsc && node ./build/exercicio8.js",
+    "exec9": "tsc && node ./build/exercicio9.js",
+    "exec10": "tsc && node ./build/exercicio10.js",
+    "exec11": "tsc && node ./build/exercicio11.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}

@@ -1,0 +1,38 @@
+###
+
+GET http://localhost:3003/acounts
+
+
+###
+GET http://localhost:3003/acount/balance?cpf=777.888.999-00
+
+###
+POST http://localhost:3003/acount/createAcount
+Content-Type: application/json
+
+{
+    "name": "Alberto Roberto",
+    "cpf": "777.888.999-00",
+    "birthDate": "03/03/2003",
+    "balance": 50
+}
+
+###
+PUT http://localhost:3003/user/add-balance
+Content-Type: application/json
+
+{
+    "name": "Alberto Roberto",
+    "cpf": "777.888.999-00",
+    "balance": 100
+}
+
+###
+PUT http://localhost:3003/user/pay-bill/777.888.999-00
+Content-Type: application/json
+
+{
+  "purchase": 40,
+  "date": "10/10/2022",
+  "description": "Pizza"
+}

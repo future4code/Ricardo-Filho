@@ -1,0 +1,33 @@
+###
+
+GET http://localhost:3003/type
+
+###
+GET http://localhost:3003/users?type=normal
+
+###
+GET http://localhost:3003/get_user?name=alice
+
+###
+POST http://localhost:3003/users
+Content-Type: application/json
+
+{
+    "id": 7,
+    "name": "Ricardo Ribeiro",
+    "email": "rickhard@bol.com.br",
+    "type": "ADMIN",
+    "age": 50
+}
+
+###
+PUT http://localhost:3003/users
+Content-Type: application/json
+
+{
+    "id": 7,
+    "name": "Ricardo Ribeiro",
+    "email": "rickhard@bol.com.br",
+    "type": "ADMIN",
+    "age": 50
+}

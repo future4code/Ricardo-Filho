@@ -66,30 +66,72 @@ app.get("/actor/:id", async (req:Request, res: Response) =>
 
 // c) -  Faça uma função que receba um gender retorne a quantidade de itens na tabela Actor com esse gender. Para atrizes, female e para atores male.
 
-// app.get("/gender", async (req: Request, res: Response): Promise<any> => {
-//   try {
-    
-//     const countGender = await connection("Actor")
-//    .where({ gender: req.query.gender });
-  
-//     res.status(200).send(countGender);
-//   } catch (error: any) {
-//     res.status(400).send(error.sqlMessage || error.message);
-//   }
-// });
-
-app.get("/gender", async (req: Request, res: Response): Promise<void> => {
+app.get("/gender/actor", async (req: Request, res: Response): Promise<any> => {
   try {
-      const result = await connection.raw(
-        `SELECT COUNT(*), gender FROM Actor GROUP BY gender`);
     
-    res.status(201).send(result[0]);
+  //   const countGender = await connection("Actor")
+  //  .where({ gender: req.query.gender });
+  
+  const gender = req.query.gender
+  const [result] = await connection.raw(`
+  SELECT COUNT(*), gender
+  FROM Actor
+  WHERE gender = "${gender}"
+  GROUP BY gender
+  `)
+    res.status(200).send(result[0]);
   } catch (error: any) {
-    res.status(500).send(error.sqlMessage || error.message);
+    res.status(400).send(error.sqlMessage || error.message);
   }
 });
 
- const server = app.listen(process.env.port || 3003, () => {
+// Exercício 2
+// a) - Uma função que receba um salário e um id e realiza a atualização do salário do ator em questão:
+app.put("/actor/:id", async (req: Request, res: Response): Promise<any> =>{
+try{
+  await connection("Actor").update({
+    salary: req.body.salary,
+  })
+  .where({
+    id: req.params.id
+  })
+  res.status(200).send({ message: "Salário alterado"})
+} catch(error: any){
+  res.status(500).send(error.sqlMessage || error.message)
+}
+})
+
+// b) - Uma função que receba um id e delete um ator da tabela
+app.delete("/actor/:id", async (req: Request, res: Response): Promise<any> =>{
+  try{
+    await connection("Actor").delete().where({id: req.params.id})
+
+    res.status(200).send({    message: "Ator Deletado"})
+  }catch(error: any){
+    res.status(500).send(error.sqlMessage || error.message)
+  }
+})
+
+// c) - Uma função que receba um gender e devolva a média dos salários de atrizes ou atores desse gender
+app.get("/media-salario/actor", async (req: Request, res: Response): Promise<void> => {
+  try {
+    
+  const gender = req.query.gender
+  const [mediaResult] = await connection("Actor")
+    .avg("salary as average")
+    .where({ gender })
+    ;
+  res.status(201).send(mediaResult);
+} catch (error: any) {
+  res.status(500).send(error.sqlMessage || error.message);
+}
+});
+
+
+
+
+
+const server = app.listen(process.env.port || 3003, () => {
   if (server) {
     const address = server.address() as AddressInfo;
     console.log(`Servidor Rodando em http://localhost: ${address.port}`);
@@ -98,4 +140,3 @@ app.get("/gender", async (req: Request, res: Response): Promise<void> => {
     console.error(`Failure upon starting server.`);
   }
 });
-

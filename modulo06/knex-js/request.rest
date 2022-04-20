@@ -1,6 +1,6 @@
 ###
 
-GET http://localhost:3003/actor/2
+GET http://localhost:3003/actor/1
 
 ###
 
@@ -8,4 +8,18 @@ GET http://localhost:3003/actor?name=francisco
 
 ###
 
-GET http://localhost:3003/gender?gender=female
+GET http://localhost:3003/gender/actor?gender=female
+
+###
+PUT http://localhost:3003/actor/1
+Content-Type: application/json
+
+{
+    "salary": 123000000
+}
+
+###
+DELETE http://localhost:3003/actor/1
+
+###
+GET http://localhost:3003/media-salario/actor?gender=female

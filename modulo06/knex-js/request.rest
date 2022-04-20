@@ -1,0 +1,11 @@
+###
+
+GET http://localhost:3003/actor/2
+
+###
+
+GET http://localhost:3003/actor?name=francisco
+
+###
+
+GET http://localhost:3003/gender?gender=female

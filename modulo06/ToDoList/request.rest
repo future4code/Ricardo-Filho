@@ -1,0 +1,134 @@
+###  Pega todos os usuários
+
+GET http://localhost:3003/users
+
+
+
+### 01 - Cria o usuário: RickHard
+
+POST http://localhost:3003/user
+Content-Type: application/json
+
+{
+    "name": "Ricardo Ribeiro",
+    "nickname": "RickHard",
+    "email": "rickhard@bol.com.br"
+}
+
+
+### 01 - Cria o usuário: The_Door
+
+POST http://localhost:3003/user
+Content-Type: application/json
+
+{
+    "name": "Andersson Silva",
+    "nickname": "The_Door",
+    "email": "The_Door@bol.com.br"
+}
+
+###
+POST http://localhost:3003/user
+Content-Type: application/json
+
+{
+    "name": "teste pra apagar",
+    "nickname": "apagando",
+    "email": "apagou@bol.com.br"
+}
+
+### 01 - Cria o usuário: Minasim
+
+POST http://localhost:3003/user
+Content-Type: application/json
+
+{
+    "name": "Minaíde Simões",
+    "nickname": "MinaSim",
+    "email": "MinaSim@bol.com.br"
+}
+
+
+### 01 - Cria o usuário: Gaga
+
+POST http://localhost:3003/user
+Content-Type: application/json
+
+{
+    "name": "Gabriel Silva",
+    "nickname": "Gaga",
+    "email": "gaga@bol.com.br"
+}
+
+### 01 - Cria o usuário: Try
+
+POST http://localhost:3003/user
+Content-Type: application/json
+
+{
+    "name": "Trinity",
+    "nickname": "Try",
+    "email": "try@bol.com.br"
+}
+
+### 02 - Pega usuário pelo id
+
+GET http://localhost:3003/user/736ab49e-a8d4-4297-9b47-547cc6a218f1
+
+
+### 03 - Editar usuário pegando pelo id
+PUT http://localhost:3003/user/edit/736ab49e-a8d4-4297-9b47-547cc6a218f1
+Content-Type: application/json
+
+{
+    "name": "",
+    "nickname": "Try"
+}
+
+
+### 04 - Criar Tarefa
+POST http://localhost:3003/task
+Content-Type: application/json
+
+{
+    "title":"Aprender JavaScrip",
+    "description":"Se eu não aprender to ferrado",
+    "limitdate":"30/04/2022",
+    "creatoruserid": "3e0bbaaf-47e6-493b-8563-bee769e28a26"
+}
+
+### 04 - Criar Tarefa
+POST http://localhost:3003/task
+Content-Type: application/json
+
+{
+    "title":"Perder Peso",
+    "description":"Estou com 150 kg, preciso perder pelo menos 50kg",
+    "limitdate":"",
+    "creatoruserid": "702a0d33-a763-46fc-a09f-1c8053d93ffb"
+}
+
+### 05 - Pegar tarefa pelo id
+
+GET http://localhost:3003/task/28bccf45-8a2e-4201-9cf4-f1ad7cf7aaf1
+
+
+### 06 - Pegar todos os usuários
+
+GET http://localhost:3003/users/all
+
+### 07 - Pegar tarefas criadas por um usuário
+
+GET http://localhost:3003/task?id=702a0d33-a763-46fc-a09f-1c8053d93ff
+
+### 08 - Pesquisar usuário 
+
+GET http://localhost:3003/user?nickname=RickHard
+
+### 19 - Apagar Tarefa
+DELETE http://localhost:3003/task/9e325e6c-e299-44dc-b604-11cd949828b7
+
+
+### 20 - Apagar Usuário
+
+DELETE http://localhost:3003/user/c729bc13-4d7c-475c-bd2f-e6f89e62d695

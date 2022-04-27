@@ -15,3 +15,9 @@ export type user = {
    recipes?: recipe[]
 }
 
+// export type types = {
+//    id: string
+//    name: string
+//    email: string
+//    type: string
+// }

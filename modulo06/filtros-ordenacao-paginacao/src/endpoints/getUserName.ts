@@ -3,7 +3,7 @@
 import { Request, Response } from "express";
 import { connection } from "../data/connection";
 
-export async function getAllUsers(
+export async function getUserName(
    req: Request,
    res: Response
 ):Promise<any> {

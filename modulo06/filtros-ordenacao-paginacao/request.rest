@@ -1,0 +1,25 @@
+
+###  // endpoint - buscar todas as receitas com queries
+GET http://localhost:3003/recipes?title=cenoura&sort=title&order=DESC&page=1&size=2
+
+### - retorno padrão desse backend
+GET http://localhost:3003/recipes
+
+
+### - 1 - a) Pegando usuário pelo nome
+GET http://localhost:3003/users?name=soter
+
+### - 1 - a) Pegando todos os usuários se não fornecer nenhum nome
+GET http://localhost:3003/users
+
+### -1 - b) Pegando usuários pelo type (tipo) (Teacher ou CX ou Operations)
+GET http://localhost:3003/users/type/cx
+
+### - Retorna erro se passar algum tipo inválido, se passar faltando da erro.
+GET http://localhost:3003/users/type/a
+
+### - Ordenação por pagina e/ou size
+GET http://localhost:3003/users/five?page=1&size=6
+
+### - Todas as funções
+GET http://localhost:3003/users/allfuncs?

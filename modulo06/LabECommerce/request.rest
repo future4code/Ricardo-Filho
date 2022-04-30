@@ -1,0 +1,102 @@
+###  POST User 1
+POST http://localhost:3003/users
+Content-Type: application/json
+
+{
+    "name": "Ricardo Ribeiro",
+    "email": "rickhard@bol.com.br",
+    "password": "153426",
+    "type": "ADMIN"
+}
+
+###  POST User 2
+POST http://localhost:3003/users
+Content-Type: application/json
+
+{
+    "name": "Minasíde Silmões",
+    "email": "minasim@bol.com.br",
+    "password": "654321",
+    "type": "NORMAL"
+}
+
+###  POST User 3
+POST http://localhost:3003/users
+Content-Type: application/json
+
+{
+    "name": "Andersson Silva",
+    "email": "the_door@bol.com.br",
+    "password": "132456",
+    "type": "NORMAL"
+}
+
+###  POST User 4
+POST http://localhost:3003/users
+Content-Type: application/json
+
+{
+    "name": "Gabriel Silva",
+    "email": "gaga@bol.com.br",
+    "password": "362514",
+    "type": "NORMAL"
+    
+}
+
+###  POST Products 1
+POST http://localhost:3003/products
+Content-Type: application/json
+
+{
+    "name": "Esmerilhadeira Angular com Empunhadura Lateral de 4.1/2 Pol. 820W - BLACK DECKER-G720",
+    "price": 239.50,
+    "image_url": "https://img.lojadomecanico.com.br/IMAGENS/21/222/1937/Esmerilhadeira-Angular-de-412-Pol-820W-1-black-decker-g7201.JPG"    
+}
+
+###  POST Products 2
+POST http://localhost:3003/products
+Content-Type: application/json
+
+{
+    "name": "Furadeira de Impacto 1/2 Pol. 710W - DEWALT-DWD502",
+    "price": 399,
+    "image_url": "https://img.lojadomecanico.com.br/IMAGENS/21/221/18641/Furadeira-de-Impacto-de-12-Pol-220V-650W-dewalt-dwd5021.JPGG"    
+}
+
+###  POST Products 3
+POST http://localhost:3003/products
+Content-Type: application/json
+
+{
+    "name": "Parafusadeira/Furadeira a Bateria 12V Max Li-Ion com Carregador 2 Bat. e Maleta - MAKITA-DF330DWEB",
+    "price": 819.90,
+    "image_url": "https://img.lojadomecanico.com.br/IMAGENS/21/223/87560/Parafusadeira--Furadeira-a-Bateria-12V-M-makita-df330dweb2.JPG"    
+}
+
+###  POST Products 4
+POST http://localhost:3003/products
+Content-Type: application/json
+
+{
+    "name": "Motosserra à Gasolina 55CC 18 Pol. - LYNUS-MLY-55C",
+    "price": 709.90,
+    "image_url": "https://img.lojadomecanico.com.br/IMAGENS/33/738/88675/Motosserra-a-Gasolina-55CC-18-Pol-lynus-mly-55c1.JPG"    
+}
+
+###  Pega todos os usuários
+
+GET http://localhost:3003/users
+
+###  Pega todos os produtos
+
+GET http://localhost:3003/products
+
+###  POST Products 4
+POST http://localhost:3003/purchases
+Content-Type: application/json
+
+{
+    "user_id": "0281fee6-3976-4600-bb99-980addf4c656",
+    "product_id": "0262e093-f553-44d2-b7aa-3cdbf6db6a4a",
+    "quantity": 2
+}

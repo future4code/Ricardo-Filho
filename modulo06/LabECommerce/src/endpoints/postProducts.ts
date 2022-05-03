@@ -7,8 +7,8 @@ export async function postProducts(
     res: Response
  ):Promise<any> {
    try {
-    const { name, price, image_url } = req.body;
-    if(!name){
+    const { name_product, price, image_url } = req.body;
+    if(!name_product){
       throw new Error("Você precisa informar um nome")
     };
     if(!price || price.length === 0){
@@ -17,11 +17,19 @@ export async function postProducts(
     if(!image_url){
       throw new Error("Você precisa informar a URL de uma imagem válida")
     };
+
+    const [checkProduct] = await connection("labecommerce_products")
+    .select("name_product")
+    .where({"name_product": name_product})
         
+    if(checkProduct){
+      throw new Error("Este produto já existe, informe outro")
+    }
+
     await connection("labecommerce_products")
     .insert({
     id:idCreat(),
-    name,
+    name_product,
     price,
     image_url
     })

@@ -17,10 +17,22 @@ export async function postUsers(
     if(!email || email.length < 10){
       throw new Error("Voçê precisa informar um e-mail válido com pelo menos 10 caracteres")
     };
-    if(!password || password.length <= 0){
+    if(!email.includes("@")){
+      throw new Error("Endereço de e-mail precisar incluir um @")
+    };
+    if(!password || password.length < 6){
       throw new Error("Você precisa informar um password e ter no mínimo 6 caracteres")
     };
-        
+    
+    const [checkEmail] = await connection("labecommerce_users")
+    .select("email")
+    .where({"email": email})
+    console.log(checkEmail);
+    
+    if(checkEmail){
+      throw new Error("Este e-mail já existe, informe outro")
+    }
+    
     await connection("labecommerce_users")
     .insert({
     id:idCreat(),

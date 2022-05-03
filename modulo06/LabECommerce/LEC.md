@@ -13,13 +13,10 @@
     * [Cadastro de produto](#postprodutos)
     * [Busca por todos os produtos](#getprodutos)
     * [Registro de compra](#regcompras)
-
-### O que não funciona
-* [Busca das compras de um usuário](#getcompras)
+    * [Busca as compras de um usuário por ID](#getcompras)
 * [Desafios](#desafios)
     * [Busca por todos os produtos](#getprod2)
     * [Busca por todos os usuários](#getusers2)
-
 ### Imagens
 
 
@@ -34,6 +31,8 @@ Sendo assim, te passaram uma lista do que o projeto precisa ter:
 <h4 align="right"><a href="#topo">Topo</a></h4>
 
 <h2 id="endpoints">Endpoints mínimos do MVP</h2>
+
+---
 
 <h3 id="postusers">Cadastro de usuário</h3>
 
@@ -76,10 +75,21 @@ export async function postUsers(
     if(!email || email.length < 10){
       throw new Error("Voçê precisa informar um e-mail válido com pelo menos 10 caracteres")
     };
-    if(!password || password.length <= 0){
+    if(!email.includes("@")){
+      throw new Error("Endereço de e-mail precisar incluir um @")
+    };
+    if(!password || password.length < 6){
       throw new Error("Você precisa informar um password e ter no mínimo 6 caracteres")
     };
+    
+    const [checkEmail] = await connection("labecommerce_users")
+    .select("email")
+    .where({"email": email})
         
+    if(checkEmail){
+      throw new Error("Este e-mail já existe, informe outro")
+    }
+    
     await connection("labecommerce_users")
     .insert({
     id:idCreat(),
@@ -95,6 +105,20 @@ export async function postUsers(
     res.status(400).send(error.message)
    }
  }
+ 
+```
+```java
+###  cadastrando um usuário
+POST http://localhost:3003/users
+Content-Type: application/json
+
+{
+    "name": "Morpheu Matrix",
+    "email": "bluepill@bol.com.br",
+    "password": "362522",
+    "type": "NORMAL"
+    
+}
 ```
 <h4 align="right"><a href="#topo">Topo</a></h4>
 
@@ -172,7 +196,15 @@ export async function postProducts(
     if(!image_url){
       throw new Error("Você precisa informar a URL de uma imagem válida")
     };
+
+    const [checkProduct] = await connection("labecommerce_products")
+    .select("name")
+    .where({"name": name})
         
+    if(checkProduct){
+      throw new Error("Este produto já existe, informe outro")
+    }
+
     await connection("labecommerce_products")
     .insert({
     id:idCreat(),
@@ -186,10 +218,22 @@ export async function postProducts(
    } catch (error: any) {
     res.status(400).send(error.message)
    }
- }
- 
+ } 
+```
+ ```java
+###  Cadastro de um produto
+POST http://localhost:3003/products
+Content-Type: application/json
+
+{
+    "name": "Motosserra à Gasolina 55CC 18 Pol. - LYNUS-MLY-55C",
+    "price": 709.90,
+    "image_url": "https://img.lojadomecanico.com.br/IMAGENS/33/738/88675/Motosserra-a-Gasolina-55CC-18-Pol-lynus-mly-55c1.JPG"    
+}
 ```
 <h4 align="right"><a href="#topo">Topo</a></h4>
+
+---
 
 <h3 id="getprodutos">Busca por todos os produtos</h3>
 
@@ -219,6 +263,11 @@ export async function getAllProducts():Promise<any> {
      res.send(error.message || error.sqlMessage)
    }
  }
+```
+```java
+###  Pega todos os produtos
+
+GET http://localhost:3003/products
 ```
 ---
 <h4 align="right"><a href="#topo">Topo</a></h4>
@@ -285,7 +334,20 @@ export async function regPurchases(req: Request, res: Response):Promise<any> {
    }
  }
 ```
+```java
+###  inclui compra para um usuário usando ID do produto e ID do usuários
+POST http://localhost:3003/purchases
+Content-Type: application/json
+
+{
+    "user_id": "3f2ebb6b-acc9-46f8-81c5-fae1076029ff",
+    "product_id": "1e3e15c0-3a00-4dec-b089-5a98f638112f",
+    "quantity": 1
+}
+```
 <h4 align="right"><a href="#topo">Topo</a></h4>
+
+---
 
 <h3 id="getcompras">Busca das compras de um usuário</h3>
 Essa funcionalidade irá permitir a exibição do histórico de compras no perfil do usuário.
@@ -296,14 +358,42 @@ Essa funcionalidade irá permitir a exibição do histórico de compras no perfi
     - **`user_id`**
 - deve trazer uma lista com **todas as compras** de um determinado **usuário**
 
+```java
+import { Request, Response } from "express";
+import { connection } from "../data/connection";
+
+export async function getPurchasesUser(
+  req: Request,
+  res: Response,
+ ):Promise<any> {
+   try {
+    const userId = req.params.userId as string;
+    const purchase = await connection("labecommerce_purchases")
+    .select("labecommerce_products.name","labecommerce_purchases.quantity","labecommerce_products.price", "labecommerce_purchases.total_price")
+    .innerJoin("labecommerce_products", "labecommerce_products.id", "labecommerce_purchases.product_id") 
+    .innerJoin("labecommerce_users", "labecommerce_users.id", "labecommerce_purchases.user_id")
+    .where("labecommerce_users.id", userId);
+
+    res.status(200).send(purchase)  
+   } catch (error: any) {
+       res.send(error.message || error.sqlMessage)
+   }
+ }
+ 
+```
+```java
+###  Pega todos as compras por id do usuário
+
+GET http://localhost:3003/users/3f2ebb6b-acc9-46f8-81c5-fae1076029ff/purchases
+```
 ---
 <h4 align="right"><a href="#topo">Topo</a></h4>
 
 - 
-    <h3 id="desafios">Desafios</h3>
+  <h3 id="desafios">Desafios</h3>
 
 
-    <h3 id="getprod2">Busca por todos os produtos</h3>
+  <h3 id="getprod2">Busca por todos os produtos</h3>
     Altere o endpoint de busca de todos os produtos para que:
     
     - seja possível ordenar a lista dos produtos
@@ -319,11 +409,141 @@ Essa funcionalidade irá permitir a exibição do histórico de compras no perfi
             - exemplo de url ao buscar pelo termo "headset":
                 - `**http://localhost:3003/products?search=headset**`
         - caso nenhum termo de busca seja recebido, retorne todos os produtos
-    
-    
-    <h3 id="getusers2">Busca por todos os usuários</h3>
+```java
+import { Request, Response } from "express";
+import { connection } from "../data/connection";
+
+export async function getAllProducts(order?:string, search?:string): Promise<any> {
+  
+     let orderAndSearch
+     if(!order && !search){
+       orderAndSearch = await connection("labecommerce_products")
+     } else if(search){
+       orderAndSearch = await connection("labecommerce_products")
+       .where("name_product", "like", `%${search}%`)
+     } else {
+       orderAndSearch = await connection("labecommerce_products")
+       .orderBy("name_product", order)
+     }
+
+    return orderAndSearch  
+ }
+
+ export async function orderAllProducts(req: Request, res: Response):Promise<void> {
+   try{
+     const order = req.query.order as string
+     const search = req.query.search as string
+
+     let products = await getAllProducts(order, search)
+
+     res.status(200).send(products)
+   }
+   catch(error: any){
+     res.send(error.message || error.sqlMessage)
+   }
+ }
+```    
+```java
+###  Pega todos as compras por id do usuário
+
+GET http://localhost:3003/product?search=serra    
+
+```    
+```java
+HTTP/1.1 200 OK
+X-Powered-By: Express
+Access-Control-Allow-Origin: *
+Content-Type: application/json; charset=utf-8
+Content-Length: 252
+ETag: W/"fc-0XmAvD174zCkz918ttyWO5BIIyk"
+Date: Tue, 03 May 2022 04:38:14 GMT
+Connection: close
+
+[
+  {
+    "id": "529e5769-b045-47c6-b069-fae20bf081ac",
+    "name_product": "Motosserra à Gasolina 55CC 18 Pol. - LYNUS-MLY-55C",
+    "price": 709.9,
+    "image_url": "https://img.lojadomecanico.com.br/IMAGENS/33/738/88675/Motosserra-a-Gasolina-55CC-18-Pol-lynus-mly-55c1.JPG"
+  }
+]
+```    
+<h4 align="right"><a href="#topo">Topo</a></h4>
+
+<h3 id="getusers2">Busca por todos os usuários</h3>
+
     Altere o endpoint de busca por todos os usuários para que:
     
     - retorne também as **compras** de cada usuário em uma propriedade `**purchases`**
 
-    <h4 align="right"><a href="#topo">Topo</a></h4>
+```java
+import { Request, Response } from "express";
+import { connection } from "../data/connection";
+
+export async function getAllUsersPurchases(
+    req: Request,
+    res: Response
+ ):Promise<any> {
+   try {
+ 
+    const getAllUsers:any = await connection("labecommerce_purchases")
+    .select(
+    "labecommerce_users.id",
+    "labecommerce_users.name",
+    "labecommerce_users.email",
+    "labecommerce_users.type",
+    "labecommerce_products.name_product",
+    "labecommerce_purchases.quantity",
+    "labecommerce_products.price",
+    "labecommerce_purchases.total_price")
+    .innerJoin("labecommerce_products","labecommerce_products.id", "labecommerce_purchases.product_id")
+    .innerJoin("labecommerce_users", "labecommerce_users.id", "labecommerce_purchases.user_id")
+    
+    
+      res.status(200).json({purchases: getAllUsers})
+   } catch (error: any) {
+       res.send(error.message || error.sqlMessage)
+   }
+ }
+```
+```java
+###  Pega todos os usuários e suas compras
+
+GET http://localhost:3003/users/purchase
+```
+```java
+HTTP/1.1 200 OK
+X-Powered-By: Express
+Access-Control-Allow-Origin: *
+Content-Type: application/json; charset=utf-8
+Content-Length: 528
+ETag: W/"210-3kGrQhoxeM9aq2fRwFkYsjS47tY"
+Date: Tue, 03 May 2022 04:35:52 GMT
+Connection: close
+
+{
+  "purchases": [
+    {
+      "id": "0281fee6-3976-4600-bb99-980addf4c656",
+      "name": "Minaíde Simões",
+      "email": "minasim@bol.com.br",
+      "type": "NORMAL",
+      "name_product": "Parafusadeira/Furadeira a Bateria 12V Max Li-Ion com Carregador 2 Bat. e Maleta - MAKITA-DF330DWEB",
+      "quantity": 2,
+      "price": 819.9,
+      "total_price": 1639.8
+    },
+    {
+      "id": "3f2ebb6b-acc9-46f8-81c5-fae1076029ff",
+      "name": "Ricardo Ribeiro",
+      "email": "rickhard@bol.com.br",
+      "type": "ADMIN",
+      "name_product": "Motosserra à Gasolina 55CC 18 Pol. - LYNUS-MLY-55C",
+      "quantity": 1,
+      "price": 709.9,
+      "total_price": 709.9
+    }
+  ]
+}
+```
+<h4 align="right"><a href="#topo">Topo</a></h4>

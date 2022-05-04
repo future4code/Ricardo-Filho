@@ -11,9 +11,6 @@ export async function postUsers(
     if(!name){
       throw new Error("Você precisa informar um nome")
     };
-    if(!name){
-      throw new Error("Você precisa informar um nome")
-    };
     if(!email || email.length < 10){
       throw new Error("Voçê precisa informar um e-mail válido com pelo menos 10 caracteres")
     };

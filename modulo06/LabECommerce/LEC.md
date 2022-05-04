@@ -6,18 +6,23 @@
 ---
 
 ### O que funciona
-* [Enunciado](#enunciado)
-* [Endpoints](#endpoints)
-    * [Cadastro de usuário](#postusers)
-    * [Busca por todos os usuários](#getusers)
-    * [Cadastro de produto](#postprodutos)
-    * [Busca por todos os produtos](#getprodutos)
-    * [Registro de compra](#regcompras)
-    * [Busca as compras de um usuário por ID](#getcompras)
-* [Desafios](#desafios)
-    * [Busca por todos os produtos](#getprod2)
-    * [Busca por todos os usuários](#getusers2)
-### Imagens
+* [📒 Enunciado](#enunciado)✅
+* [🚀 Endpoints](#endpoints)✅
+    * [Cadastro de usuário](#postusers)✅
+    * [Busca por todos os usuários](#getusers)✅
+    * [Cadastro de produto](#postprodutos)✅
+    * [Busca por todos os produtos](#getprodutos)✅
+    * [Registro de compra](#regcompras)✅
+    * [Busca as compras de um usuário por ID](#getcompras)✅
+* [🎯 Desafios](#desafios)✅
+    * [Busca por todos os produtos](#getprod2)✅
+    * [Busca por todos os usuários](#getusers2)✅
+* [🚀 Extras](#extras)✅
+    * [index.js](#index)✅
+    * [app.js](#app)✅
+    * [connections.ts](#connections)✅
+    * [migrations.ts](#migrations)✅
+### Imagens 🏝️🏜️🌠
 
 
 <h2 id="enunciado">📒 Enunciado</h2>
@@ -30,7 +35,7 @@ Sendo assim, te passaram uma lista do que o projeto precisa ter:
 
 <h4 align="right"><a href="#topo">Topo</a></h4>
 
-<h2 id="endpoints">Endpoints mínimos do MVP</h2>
+<h2 id="endpoints">🏁 Endpoints mínimos do MVP</h2>
 
 ---
 
@@ -390,7 +395,7 @@ GET http://localhost:3003/users/3f2ebb6b-acc9-46f8-81c5-fae1076029ff/purchases
 <h4 align="right"><a href="#topo">Topo</a></h4>
 
 - 
-  <h3 id="desafios">Desafios</h3>
+  <h3 id="desafios">🎯 Desafios</h3>
 
 
   <h3 id="getprod2">Busca por todos os produtos</h3>
@@ -546,4 +551,135 @@ Connection: close
   ]
 }
 ```
+<h4 align="right"><a href="#topo">Topo</a></h4>
+<h3 id="extras">🚀 Extra</h3>
+
+<h3 id="index">index.ts</h3>
+
+```java
+import { app } from "./app";
+import { postUsers } from "./endpoints/postUsers";// 1
+import { getAllUsers } from "./endpoints/getAllUsers";//2
+import { postProducts } from "./endpoints/postProducts";//3
+import { selectAllProducts } from "./endpoints/getAllProducts";//4
+import { regPurchases } from "./endpoints/regPurchases";//5
+import { getPurchasesUser } from "./endpoints/getPurchasesUser";//6
+import { orderAllProducts } from "./endpoints/getAllProductsOS";//7
+import { getAllUsersPurchases } from "./endpoints/getAllUsersPurchases";//8
+
+
+
+app.post("/users", postUsers)//  1 - adicionar users - ok
+app.get("/users", getAllUsers)// 2 - pegar todos os usuários - ok
+app.post("/products", postProducts)// 3 - adicionar os produtos - ok
+app.get("/products", selectAllProducts)// 4- pegar todos os produtos - ok
+app.post("/purchases", regPurchases)// 5 - registrar as compras
+app.get("/users/:userId/purchases", getPurchasesUser)// 6 - pegar as compras
+app.get("/product", orderAllProducts)// 7- pegar todos os produtos com order e search - ok
+app.get("/users/purchase", getAllUsersPurchases)// 8 - pegar todos os usuários - ok
+```
+<h4 align="right"><a href="#topo">Topo</a></h4>
+<h3 id="app">app.ts</h3>
+
+```java
+import express from "express"
+import cors from "cors"
+import { AddressInfo } from "net"
+
+export const app = express()
+
+app.use(express.json())
+app.use(cors())
+
+export type Users = {
+   id: string,
+   name: string,
+   email: string,
+   password: string
+}
+
+const server = app.listen(process.env.PORT || 3003, () => {
+   if (server) {
+      const address = server.address() as AddressInfo;
+      console.log(`Server is running in http://localhost:${address.port}`);
+   } else {
+      console.error(`Failure upon starting server.`);
+   }
+})
+```
+
+<h4 align="right"><a href="#topo">Topo</a></h4>
+<h3 id="connections">connections.ts</h3>
+
+```java
+import knex from "knex"
+import dotenv from "dotenv"
+
+dotenv.config()
+
+export const connection = knex({
+   client: "mysql",
+   connection: {
+      host: process.env.DB_HOST,
+      port: 3306,
+      user: process.env.DB_USER,
+      password: process.env.DB_PASSWORD,
+      database: process.env.DB_SCHEMA,
+      multipleStatements: true
+   }
+})
+```
+
+<h4 align="right"><a href="#topo">Topo</a></h4>
+<h3 id="migrations">migrations.ts</h3>
+
+```java
+import { connection } from "./connection"
+
+
+const printError = (error: any) => {
+    console.log(error.sqlMessage || error.message)
+}
+
+const createTables = () =>
+    connection
+        .raw(
+            `CREATE TABLE IF NOT EXISTS labecommerce_users (
+         id VARCHAR(255) PRIMARY KEY,
+         name VARCHAR(255) UNIQUE NOT NULL,
+         email VARCHAR(255) UNIQUE NOT NULL,
+         password VARCHAR(255) NOT NULL,
+         type VARCHAR(255) NOT NULL
+      );
+
+      CREATE TABLE IF NOT EXISTS labecommerce_products (
+         id VARCHAR(255) PRIMARY KEY,
+         name VARCHAR(255) UNIQUE NOT NULL,
+         price FLOAT NOT NULL,
+         image_url VARCHAR(255) NOT NULL
+      );
+
+      CREATE TABLE IF NOT EXISTS labecommerce_purchases (
+         id VARCHAR(255) PRIMARY KEY,
+         user_id  VARCHAR(255),
+         product_id VARCHAR(255),
+         quantity INT NOT NULL,
+         total_price FLOAT NOT NULL,
+         FOREIGN KEY(user_id) REFERENCES labecommerce_users(id),
+         FOREIGN KEY(product_id) REFERENCES labecommerce_products(id)  
+      );`
+        )
+        .then(() => {
+            console.log("Tabelas criadas")
+        })
+        .catch(printError)
+
+const closeConnection = () => {
+    connection.destroy()
+}
+
+createTables().finally(closeConnection)
+
+```
+
 <h4 align="right"><a href="#topo">Topo</a></h4>

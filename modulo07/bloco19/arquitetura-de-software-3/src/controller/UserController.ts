@@ -1,4 +1,3 @@
-import { InvalidEmail } from './../error/customErrors';
 import { Request, Response } from "express";
 import { UserBusiness } from "../business/UserBusiness";
 import { UserInputDTO } from "../model/user";
@@ -22,12 +21,8 @@ export class UserController {
         password
       }
 
-      if(!email || !email.includes("@")) {
-        throw new InvalidEmail()
-      }
-
       const userBusiness = new UserBusiness;
-      userBusiness.createUser(input);
+      await userBusiness.createUser(input);
 
       res.status(201).send({ message: "Usuário cadastrado com sucesso" });
 

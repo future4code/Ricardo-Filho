@@ -8,3 +8,5 @@ const movieController = new MovieController()
 movieRouter.post("/create", movieController.createMovie)
 
 movieRouter.get("/All", movieController.getAll)
+
+movieRouter.delete("/delete/:id", movieController.deleteMovie)

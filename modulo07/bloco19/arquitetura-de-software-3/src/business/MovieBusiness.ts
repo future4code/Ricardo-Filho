@@ -1,13 +1,22 @@
 import { MovieDatabase } from "../data/MovieDatabase"
-import { InvalidDateMovies, InvalidYear } from "../error/customErrors";
+import { InvalidYear, InvalidDateMovies } from "../error/customMovieErros";
+import { movie } from "../model/movie";
 import { generateId } from "../services/generateId";
 
 export class MovieBusiness {
-    public create = async (input: any) => {
-      try {
-      const { title, description, duration, year } = input;
+    public create = async (
+      input: any
+      ) => {
 
-      if (!title || !description || !duration) {
+      try {
+      const {
+        title,
+        description,
+        duration,
+        year
+      } = input;
+
+      if (!title || !description || !duration || !year) {
         throw new InvalidDateMovies()
       }
   
@@ -17,12 +26,14 @@ export class MovieBusiness {
       const id = generateId()
   
       const movieDatabase = new MovieDatabase()
-      await movieDatabase.insertMovie({
+      const movie: movie = {
         id,
         title,
         description,
         duration,
-        year})
+        year
+      }
+        await movieDatabase.insertMovie(movie)
     }
     catch (error: any) {
       throw new Error(error.message)
@@ -41,5 +52,10 @@ export class MovieBusiness {
       return movies
     }
   
+    public deleteMovie = async (id: string): Promise<void> => {
+      const userDatabase = new MovieDatabase()
+      await userDatabase.deleteMovie(id)
+    }
+
   }
   

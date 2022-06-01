@@ -3,10 +3,12 @@ import { MovieBusiness } from "../business/MovieBusiness";
 import { MovieInputDTO } from "../model/movie";
 
 export class MovieController {
+
     public createMovie = async (
       req: Request,
-      res: Response) => {
-       try {
+      res: Response
+      ) => {
+        try {
          const {
            title,
            description,
@@ -42,5 +44,17 @@ export class MovieController {
        }
      }
    
+     async deleteMovie( req: Request, res: Response): Promise<void> {
+      try {
+        const id = req.params.id;
+        const movieBusiness = new MovieBusiness();
+        await movieBusiness.deleteMovie(id);
+  
+        res.status(200).send({ message: "Filme deletado com sucesso" });
+      } catch (error) {
+        res.status(400).send(error.message);
+      }
+    }
+
    }
    

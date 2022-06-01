@@ -27,4 +27,9 @@ export class MovieDatabase extends BaseDatabase {
         return getMovies;
     }
   
+    public deleteMovie = async ( id: string ): Promise<void> => {
+      await MovieDatabase.connection(MovieDatabase.TABLE_NAME)
+      .where( "id", id)
+      .delete();
+    }
   }

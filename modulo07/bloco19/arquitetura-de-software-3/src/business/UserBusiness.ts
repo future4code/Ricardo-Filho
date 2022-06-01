@@ -1,5 +1,5 @@
 import { UserDatabase } from "../data/UserDatabase"
-import { InvalidEmail, InvalidName, InvalidPassword } from "../error/customErrors";
+import { InvalidEmail, InvalidName, InvalidPassword } from "../error/customUsersErrors";
 import { user, UserInputDTO } from "../model/user";
 import { generateId } from "../services/generateId";
 
@@ -19,7 +19,7 @@ export class UserBusiness {
         throw new InvalidName()
       }
 
-      if(!email) { 
+      if(!email || !email.includes("@")) {
         throw new InvalidEmail()
       }
 
@@ -36,10 +36,9 @@ export class UserBusiness {
         email,
         password
       }
-
     await userDatabase.insertUser(user);
-    
-     } catch (error: any) {
+     }
+     catch (error: any) {
       throw new Error(error.message)
     }  
     

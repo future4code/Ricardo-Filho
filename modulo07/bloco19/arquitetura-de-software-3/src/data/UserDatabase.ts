@@ -26,4 +26,10 @@ export class UserDatabase extends BaseDatabase {
       return getUsers;
   }
 
+  public deleteUser = async ( id: string ): Promise<void> => {
+    await UserDatabase.connection(UserDatabase.TABLE_NAME)
+    .where( "id", id)
+    .delete();
+  }
+
 }

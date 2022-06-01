@@ -9,3 +9,5 @@ userRouter.post("/create", userController.createUser)
 
 userRouter.get("/All", userController.getAll)
 
+userRouter.delete("/delete/:id", userController.deleteUser)
+

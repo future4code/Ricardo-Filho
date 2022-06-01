@@ -55,3 +55,7 @@ Content-Type: application/json
 
 ###
 GET http://localhost:3003/movie/all
+
+
+###
+DELETE  http://localhost:3003/user/delete/a6df39bf-139e-402b-a46c-799dbd6609e6

@@ -57,4 +57,9 @@ export class UserBusiness {
     return users
   }
 
+  public deleteUser = async (id: string): Promise<void> => {
+    const userDatabase = new UserDatabase()
+    await userDatabase.deleteUser(id)
+  }
+
 }

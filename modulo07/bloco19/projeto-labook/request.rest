@@ -1,0 +1,15 @@
+POST http://localhost:3003/user/create
+Content-Type: application/json
+
+{
+    "name": "Ricardo",
+    "email": "rickhard@email.com",
+    "password": "012210012"
+}
+
+###
+GET http://localhost:3003/user/all
+
+### 0 - Pesquisar usuário 
+
+GET http://localhost:3003/user?nickname=RickHard

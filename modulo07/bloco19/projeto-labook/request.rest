@@ -13,3 +13,20 @@ GET http://localhost:3003/user/all
 ### 0 - Pesquisar usuário 
 
 GET http://localhost:3003/user?nickname=RickHard
+
+###
+POST http://localhost:3003/post/create
+Content-Type: application/json
+
+{
+    "photo": "https://i.picsum.photos/id/820/200/300.jpg?hmac=oyShjC6apmZncG0xgz0zZEnh_1_j8eCRZnF8QxQ_PsE",
+    "description": "Testando os posts",
+    "type": "event",
+    "authorId": "f6d43648-a562-49c8-a98f-97289df46141"
+}
+
+###
+GET http://localhost:3003/post/all
+
+###
+DELETE  http://localhost:3003/post/0c9468af-cafc-4f33-8119-81fcf43ca2fa

@@ -3,8 +3,6 @@ export const enum POST_TYPES {
     EVENT = "event"
  }
 
- export default POST_TYPES
-
 export type post = {
     id: string,
     photo: string,

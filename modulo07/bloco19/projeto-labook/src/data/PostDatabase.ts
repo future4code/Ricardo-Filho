@@ -4,7 +4,7 @@ import { BaseDatabase } from "./BaseDatabase";
 export class PostDatabase extends BaseDatabase {
     private static TABLE_NAME = "labook_posts";
   
-    public insert = async (
+    public insertPost = async (
       post: post
       ) => {
         try {
@@ -26,7 +26,8 @@ export class PostDatabase extends BaseDatabase {
   }
     public getAll = async (): Promise<post[]> => {
         const getPosts = await PostDatabase.connection(PostDatabase.TABLE_NAME)
-        .select("*");
+        .select();
+        
         return getPosts;
     }
   

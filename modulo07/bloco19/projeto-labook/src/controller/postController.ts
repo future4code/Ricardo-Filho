@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { PostBusiness } from "../business/postBusiness";
 import { PostInputDTO } from "../model/post";
+import { convertDate } from "../services/convertDate";
 
 export class PostController {
 
@@ -35,11 +36,14 @@ export class PostController {
        }
      }
      
-     async getAll(req: Request, res: Response): Promise<void> {
+     public getAll = async (req: Request, res: Response) => {
        try {
          const postBusiness = new PostBusiness();
          const posts = await postBusiness.getAll();
-   
+        for(let i = 0; i < posts.length; i++) {
+          posts[i].created_at = convertDate(posts[i]?.created_at);
+        }
+        
          res.status(200).send(posts);
        } catch (error:any) {
          res.status(400).send(error.message);

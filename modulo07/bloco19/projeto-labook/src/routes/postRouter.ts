@@ -11,6 +11,6 @@ postRouter.post("/create", postController.createPost);
 
 // postRouter.get("/post/:name", postController.getAll);
 
-postRouter.get("/posts", postController.getAll);
+postRouter.get("/all", postController.getAll);
 
-postRouter.delete("/post/:id", postController.deletePost);
+postRouter.delete("/:id", postController.deletePost);

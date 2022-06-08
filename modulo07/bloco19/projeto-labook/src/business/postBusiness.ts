@@ -2,7 +2,7 @@ import { PostDatabase } from "../data/PostDatabase"
 import { InvalidPost } from "../error/customPostErros";
 import { post, PostInputDTO } from "../model/post";
 import { generateId } from "../services/generateId";
-import {convertDate } from "../services/convertDate";
+//import {convertDate } from "../services/convertDate";
 
 export class PostBusiness {
     public create = async (
@@ -14,7 +14,6 @@ export class PostBusiness {
         photo,
         description,
         type,
-        createdAt,
         authorId
       } = input;
 
@@ -43,21 +42,28 @@ export class PostBusiness {
     }
   }
   
-  async getAll ():Promise<any[]> {
-  
+  async getAll (): Promise<any[]> {
       const postDatabase = new PostDatabase()
       const posts = await postDatabase.getAll()
-
-
+    
       if(posts.length === 0) {
         throw new InvalidPost()
       }
       return posts
     }
+    
+    async getPostId (id: string): Promise<any[]> {
+      const postDatabase = new PostDatabase()
+      const post = await postDatabase.getPostId(id)
+
+      if(post.length === 0) {
+        throw new InvalidPost()
+      }
+      return post
+    }
+
     public deletePost = async (id: string): Promise<void> => {
       const postDatabase = new PostDatabase()
       await postDatabase.deletePost(id)
     }
-
   }
-  

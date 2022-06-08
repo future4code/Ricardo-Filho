@@ -1,32 +1,39 @@
+### - Criar usuário
 POST http://localhost:3003/user/create
 Content-Type: application/json
 
 {
-    "name": "Ricardo",
-    "email": "rickhard@email.com",
+    "name": "Andersson",
+    "email": "the_door@email.com",
     "password": "012210012"
 }
 
-###
+### - Pesquisar todos os usuários
 GET http://localhost:3003/user/all
 
-### 0 - Pesquisar usuário 
+### - Pesquisar usuário por ID
+GET http://localhost:3003/user/f6d43648-a562-49c8-a98f-97289df46141
 
+### 0 - Pesquisar usuário por name ou nickname
 GET http://localhost:3003/user?nickname=RickHard
 
-###
+###  - Criar post por usuário usando ID
 POST http://localhost:3003/post/create
 Content-Type: application/json
 
 {
     "photo": "https://i.picsum.photos/id/820/200/300.jpg?hmac=oyShjC6apmZncG0xgz0zZEnh_1_j8eCRZnF8QxQ_PsE",
-    "description": "Testando os posts",
-    "type": "event",
-    "authorId": "f6d43648-a562-49c8-a98f-97289df46141"
+    "description": "Testando os feeds",
+    "type": "normal",
+    "authorId": "18fefa70-eff3-4a17-8a12-c98f076f8f31"
 }
 
-###
+### - Trazer todos os post de todos os usuários
 GET http://localhost:3003/post/all
 
-###
+### - Deletar post por ID
 DELETE  http://localhost:3003/post/0c9468af-cafc-4f33-8119-81fcf43ca2fa
+
+
+### - Pesquisar post por ID
+GET http://localhost:3003/post/36c51fea-1853-4871-8e2a-a57077cfbb1d

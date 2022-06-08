@@ -1,11 +1,11 @@
-import { user } from '../model/user';
+import { User } from '../model/user';
 import { BaseDatabase } from './BaseDatabase';
 
 export class UserDatabase extends BaseDatabase {
     private static TABLE_NAME = "labook_users";
 
     public insertUser = async (
-        user: user
+        user: User
     ) => {
         try {
         await UserDatabase
@@ -25,19 +25,30 @@ export class UserDatabase extends BaseDatabase {
     }
 
     public getUser = async () => {
-        const getUsers = await UserDatabase.connection(UserDatabase.TABLE_NAME)
+        const getUsers = await UserDatabase
+        .connection(UserDatabase.TABLE_NAME)
         .select("*")
         return getUsers
     }
 
-    public getAll = async (): Promise<user[]> => {
-        const getUsers = await UserDatabase.connection(UserDatabase.TABLE_NAME)
+    public getAll = async (): Promise<User[]> => {
+        const getUsers = await UserDatabase
+        .connection(UserDatabase.TABLE_NAME)
         .select("*");
         return getUsers;
     }
   
+    public getUserId = async (id: string): Promise<User[]> => {
+        const getUser = await UserDatabase
+        .connection(UserDatabase.TABLE_NAME)
+        .where("id", id);
+        
+        return getUser;
+    }
+
     public deleteUser = async ( id: string ): Promise<void> => {
-      await UserDatabase.connection(UserDatabase.TABLE_NAME)
+      await UserDatabase
+      .connection(UserDatabase.TABLE_NAME)
       .where( "id", id)
       .delete();
     }

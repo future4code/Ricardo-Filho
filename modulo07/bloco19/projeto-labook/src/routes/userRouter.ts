@@ -7,8 +7,8 @@ const userController = new UserController();
 
 userRouter.post("/create", userController.createUser);
 
-// userRouter.get("/users/:id", userController.getUser);
-
 userRouter.get("/all", userController.getAll);
+
+userRouter.get("/:id", userController.getUserId);
 
 userRouter.delete("/delete/:id", userController.deleteUser)

@@ -7,10 +7,10 @@ const postController = new PostController();
 
 postRouter.post("/create", postController.createPost);
 
-// postRouter.get("/post/:id", postController.getPost);
-
-// postRouter.get("/post/:name", postController.getAll);
-
 postRouter.get("/all", postController.getAll);
+
+postRouter.get("/:id", postController.getPostId);
+
+// postRouter.get("/:name", postController.getPostName);
 
 postRouter.delete("/:id", postController.deletePost);

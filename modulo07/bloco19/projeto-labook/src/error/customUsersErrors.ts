@@ -6,6 +6,12 @@ export class CustomError extends Error {
     }
 }
 
+export class InvalidId extends CustomError{ 
+    constructor(){
+        super(400, "Id Inválido, consulte a lista de usuários")
+    }
+}
+
 export class InvalidName extends CustomError{ 
     constructor(){
         super(400, "Nome inválido, Nome mínimo de 5 caracteres")

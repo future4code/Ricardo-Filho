@@ -1,4 +1,4 @@
-export type user = {
+export interface User {
     id: string,
     name: string,
     email: string,
@@ -6,7 +6,7 @@ export type user = {
  }
 
 export interface UserInputDTO {
-    name: string,
-    email: string,
+    name: string;
+    email: string;
     password: string
 }

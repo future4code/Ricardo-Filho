@@ -27,13 +27,21 @@ export class PostDatabase extends BaseDatabase {
     public getAll = async (): Promise<post[]> => {
         const getPosts = await PostDatabase.connection(PostDatabase.TABLE_NAME)
         .select();
-        
+  
         return getPosts;
     }
   
+    public getPostId = async (id: string): Promise<post[]> => {
+      const getPost = await PostDatabase.connection(PostDatabase.TABLE_NAME)
+      .where("id", id);
+      
+      return getPost;
+  }
+
     public deletePost = async ( id: string ): Promise<void> => {
       await PostDatabase.connection(PostDatabase.TABLE_NAME)
       .where( "id", id)
       .delete();
     }
+
   }

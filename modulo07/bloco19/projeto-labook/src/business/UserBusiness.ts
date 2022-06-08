@@ -1,6 +1,6 @@
 import { UserDatabase } from "../data/UserDatabase"
-import { InvalidEmail, InvalidName, InvalidPassword } from "../error/customUsersErrors";
-import { user, UserInputDTO } from "../model/user";
+import { InvalidEmail, InvalidId, InvalidName, InvalidPassword } from "../error/customUsersErrors";
+import { User, UserInputDTO } from "../model/user";
 import { generateId } from "../services/generateId";
 
 export class UserBusiness {
@@ -30,7 +30,7 @@ export class UserBusiness {
       const id: string = generateId();
 
       const userDatabase = new UserDatabase();
-      const user: user = {
+      const user: User = {
         id,
         name,
         email,
@@ -55,10 +55,22 @@ export class UserBusiness {
 
     return users
   }
+  
+  async getUserId (id: string): Promise<User[]> {
+    const userDatabase = new UserDatabase()
+    const user = await userDatabase.getUserId(id)
+
+    if(user.length === 0) {
+      throw new InvalidId()
+    }
+    return user
+  }
 
   public deleteUser = async (id: string): Promise<void> => {
     const userDatabase = new UserDatabase()
     await userDatabase.deleteUser(id)
   }
+
+
 
 }

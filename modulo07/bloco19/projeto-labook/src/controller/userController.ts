@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { UserBusiness } from "../business/UserBusiness";
+import { UserBusiness } from "../business/userBusiness";
 import { UserInputDTO } from "../model/user";
 
 export class UserController {
@@ -45,6 +45,18 @@ export class UserController {
         }
       }
     
+      public getUserId = async (req: Request, res: Response) => {
+        try {
+          const id = req.params.id;
+          const userBusiness = new UserBusiness();
+            const user = await userBusiness.getUserId(id);
+            
+            res.status(200).send({user})
+        } catch (error:any) {
+          res.status(400).send(error.message);
+        }
+      }
+
       async deleteUser( req: Request, res: Response): Promise<void> {
         try {
           const id = req.params.id;
@@ -56,4 +68,7 @@ export class UserController {
           res.status(400).send(error.message);
         }
       }
+
+
+
 }

@@ -37,3 +37,34 @@ DELETE  http://localhost:3003/post/0c9468af-cafc-4f33-8119-81fcf43ca2fa
 
 ### - Pesquisar post por ID
 GET http://localhost:3003/post/36c51fea-1853-4871-8e2a-a57077cfbb1d
+
+
+###  - Criar Amizade
+POST http://localhost:3003/amity/create
+Content-Type: application/json
+
+{
+    "userId": "18fefa70-eff3-4a17-8a12-c98f076f8f31",
+    "friendId": "f6d43648-a562-49c8-a98f-97289df46141"
+}
+
+###  - Criar Amizade usando params e query
+POST http://localhost:3003/amity/18fefa70-eff3-4a17-8a12-c98f076f8f31?idFriend=f6d43648-a562-49c8-a98f-97289df46141
+Content-Type: application/json
+
+#"userId": "18fefa70-eff3-4a17-8a12-c98f076f8f31",
+#"friendId": "f6d43648-a562-49c8-a98f-97289df46141"
+
+###  - Apagar Amizade por body apenas no backend pois delete não aceita body
+DELETE http://localhost:3003/amity/del
+Content-Type: application/json
+
+{
+    "userId": "18fefa70-eff3-4a17-8a12-c98f076f8f31",
+    "friendId": "f6d43648-a562-49c8-a98f-97289df46141"
+}
+
+
+###  - Apagar Amizade usando params e query
+DELETE http://localhost:3003/amity/18fefa70-eff3-4a17-8a12-c98f076f8f31?idFriend=f6d43648-a562-49c8-a98f-97289df46141
+Content-Type: application/json

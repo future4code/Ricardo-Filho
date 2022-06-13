@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { AmityBusiness } from "../business/amityBusiness";
+import { friendFeedInput } from "../model/amity";
 
 export class AmityController {
     public createAmity = async (
@@ -40,5 +41,21 @@ export class AmityController {
                 }
             
 
+    }
+
+        public feedAmity = async (
+            req: Request,
+            res: Response
+            ) => {
+                try {
+                    const {idUser} = req.params
+                    const input:friendFeedInput = { idUser }
+
+                    const getFeed = await new AmityBusiness()
+                    .feed(input)
+                    res.status(201).send(getFeed)
+                } catch (error:any) {
+                    res.status(400).send(error.message);
+                }
     }
 }

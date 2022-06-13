@@ -1,8 +1,7 @@
 import { PostDatabase } from "../data/PostDatabase"
-import { InvalidPost } from "../error/customPostErros";
+import { InvalidDataPosts, InvalidPost } from "../error/customPostErros";
 import { post, PostInputDTO } from "../model/post";
 import { generateId } from "../services/generateId";
-//import {convertDate } from "../services/convertDate";
 
 export class PostBusiness {
     public create = async (
@@ -17,13 +16,10 @@ export class PostBusiness {
         authorId
       } = input;
 
-    //   if (!photo || !description || !type || !createdAt || !authorId) {
-    //     throw new InvalidDataMovies()
-    //   }
+      if (!photo || !description || !type || !authorId) {
+        throw new InvalidDataPosts()
+      }
   
-    //   if (createdAt.length < 4) {
-    //     throw new InvalidYear()
-    //   }
       const id = generateId()
   
       const postDatabase = new PostDatabase();
@@ -52,7 +48,7 @@ export class PostBusiness {
       return posts
     }
     
-    async getPostId (id: string): Promise<any[]> {
+    public getPostId = async (id: string): Promise<any[]> => {
       const postDatabase = new PostDatabase()
       const post = await postDatabase.getPostId(id)
 

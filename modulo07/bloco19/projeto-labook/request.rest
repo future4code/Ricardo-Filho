@@ -1,0 +1,73 @@
+### - Criar usuário
+POST http://localhost:3003/user/create
+Content-Type: application/json
+
+{
+    "name": "Paulo Espingarda",
+    "email": "tirocerto@email.com",
+    "password": "012210012"
+}
+
+### - Pesquisar todos os usuários
+GET http://localhost:3003/user/all
+
+### - Pesquisar usuário por ID
+GET http://localhost:3003/user/f6d43648-a562-49c8-a98f-97289df46141
+
+### 0 - Pesquisar usuário por name ou nickname
+GET http://localhost:3003/user?nickname=RickHard
+
+###  - Criar post por usuário usando ID
+POST http://localhost:3003/post/create
+Content-Type: application/json
+
+{
+    "photo": "https://i.picsum.photos/id/820/200/300.jpg?hmac=oyShjC6apmZncG0xgz0zZEnh_1_j8eCRZnF8QxQ_PsE",
+    "description": "Testando os feeds friend eu 10",
+    "type": "normal",
+    "authorId": "f6d43648-a562-49c8-a98f-97289df46141"
+}
+
+### - Trazer todos os post de todos os usuários
+GET http://localhost:3003/post/all
+
+### - Trazer todos os post de todos os amigos do usuários
+GET http://localhost:3003/amity/feed/0b2d7d3d-ef4c-4cf1-afa1-9fe6443bf760
+
+### - Deletar post por ID
+DELETE  http://localhost:3003/post/0c9468af-cafc-4f33-8119-81fcf43ca2fa
+
+
+### - Pesquisar post por ID
+GET http://localhost:3003/post/36c51fea-1853-4871-8e2a-a57077cfbb1d
+
+
+###  - Criar Amizade
+POST http://localhost:3003/amity/create
+Content-Type: application/json
+
+{
+    "userId": "f6d43648-a562-49c8-a98f-97289df46141",
+    "friendId": "3246a278-dd26-4b2f-83cb-c0ba997123ce0"
+}
+
+###  - Criar Amizade usando params e query - Não usar pq esta comentando nos arquivos amitys 
+POST http://localhost:3003/amity/18fefa70-eff3-4a17-8a12-c98f076f8f31?idFriend=f6d43648-a562-49c8-a98f-97289df46141
+Content-Type: application/json
+
+#"userId": "18fefa70-eff3-4a17-8a12-c98f076f8f31",
+#"friendId": "f6d43648-a562-49c8-a98f-97289df46141"
+
+###  - Apagar Amizade por body apenas no backend pois delete não aceita body - Não usar pq esta comentando nos arquivos amitys
+DELETE http://localhost:3003/amity/del
+Content-Type: application/json
+
+{
+    "userId": "18fefa70-eff3-4a17-8a12-c98f076f8f31",
+    "friendId": "f6d43648-a562-49c8-a98f-97289df46141"
+}
+
+
+###  - Apagar Amizade usando params e query
+DELETE http://localhost:3003/amity/18fefa70-eff3-4a17-8a12-c98f076f8f31?idFriend=f6d43648-a562-49c8-a98f-97289df46141
+Content-Type: application/json

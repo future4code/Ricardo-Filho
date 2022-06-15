@@ -40,10 +40,11 @@ export class UserController {
 
       public getUserData=async(req: Request, res: Response):Promise<any>=> {
         try {
-          const authorization=req.headers.authorization!
+          const token = req.headers.authorization as string
     
           const userBusiness = new UserBusiness()
-          const result =await userBusiness.getUserData(authorization as string) 
+          const result =await userBusiness.getUserData(token as string)
+          
           res.status(200).send({email:result.email,password:result.password})
         } catch (error: any) {
           res.status(400).send(error.message);

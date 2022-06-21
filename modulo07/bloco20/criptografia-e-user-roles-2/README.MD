@@ -1,4 +1,4 @@
-# Autorização e user roles
+<h1 id="topo">Autorização e user roles</h1>
 
 ---
 
@@ -10,181 +10,162 @@
 
 ## Exercícios
 
+### O que funciona
+
+   * [Exercício 1](#exec1)
+      * [a) Alterar tabela de usuários](#tabela)
+      * [b) Alterar os types](#types)
+      * [c) Alterar cadastro de usuário](#cadastro)
+      * [d) Alterar login de usuário](#cadastro)
+  * [Exercicio 2](#exer2)
+      * [a) Alterar endpoint erro Unauthorized](#Unauthorized) 
+
+
 - 📖 Enunciado
     
-    ### Instruções gerais
+### Instruções gerais
     
-    No exercício de hoje, vamos treinar as modificações que fizemos na aula: criar *User Roles*. Você pode usar o template de aula ou fazer o projeto do zero, a partir de uma pasta que você mesmo criar. Para isso, reunimos as instruções principais aqui:
+No exercício de hoje, vamos treinar as modificações que fizemos na aula: criar *User Roles*. Você pode usar o template de aula ou fazer o projeto do zero, a partir de uma pasta que você mesmo criar. Para isso, reunimos as instruções principais aqui:
     
-    ### Inicie o projeto por aqui
-    
-    <aside>
-    ⚠️ **IMPORTANTE** ⚠️
-    
-    1) Crie uma branch **a partir da branch master** para trabalhar no exercício de hoje. O nome da branch de hoje deve ser: `criptografia-e-user-roles`
-    
-    2) Dentro da pasta do módulo atual, crie uma pasta chamada `criptografia-e-user-roles` para trabalhar no exercício de hoje
-    
-    3) Não esqueça de entregar o arquivo `requests.rest` com os endpoints!
-    
-    </aside>
-    
-    <aside>
-    🛠 Quero iniciar o projeto do zero, como faço?
-    
-    - Veja aqui
-        - Node e Typescript
+<h4 align="right"><a href="#topo">Topo⬆️</a></h4>
             
-            Para começar um projeto em Node, use o comando e siga as instruções
-            
-            ```bash
-            npm init
-            ```
-            
-            O node foi feito para rodarmos projetos escritos em JS. Para usarmos TS, temos que fazer uma configuração adicional. Começamos instalando:
-            
-            ```bash
-            npm install typscript @types/node ts-node-dev
-            ```
-            
-            Depois, colocamos um arquivo chamado `tsconfig.json`:
-            
-            ```json
-            {
-              "compilerOptions": {
-                "target": "es6" /* Specify ECMAScript target version: 'ES3' (default), 'ES5', 'ES2015', 'ES2016', 'ES2017', 'ES2018', 'ES2019' or 'ESNEXT'. */,
-                "module": "commonjs" /* Specify module code generation: 'none', 'commonjs', 'amd', 'system', 'umd', 'es2015', or 'ESNext'. */,
-                "outDir": "./build" /* Redirect output structure to the directory. */,
-                "rootDir": "./" /* Specify the root directory of input files. Use to control the output directory structure with --outDir. */,
-                "strict": true /* Enable all strict type-checking options. */,
-                "esModuleInterop": true /* Enables emit interoperability between CommonJS and ES Modules via creation of namespace objects for all imports. Implies 'allowSyntheticDefaultImports'. */,
-                "forceConsistentCasingInFileNames": true /* Disallow inconsistently-cased references to the same file. */
-              }
-            }
-            ```
-            
-            E, agora, podemos criar, no arquivo `package.json` os scripts de execução, como:
-            
-            `build`: serve para criar a pasta 'build' que possui todos os arquivos TS transpilados para JS;
-            
-            `start:dev`: roda o projeto usando o `ts-node-dev`, com hot reload
-            
-            `start`: roda o projeto já construído na pasta build;
-            
-            ```json
-            "scripts": {
-            		"start:dev": "ts-node-dev ./src/index.ts",
-                "start": "node ./build/index.js",
-                "build": "tsc"  
-            },
-            ```
-            
-        - Banco de Dados
-            
-            Nós criamos um banco de dados específico para cada um de vocês usar durante o Módulo de Backend. O host é `35.226.146.116` na porta `3306`. Os usuários, senhas e nomes do banco de dados foram enviados individualmente para vocês no slack. 
-            
-            **Não compartilhe essas informações com ninguém!** 
-            
-            **Não suba em repositórios do GitHub que sejam públicos, ou seja, não suba no GitHub que vocês tem conosco. Repetindo: não suba.**
-            
-            Lembre-se de instalar as dependências:
-            
-            ```bash
-            npm install knex mysql @types/knex dotenv
-            ```
-            
-            Crie uma variável para utilizar como conexão e configure o `dotenv`, criando o arquivo `.env` (adicione-o também no `.gitignore`)
-            
-            ```tsx
-            import knex from "knex";
-            import dotenv from "dotenv";
-            
-            dotenv.config();
-            
-            const connection = knex({
-              client: "mysql",
-              connection: {
-                host: process.env.DB_HOST,
-                port: Number(process.env.DB_PORT || "3306"),
-                user: process.env.DB_USER,
-                password: process.env.DB_PASSWORD,
-                database: process.env.DB_NAME,
-              },
-            });
-            ```
-            
-        - Express
-            
-            Lembre-se de instalar as dependências:
-            
-            ```bash
-            npm install express @types/express
-            ```
-            
-            O arquivo base tem que conter:
-            
-            - A criação do app `express`;
-            - Colocar o `middleware` para converter o `body`;
-            - Criar o servidor
-            
-            ```tsx
-            import express from "express";
-            
-            import { AddressInfo } from "net";
-            
-            const app = express();
-            
-            app.use(express.json());
-            
-            const server = app.listen(process.env.PORT || 3003, () => {
-              if (server) {
-                const address = server.address() as AddressInfo;
-                console.log(`Server is running in http://localhost:${address.port}`);
-              } else {
-                console.error(`Failure upon starting server.`);
-              }
-            });;
-            ```
-            
-        - UUID e JWT
-            
-            Para instalar o UUID:
-            
-            ```bash
-            npm install uuid @types/uuid
-            ```
-            
-            Para o JWT:
-            
-            ```bash
-            npm install jsonwebtoken @types/jsonwebtoken
-            ```
-            
-    ---
-    
-        
-    </aside>
-    
-    ### Agora, faça os exercícios propostos
+### Agora, faça os exercícios propostos
     
     Durante os exercícios, vamos fazer algumas perguntas para você. Responda-as em um arquivo *markdown* (veja as instruções no notion das semanas anteriores, caso precise).
     
-    - Exercício 1
+  
+### Exercício 1
         
-        Agora, vamos pensar em um pouco nas funcionalidades relacionadas aos tipos de usuário. Para isso, vamos ter que fazer umas modificações no banco de dados.
+Agora, vamos pensar em um pouco nas funcionalidades relacionadas aos tipos de usuário. Para isso, vamos ter que fazer umas modificações no banco de dados.
+
+
+<h3 id="tabela">Alterar tabela de usuários</h3>
+
+Altere a sua tabela de usuários para ela possuir uma coluna `role`. Considere que pode assumir os valores `normal`  e `admin`. Coloque `normal` como valor padrão.*
+
+
+![image](https://user-images.githubusercontent.com/89301596/174913509-447b855d-a7b6-480d-b0d4-73c357f40ee2.png)
+
+<h4 align="right"><a href="#topo">Topo⬆️</a></h4>
+
+<h3 id="types">Alterar os types</h3>
+
+b) *Altere o type `AuthenticationData e a função getData()` para representarem esse novo tipo no token.*
+
+![image](https://user-images.githubusercontent.com/89301596/174913575-990162ed-1847-4768-8aad-8b11426bb3fc.png)
+
+<h4 align="right"><a href="#topo">Topo⬆️</a></h4>
+
+<h3 id="cadastro">Alterar cadastro de usuário</h3>
+
+c) *Altere o cadastro para receber o tipo do usuário e criar o token com essa informação*
+
+![image](https://user-images.githubusercontent.com/89301596/174909582-a1d0fc6d-8593-4812-8eca-2868ff67d03b.png)
+
+<h4 align="right"><a href="#topo">Topo⬆️</a></h4>
+
+<h3 id="login">Alterar login de usuário</h3>
+
+d) *Altere o login para criar o token com o `role` do usuário*
+
+![image](https://user-images.githubusercontent.com/89301596/174909672-0544cded-5d23-48f1-bc75-fad6a237bbb7.png)
+
+<h4 align="right"><a href="#topo">Topo⬆️</a></h4>
+
         
-        a) *Altere a sua tabela de usuários para ela possuir uma coluna `role`. Considere que pode assumir os valores `normal`  e `admin`. Coloque `normal` como valor padrão.*
+### Exercício 2
         
-        b) *Altere o type `AuthenticationData e a função getData()` para representarem esse novo tipo no token.*
-        
-        c) *Altere o cadastro para receber o tipo do usuário e criar o token com essa informação*
-        
-        d) *Altere o login para criar o token com o `role` do usuário*
-        
-        
-        
-    - Exercício 2
-        
-        Agora, vamos usar esse `role` no endpoint `/user/profile`. Somente o usuários "normais" podem acessar esse endpoint. 
-        
-        a) *Altere o endpoint para que retorne um erro de `Unauthorized` para os usuários que "não sejam normais" e tentem acessar esse endpoint*
+Agora, vamos usar esse `role` no endpoint `/user/profile`. Somente o usuários "normais" podem acessar esse endpoint. 
+
+<h3 id="Unauthorized">Alterar endpoint erro Unauthorized</h3>
+
+a) *Altere o endpoint para que retorne um erro de `Unauthorized` para os usuários que "não sejam normais" e tentem acessar esse endpoint*
+
+![image](https://user-images.githubusercontent.com/89301596/174910327-7cfa8e46-4888-432c-a4b6-c34e9d093bf2.png)
+
+<h4 align="right"><a href="#topo">Topo⬆️</a></h4>
+
+<h1 id="imagens">Imagens</h1>
+
+### Estrutura de pastas
+![image](https://user-images.githubusercontent.com/89301596/174909017-3272f205-227c-48ca-a719-2b3ab0765347.png)
+
+<h4 align="right"><a href="#topo">Topo⬆️</a></h4>
+
+### UserBusiness - createUser
+![image](https://user-images.githubusercontent.com/89301596/174909582-a1d0fc6d-8593-4812-8eca-2868ff67d03b.png)
+
+<h4 align="right"><a href="#topo">Topo⬆️</a></h4>
+
+### UserBusiness - loginUser
+
+![image](https://user-images.githubusercontent.com/89301596/174909672-0544cded-5d23-48f1-bc75-fad6a237bbb7.png)
+
+<h4 align="right"><a href="#topo">Topo⬆️</a></h4>
+
+### UserBusiness - profile
+
+![image](https://user-images.githubusercontent.com/89301596/174909768-1b63c362-764c-48ac-94e7-1e5011fbc649.png)
+
+<h4 align="right"><a href="#topo">Topo⬆️</a></h4>
+
+
+### UserController - signup
+
+![image](https://user-images.githubusercontent.com/89301596/174910208-95045e04-506a-475f-a566-0583e0e21119.png)
+
+<h4 align="right"><a href="#topo">Topo⬆️</a></h4>
+
+### UserController - profile
+
+![image](https://user-images.githubusercontent.com/89301596/174910327-7cfa8e46-4888-432c-a4b6-c34e9d093bf2.png)
+
+<h4 align="right"><a href="#topo">Topo⬆️</a></h4>
+
+### userRouter - routes
+
+![image](https://user-images.githubusercontent.com/89301596/174910444-81dff9f3-015c-4775-90c5-88475fac943e.png)
+
+<h4 align="right"><a href="#topo">Topo⬆️</a></h4>
+
+### UserDatabase - insertUser
+
+![image](https://user-images.githubusercontent.com/89301596/174910553-adf42f8c-c450-45ae-9591-26a6c5f9918c.png)
+
+<h4 align="right"><a href="#topo">Topo⬆️</a></h4>
+
+### UserDatabase - findUserByEmail
+
+![image](https://user-images.githubusercontent.com/89301596/174910647-a1b56c65-50fd-44b6-a518-5e53885e0499.png)
+
+<h4 align="right"><a href="#topo">Topo⬆️</a></h4>
+
+### Authenticator.ts
+
+![image](https://user-images.githubusercontent.com/89301596/174910762-47a0fd23-79dd-4c42-9dbe-d2269ca00b52.png)
+
+<h4 align="right"><a href="#topo">Topo⬆️</a></h4>
+
+### generateID.ts
+
+![image](https://user-images.githubusercontent.com/89301596/174910963-9170a55f-a004-4351-87d3-855041e941f9.png)
+
+<h4 align="right"><a href="#topo">Topo⬆️</a></h4>
+
+### HashManager.ts
+
+![image](https://user-images.githubusercontent.com/89301596/174911056-c0e6b1ef-b30c-4a86-a247-ff259162fc56.png)
+
+<h4 align="right"><a href="#topo">Topo⬆️</a></h4>
+
+### TokenGenerator.ts 
+
+![image](https://user-images.githubusercontent.com/89301596/174911184-eeaaea2a-58ca-4311-b2e4-80e63326b700.png)
+
+<h4 align="right"><a href="#topo">Topo⬆️</a></h4>
+
+### resquest.rest
+
+![image](https://user-images.githubusercontent.com/89301596/174911313-be671f89-aeac-4721-bbef-9c89340ea1cc.png)
+
+<h4 align="right"><a href="#topo">Topo⬆️</a></h4>

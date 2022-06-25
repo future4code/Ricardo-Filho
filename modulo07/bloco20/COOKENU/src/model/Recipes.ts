@@ -2,14 +2,21 @@ export interface Recipes {
     id: string,
     title: string,
     description: string,
-    createdAt: Date,
     authorId: string
  }
 
-export interface RecipesInputDTO {
+export interface RecipesIn {
    title: string,
    description: string,
-   createdAt: Date,
-   authorId: string
+   token: string
  }
 
+ export interface RecipesOut {
+   id: string,
+   title: string,
+   description: string,
+ }
+ export interface GetIdToken {
+   id: string,
+   token: string
+ }

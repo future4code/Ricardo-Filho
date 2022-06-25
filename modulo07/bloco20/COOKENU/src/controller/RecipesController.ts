@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { RecipesBusiness } from "../business/RecipesBusiness";
-import { Recipes, RecipesInputDTO } from "../model/Recipes";
+import { Recipes, RecipesIn } from "../model/Recipes";
 import { convertDate } from "../services/convertDate";
 
 export class RecipesController {
@@ -12,61 +12,67 @@ export class RecipesController {
         try {
          const {
           title,
-          description,
-          createdAt,
-          authorId
+          description
           } = req.body;
-
-          const input: RecipesInputDTO = {
+          
+          const token = req.headers.authorization as string;
+          
+          const input: RecipesIn = {
           title,
           description,
-          createdAt,
-          authorId
+          token
           }
-   
+          
          const recipesBusiness = new RecipesBusiness();
+         
          await recipesBusiness.create(input);
    
-         res.status(201).send({ message: "Post cadastrado com sucesso" });
+         res.status(201).send({ message: "Receita criada com sucesso" });
    
        } catch (error:any) {
          res.status(400).send(error.message);
        }
      }
      
-     public getAll = async (req: Request, res: Response) => {
-       
-      try {
-        const postBusiness = new RecipesBusiness();
-         const posts = await postBusiness.getAll();
-        for(let i = 0; i < posts.length; i++) {
-          posts[i].created_at = convertDate(posts[i]?.created_at);
-        }
-         res.status(200).send(posts);
-       } catch (error:any) {
-         res.status(400).send(error.message);
-       }
-     }
-
-     public getPostId = async (req: Request, res: Response) => {
+      public getRecipesId = async (req: Request, res: Response) => {
       try {
         const id = req.params.id;
-        const postBusiness = new RecipesBusiness();
-          const post = await postBusiness.getPostId(id);
+        const token = req.headers.authorization as string;
+
+        const recipesBusiness = new RecipesBusiness();
+        const recipes = await recipesBusiness.getRecipesId(id, token);
           
-          res.status(200).send({post})
+          res.status(200).send({recipes})
       } catch (error:any) {
         res.status(400).send(error.message);
       }
     }
 
-     async deletePost( req: Request, res: Response): Promise<void> {
+    public getAll = async (req: Request, res: Response) => {
+       
+      try {
+        const recipesBusiness = new RecipesBusiness();
+         const recipes = await recipesBusiness.getAll();
+
+        for(let i = 0; i < recipes.length; i++) {
+          recipes[i].created_at = convertDate(recipes[i]?.created_at);
+        }
+
+         res.status(200).send(recipes);
+       } catch (error:any) {
+         res.status(400).send(error.message);
+       }
+     }
+
+     async deleteRecipes( req: Request, res: Response): Promise<void> {
       try {
         const id = req.params.id;
-        const postBusiness = new RecipesBusiness();
-        await postBusiness.deletePost(id);
+        const token = req.headers.authorization!
+
+        const recipesBusiness = new RecipesBusiness();
+        await recipesBusiness.deleteRecipes(id, token);
   
-        res.status(200).send({ message: "Post deletado com sucesso" });
+        res.status(200).send({ message: "Receita deletada com sucesso" });
       } catch (error:any) {
         res.status(400).send(error.message);
       }

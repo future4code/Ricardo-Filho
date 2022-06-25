@@ -33,3 +33,10 @@ export class AuthorizedAdminOnly extends CustomError{
         super(401, "Apenas Admins podem acessar os perfis")
     }
 }
+export class NotUser extends CustomError{ 
+    constructor(){
+        super(401, "Não foi possível encontrar os usuários")
+    }
+}
+
+

@@ -14,6 +14,12 @@ export class InvalidRecipes extends CustomError{
 
 export class InvalidDataRecipes extends CustomError{ 
     constructor(){
-        super(400, "Dados inválidos id, title, description, createdAt, authorId")
+        super(400, "Dados inválidos: title, description, authorId")
+    }
+}
+
+export class InvalidToken extends CustomError{ 
+    constructor(){
+        super(400, 'Preencha o campo "Token" corretamente')
     }
 }

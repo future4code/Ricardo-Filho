@@ -11,7 +11,10 @@ import { EditUserInputDTO, LoginInputDTO, UserInputDTO } from "../model/User";
 const userBusiness = new UserBusiness();
 export class UserController {
 
-      public signup = async (req: Request, res: Response) => {
+      public signup = async (
+        req: Request,
+        res: Response
+        ) => {
         try {
           
           const input: UserInputDTO = {
@@ -29,7 +32,25 @@ export class UserController {
         }
       };    
 
-      public login = async (req: Request, res: Response) => {
+      public getAll = async (
+        req: Request,
+        res: Response
+        ) => {
+        try {
+
+          const userBusiness = new UserBusiness();
+          const users = await userBusiness.getAll();
+    
+          res.status(200).send(users);
+        } catch (error:any) {
+          res.status(400).send(error.message);
+        }
+      }
+
+      public login = async (
+        req: Request,
+        res: Response
+        ) => {
         try {
           
           const input: LoginInputDTO = {
@@ -45,8 +66,10 @@ export class UserController {
         }
       }; 
     
-
-      public profile = async (req: Request, res: Response): Promise<any> => {
+      public profile = async (
+        req: Request,
+        res: Response
+        ): Promise<any> => {
         try {
           
           const token = req.headers.authorization as string;
@@ -59,8 +82,12 @@ export class UserController {
         }
       }; 
  
-      public editUser = async (req: Request, res: Response) => {
+      public editUser = async (
+        req: Request,
+        res: Response
+        ) => {
         try {
+
           const input: EditUserInputDTO = {
             name: req.body.name,
             id: req.params.id,

@@ -10,8 +10,9 @@ import {
   CustomError,
   InvalidEmail,
   InvalidPassword,
+  NotUser,
   Unauthorized
-} from "../error/CustomError";
+} from "../error/CustomUsersError";
 
 import {
   EditUserInputDTO,
@@ -50,13 +51,14 @@ export class UserBusiness {
         throw new InvalidPassword
       }
 
-      if( role !== "ADMIN" ) {
-        role = User_Roles.NORMAL;
-      }
+      // if( role !== "ADMIN" ) {
+      //   role = User_Roles.NORMAL;
+      // }
 
       const id = generateId();
 
-      const hashPassword = await HashManager.generateHash(password);
+      const hashPassword = await HashManager
+      .generateHash(password);
 
       const user: User ={
         id,
@@ -68,7 +70,8 @@ export class UserBusiness {
 
       await userDatabase.insertUser(user); 
     
-      const token = Authenticator.generateToken({id, role});
+      const token = Authenticator
+      .generateToken({id, role});
 
       return token;
     } catch (error: any) {
@@ -76,8 +79,25 @@ export class UserBusiness {
     }
   };
 
-  public loginUser = async (input: LoginInputDTO): Promise<string>=> {
+  public getAll = async (
+
+  ):Promise<any> => {
+
+    const userDatabase = new UserDatabase()
+    const users = await userDatabase.getAll()
+
+    if(!users) {
+      throw new NotUser()
+    }
+
+    return users
+  }
+
+  public loginUser = async (
+    input: LoginInputDTO
+    ): Promise<string> => {
     try {
+
       let{
         email,
         password
@@ -90,9 +110,11 @@ export class UserBusiness {
         throw new CustomError(400, "Preencha todos os campos corretamente!");
       }
 
-      const user = await userDatabase.findUserByEmail(email);
+      const user = await userDatabase
+      .findUserByEmail(email);
 
-      const hashComparison = await HashManager.compareHash(password, user.password);
+      const hashComparison = await HashManager
+      .compareHash(password, user.password);
 
       if(
         !hashComparison
@@ -100,9 +122,13 @@ export class UserBusiness {
           throw new InvalidPassword()
       }
      
-      const payload: AuthenticationData = {id: user.id, role: user.role};
+      const payload: AuthenticationData = {
+        id: user.id,
+        role: user.role
+      };
 
-      const token = Authenticator.generateToken(payload);
+      const token = Authenticator
+      .generateToken(payload);
 
       return token;
     } catch (error: any) {
@@ -114,9 +140,11 @@ export class UserBusiness {
     
     try {
 
-       const authenticationUser = TokenGenerator.getData(str);
+       const authenticationUser = TokenGenerator
+       .getData(str);
       
-       const user = await new UserDatabase().getUserById(authenticationUser.id);
+       const user = await new UserDatabase()
+       .getUserById(authenticationUser.id);
 
       const output = {
       id: user.id,
@@ -124,11 +152,12 @@ export class UserBusiness {
       name: user.name
     }
     
-    const { role } = TokenGenerator.getData(str);
+    const { role } = TokenGenerator
+    .getData(str);
 
-    if (role !== "ADMIN") {
-      throw new AuthorizedAdminOnly();
-    }
+    // if (role !== "ADMIN") {
+    //   throw new AuthorizedAdminOnly();
+    // }
 
        return output;
 
@@ -147,9 +176,9 @@ export class UserBusiness {
   
         const { role } = TokenGenerator.getData(token);
   
-        if (role !== "ADMIN") {
-          throw new Unauthorized();
-        }
+        // if (role !== "ADMIN") {
+        //   throw new Unauthorized();
+        // }
   
         const editedUser = {
           name,

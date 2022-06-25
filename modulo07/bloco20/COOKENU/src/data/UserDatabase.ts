@@ -1,5 +1,5 @@
 import { EditUserInput, User} from "../model/User"
-import { CustomError } from "../error/CustomError";
+import { CustomError } from "../error/CustomUsersError";
 import { BaseDatabase } from "./BaseDatabase";
 
 export class UserDatabase extends BaseDatabase {
@@ -20,6 +20,13 @@ export class UserDatabase extends BaseDatabase {
       throw new CustomError(400, error.message);
     }
   };
+
+  public getAll = async (): Promise<User[]> => {
+    const getUsers = await UserDatabase
+    .connection(UserDatabase.TABLE_NAME)
+    .select("*");
+    return getUsers;
+}
 
   public editUser = async (user: EditUserInput) => {
     try {

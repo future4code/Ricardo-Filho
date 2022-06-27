@@ -1,5 +1,5 @@
 import { UserDatabase } from "../data/UserDatabase";
-import  { HashManager }  from "../services/HashManager";
+import { HashManager } from "../services/HashManager";
 import { Authenticator } from "../services/Authenticator";
 import { AuthenticationData } from "../model/Type";
 import { TokenGenerator } from "../services/TokenGenerator";
@@ -11,7 +11,7 @@ import {
   InvalidEmail,
   InvalidPassword,
   NotUser,
-  Unauthorized
+  Unauthorized,
 } from "../error/CustomUsersError";
 
 import {
@@ -19,36 +19,26 @@ import {
   LoginInputDTO,
   User,
   UserInputDTO,
-  User_Roles
+  User_Roles,
 } from "../model/User";
 
 const userDatabase = new UserDatabase();
 
 export class UserBusiness {
-  public createUser = async (input: UserInputDTO): Promise<string>=> {
+  public createUser = async (input: UserInputDTO): Promise<string> => {
     try {
-      let{
-        name,
-        email,
-        password,
-        role
-      } = input;
+      let { name, email, password, role } = input;
 
-      if(
-        !name ||
-        !email ||
-        !password ||
-        !role
-        ) {
+      if (!name || !email || !password || !role) {
         throw new CustomError(400, "Preencha todos os campos corretamente!");
       }
 
-      if( email.indexOf('@') === -1 ){
-        throw new InvalidEmail
+      if (email.indexOf("@") === -1) {
+        throw new InvalidEmail();
       }
 
-      if( password.length < 6 ){
-        throw new InvalidPassword
+      if (password.length < 6) {
+        throw new InvalidPassword();
       }
 
       // if( role !== "ADMIN" ) {
@@ -57,21 +47,19 @@ export class UserBusiness {
 
       const id = generateId();
 
-      const hashPassword = await HashManager
-      .generateHash(password);
+      const hashPassword = await HashManager.generateHash(password);
 
-      const user: User ={
+      const user: User = {
         id,
         name,
         email,
         password: hashPassword,
-        role
-      }
+        role,
+      };
 
-      await userDatabase.insertUser(user); 
-    
-      const token = Authenticator
-      .generateToken({id, role});
+      await userDatabase.insertUser(user);
+
+      const token = Authenticator.generateToken({ id, role });
 
       return token;
     } catch (error: any) {
@@ -79,119 +67,95 @@ export class UserBusiness {
     }
   };
 
-  public getAll = async (
+  public getAll = async (): Promise<any> => {
+    const userDatabase = new UserDatabase();
+    const users = await userDatabase.getAll();
 
-  ):Promise<any> => {
-
-    const userDatabase = new UserDatabase()
-    const users = await userDatabase.getAll()
-
-    if(!users) {
-      throw new NotUser()
+    if (!users) {
+      throw new NotUser();
     }
 
-    return users
-  }
+    return users;
+  };
 
-  public loginUser = async (
-    input: LoginInputDTO
-    ): Promise<string> => {
+  public loginUser = async (input: LoginInputDTO): Promise<string> => {
     try {
+      let { email, password } = input;
 
-      let{
-        email,
-        password
-      } = input;
-
-      if(
-        !email ||
-        !password
-        ) {
+      if (!email || !password) {
         throw new CustomError(400, "Preencha todos os campos corretamente!");
       }
 
-      const user = await userDatabase
-      .findUserByEmail(email);
+      const user = await userDatabase.findUserByEmail(email);
 
-      const hashComparison = await HashManager
-      .compareHash(password, user.password);
+      const hashComparison = await HashManager.compareHash(
+        password,
+        user.password
+      );
 
-      if(
-        !hashComparison
-        ) {
-          throw new InvalidPassword()
+      if (!hashComparison) {
+        throw new InvalidPassword();
       }
-     
+
       const payload: AuthenticationData = {
         id: user.id,
-        role: user.role
+        role: user.role,
       };
 
-      const token = Authenticator
-      .generateToken(payload);
+      const token = Authenticator.generateToken(payload);
 
       return token;
     } catch (error: any) {
       throw new CustomError(400, error.message);
     }
   };
-  
-  public profile = async (str: string): Promise<any> => {
-    
-    try {
 
-       const authenticationUser = TokenGenerator
-       .getData(str);
-      
-       const user = await new UserDatabase()
-       .getUserById(authenticationUser.id);
+  public profile = async (str: string): Promise<any> => {
+    try {
+      const authenticationUser = TokenGenerator.getData(str);
+
+      const user = await new UserDatabase().getUserById(authenticationUser.id);
 
       const output = {
-      id: user.id,
-      email: user.email,
-      name: user.name
-    }
-    
-    const { role } = TokenGenerator
-    .getData(str);
+        id: user.id,
+        email: user.email,
+        name: user.name,
+      };
 
-    // if (role !== "ADMIN") {
-    //   throw new AuthorizedAdminOnly();
-    // }
+      const { role } = TokenGenerator.getData(str);
 
-       return output;
+      // if (role !== "ADMIN") {
+      //   throw new AuthorizedAdminOnly();
+      // }
 
-      } catch (error: any) {
+      return output;
+    } catch (error: any) {
       throw new CustomError(400, error.message);
-      }
     }
+  };
 
-    public editUser = async (input: EditUserInputDTO): Promise<void> => {
-      try {
-        let { name, id, token } = input;
-  
-        if (!name || !id || !token) {
-          throw new CustomError(400, "Preencha corretamente os campos");
-        }
-  
-        const { role } = TokenGenerator.getData(token);
-  
-        // if (role !== "ADMIN") {
-        //   throw new Unauthorized();
-        // }
-  
-        const editedUser = {
-          name,
-          id,
-        };
-  
-        await userDatabase.editUser(editedUser)
-  
-      } catch (error: any) {
-        throw new CustomError(400, error.message);
+  public editUser = async (input: EditUserInputDTO): Promise<void> => {
+    try {
+      let { name, id, token } = input;
+
+      if (!name || !id || !token) {
+        throw new CustomError(400, "Preencha corretamente os campos");
       }
-    };
 
-    
+      const { role } = TokenGenerator.getData(token);
 
+      // if (role !== "ADMIN") {
+      //   throw new Unauthorized();
+      // }
+
+      const editedUser = {
+        name,
+        id,
+      };
+
+      await userDatabase.editUser(editedUser);
+    } catch (error: any) {
+      throw new CustomError(400, error.message);
+    }
+  };
 }

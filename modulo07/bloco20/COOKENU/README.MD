@@ -13,16 +13,13 @@
        * [4 - Buscar o próprio perfil](#getprofile)
        * [5 - Criar Receita](#receita)
 
-  * [Desafios](#fdesafios)
-       * [6 - Deixar de seguir usuário](#followout)
-       * [7 - Deixar de seguir usuário](#followout)
-
 
   * [O que ainda não funciona](#nfunciona)
-       * [5 - Seguir Usuário](#follow)
-       * [6 - Ver todo o Feed](#feedfriends)
-  * [Desafios](#ndesafios)
 
+  * [Desafios](#ndesafios)
+      * 5. Seguir Usuário](#follow)
+      * 6. Deixar de seguir usuário](#followout)
+      * 6. Ver todo o Feed](#feedfriends)
       * 7. Ver apenas um tipo de post do Feed
       * 8. Curtir Post
       * 9. Descurtir Post
@@ -41,19 +38,19 @@ Esse produto nada mais é do que uma rede social, na qual os usuários podem div
 
 <h4 align="right"><a href="#topo">Topo</a></h4>
     
-1. Cadastro
+<h2 id="cadastro">1. Cadastro</h2>
         
 Como o projeto está no início, o usuário só precisa informar: o e-mail, nome a sua senha para realizar o cadastro. A senha tem uma regra: ela deve conter, no mínimo, 6 caracteres.
 
-2. Login
+<h2 id="login">2. Login</h2>
      
 Basta informar o email e a senha corretamente que o usuário poderá se logar na aplicação. Os endpoints de login e cadastro devem retornar **um** **token.**
 
-3. Informações do próprio perfil
+<h2 id="getprofile"> 3. Informações do próprio perfil</h2>
         
 A partir do token de autenticação fornecido no login, o usuário deve ser capaz de ver as suas informações não sensíveis salvas no banco (id e email)
 
-4. Criar receitas
+<h2 id="receita">4. Criar receitas</h2>
         
 O usuário deve poder criar uma receita. A receita deve ter os seguintes atributos: título, descrição/modo de preparo e data de criação
 

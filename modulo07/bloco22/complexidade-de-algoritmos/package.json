@@ -6,7 +6,10 @@
     "exercicio1": "clear && tsnd --transpile-only --ignore-watch node_modules ./src/exercicio1/index",
     "exercicio2": "clear && tsnd --transpile-only --ignore-watch node_modules ./src/exercicio2/index",
     "exercicio3": "clear && tsnd --transpile-only --ignore-watch node_modules ./src/exercicio3/index",
-    "exercicio4": "clear && tsnd --transpile-only --ignore-watch node_modules ./src/exercicio4/index"
+    "exercicio4": "clear && tsnd --transpile-only --ignore-watch node_modules ./src/exercicio4/index",
+    "exercicio6": "clear && tsnd --transpile-only --ignore-watch node_modules ./src/exercicio6/index",
+    "exercicio7": "clear && tsnd --transpile-only --ignore-watch node_modules ./src/exercicio7/index",
+    "exercicio8": "clear && tsnd --transpile-only --ignore-watch node_modules ./src/exercicio8/index"
   },
   "author": "Labenu",
   "license": "ISC",

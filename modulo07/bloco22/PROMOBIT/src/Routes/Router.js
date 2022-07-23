@@ -1,8 +1,12 @@
-import React from 'react'
-import { Route, Routes } from 'react-router-dom'
-import HomePage from '../Pages/HomePage/HomePage'
-import ErrorPage from '../Pages/Error/Error'
-import MovieDetails from '../Pages/MovieDetails/MovieDetails'
+import React from 'react';
+import HomePage from '../Pages/Home/Home';
+import ErrorPage from '../Pages/Error/Error';
+import MovieDetails from '../Pages/Details/Details';
+
+import {
+    Route,
+    Routes
+} from 'react-router-dom';
 
 export default function Router() {
     return (

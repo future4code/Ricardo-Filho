@@ -1,18 +1,20 @@
 import React from 'react'
-import { HeaderContainer } from './style';
 import logo from '../../Assets/logo.svg'
-import { useNavigate } from "react-router-dom";
-import { goToHome } from '../../Routes/Coordinator'
+import { HeaderContainer } from './style';
+import { useNavigate } from 'react-router-dom'
+import { goToHome } from '../../Routes/Coordinator';
 
-function Header() {
-  const history = useNavigate ()
-
+export default function Header() {
+  const history = useNavigate()
   return (
     <HeaderContainer>
-      <img src={logo} alt='TMDB'
-      onClick={() => goToHome(history)}/>
+      <header>
+        <img
+          src={logo}
+          alt="Tmdb logo"
+          onClick={() => goToHome(history)}
+        />
+      </header>
     </HeaderContainer>
-  );
+  )
 }
-
-export default Header;

@@ -13,7 +13,6 @@ export const GlobalStyle = createGlobalStyle`
     }
     ::-webkit-scrollbar-track {
     background-color: #F4F4F4;
-    
 }
     ::-webkit-scrollbar {
         width: 6px;
@@ -39,6 +38,9 @@ export const GlobalStyle = createGlobalStyle`
         background: var(--background);
         -webkit-font-smoothing: antialiased;
         color: var(--white);
+        ::-webkit-scrollbar {
+        display: none;
+        }
     }
     body, input, textarea, button {
         font-family: 'Roboto', sans-serif;

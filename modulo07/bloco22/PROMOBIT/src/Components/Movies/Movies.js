@@ -1,23 +1,33 @@
-import React from 'react'
-import { ImageContainer, MovieCardContainer, MovieTitleContainer } from './styled';
+import { format } from 'date-fns'
+import { ptBR } from 'date-fns/esm/locale'
+import { BASE_IMAGE_URL } from '../../Constants/base_url'
+import imgNotFound from '../../Assets/imagenotfound.png'
 
-function Movie(props) {
+import {
+  Card,
+  TitleMovie,
+  DateMovie
+} from './style'
 
-  const { poster_path, title, release_date, onClickCard } = props
-
+export default function Movie(props) {
   return (
-    <MovieCardContainer>
-      <ImageContainer src={`https://image.tmdb.org/t/p/w500${poster_path}`} onClick={onClickCard}/>
-      <MovieTitleContainer>
-        <div>
-          {title.toUpperCase()}
-        </div>
-        <div>
-          {release_date.split('-').reverse().join('-')}
-        </div>
-      </MovieTitleContainer>
-    </MovieCardContainer>
-  );
+    <Card>
+      {props.imagePath ? (
+        <img
+          src={`${BASE_IMAGE_URL}original/${
+            props.imagePath ? props.imagePath : ''
+          }`}
+          alt={props.title}
+        />
+      ) : (
+        <img src={imgNotFound} alt="imgNotFound" />
+      )}
+      <TitleMovie>{props.title ? props.title : ''}</TitleMovie>
+      <DateMovie>
+        {props.dateRelease
+          ? format(new Date(props.dateRelease), 'dd MMM yyyy', { locale: ptBR })
+          : ''}
+      </DateMovie>
+    </Card>
+  )
 }
-
-export default Movie;

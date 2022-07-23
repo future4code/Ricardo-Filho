@@ -1,13 +1,12 @@
 import styled from 'styled-components'
 
-export const HeaderContainer = styled.div`
-    display: flex;
-    padding: 0 50px;
-    align-items: center;
+export const HeaderContainer = styled.header`
     background-color: #5C16C5;
-    color: #ffffff;
-    height: 46px;
-img{
-    padding: 10px;
-    width: 180px;
-}`
+    z-index:4;
+    position: fixed;
+    width: 100vw;
+    img {
+       margin: 1rem 0 1rem 5.5rem;
+       cursor: pointer;  
+    }
+`

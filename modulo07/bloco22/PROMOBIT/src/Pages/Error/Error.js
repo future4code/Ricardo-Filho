@@ -1,10 +1,10 @@
 import React from 'react'
-import { Errorcontainer } from './style';
+import { Container } from './style';
 
 export default function ErrorPage() {
   return (
-    <Errorcontainer>
+    <Container>
       <h2>404 - Page Not Found</h2>
-    </Errorcontainer>
+    </Container>
   )
 }

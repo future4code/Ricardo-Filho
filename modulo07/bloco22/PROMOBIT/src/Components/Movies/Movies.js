@@ -5,8 +5,8 @@ import imgNotFound from '../../Assets/imagenotfound.png'
 
 import {
   Card,
-  TitleMovie,
-  DateMovie
+  MovieTitle,
+  MovieDate
 } from './style'
 
 export default function Movie(props) {
@@ -22,12 +22,12 @@ export default function Movie(props) {
       ) : (
         <img src={imgNotFound} alt="imgNotFound" />
       )}
-      <TitleMovie>{props.title ? props.title : ''}</TitleMovie>
-      <DateMovie>
+      <MovieTitle>{props.title ? props.title : ''}</MovieTitle>
+      <MovieDate>
         {props.dateRelease
           ? format(new Date(props.dateRelease), 'dd MMM yyyy', { locale: ptBR })
           : ''}
-      </DateMovie>
+      </MovieDate>
     </Card>
   )
 }

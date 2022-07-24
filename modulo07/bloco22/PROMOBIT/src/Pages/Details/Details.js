@@ -9,40 +9,38 @@ import imgVideoNotFound from '../../Assets/videonotfound.png'
 import {
   Content,
   CastCard,
-  NameCast,
+  CastName,
+  CrewInfo,
   Synopsis,
+  CrewTitle,
   CastTitle,
   Container,
-  InfoMovie,
+  MovieInfo,
   Assessment,
   MovieCover,
-  TitleMovie,
-  InfoPeople,
+  MovieTitle,
+  CrewContent,
   MovieDetail,
-  ContentMidia,
+  MidiaContent,
   MovieTrailer,
-  TextSynopsis,
-  TitlePeople,
+  SynopsisText,
   TrailerTitle,
   CastContainer,
-  NameCharacter,
-  PeopleMovieContent,
+  CharacterName,
+  CrewContainer,
   RecommendationsTitle,
-  PeopleMovieContainer,
   MovieRecommendationsContainer
 } from './style'
 
 import {
-  useEffect,
-  useState
-} from 'react'
+  format,
+  getYear
+} from 'date-fns'
 
 import {
-  BASE_URL,
-  API_KEY,
-  BASE_IMAGE_URL,
-  BASE_YT_URL
-} from '../../Constants/base_url'
+  useState,
+  useEffect
+} from 'react'
 
 import {
   Link,
@@ -50,14 +48,17 @@ import {
 } from 'react-router-dom'
 
 import {
-  CircularProgressbar,
-  buildStyles
+  buildStyles,
+  CircularProgressbar
 } from 'react-circular-progressbar'
 
+
 import {
-  getYear,
-  format
-} from 'date-fns'
+  BASE_URL,
+  API_KEY,
+  BASE_IMAGE_URL,
+  BASE_YT_URL
+} from '../../Constants/base_url'
 
 export default function MovieDetails(params) {
   const { id } = useParams()
@@ -153,10 +154,10 @@ export default function MovieDetails(params) {
           alt={title}
         />
         <MovieDetail>
-          <TitleMovie>
+          <MovieTitle>
             {title} ({year})
-          </TitleMovie>
-          <InfoMovie>
+          </MovieTitle>
+          <MovieInfo>
             <p>Classificação:</p>
             Faixa etária: {realeseDate && realeseDate.iso_3166_1
               ? realeseDate.release_dates[0].certification
@@ -172,7 +173,7 @@ export default function MovieDetails(params) {
                     ` ${genre.name}${index + 1 === genres.length ? ' ' : ', '}`
                 )
               : ''}
-          </InfoMovie>
+          </MovieInfo>
           <Assessment>
             <div style={{ width: 65 }}>
            <CircularProgressbar
@@ -194,21 +195,21 @@ export default function MovieDetails(params) {
           </Assessment>
 
           <Synopsis>Sinopse</Synopsis>
-          <TextSynopsis>
+          <SynopsisText>
             {movieDetails ? movieDetails.overview : 'Sinopse Não encontrada'}
-          </TextSynopsis>
+          </SynopsisText>
 
-          <PeopleMovieContainer>
+          <CrewContainer>
             {crewInfo.map(crew => (
-              <PeopleMovieContent key={crew.id}>
-                <TitlePeople>{crew.name}</TitlePeople>
-                <InfoPeople>{crew.job}</InfoPeople>
-              </PeopleMovieContent>
+              <CrewContent key={crew.id}>
+                <CrewTitle>{crew.name}</CrewTitle>
+                <CrewInfo>{crew.job}</CrewInfo>
+              </CrewContent>
             ))}
-          </PeopleMovieContainer>
+          </CrewContainer>
         </MovieDetail>
       </Content>
-      <ContentMidia>
+      <MidiaContent>
         <CastTitle>Elenco:</CastTitle>
         <CastContainer>
           {castInfo.map(cast => (
@@ -221,8 +222,8 @@ export default function MovieDetails(params) {
                 }
                 alt={cast.name}
               />
-              <NameCast>{cast.name}</NameCast>
-              <NameCharacter>{cast.character}</NameCharacter>
+              <CastName>{cast.name}</CastName>
+              <CharacterName>{cast.character}</CharacterName>
             </CastCard>
           ))}
         </CastContainer>
@@ -260,7 +261,7 @@ export default function MovieDetails(params) {
             </Link>
           ))}
         </MovieRecommendationsContainer>
-      </ContentMidia>
+      </MidiaContent>
     </Container>
   )
 }

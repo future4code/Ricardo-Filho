@@ -29,28 +29,4 @@ export const Content = styled.div`
     gap: 1rem;
   }
 `
-export const StyledPaginateContainer = styled.div`
-  .pagination {
-    display: flex;
-    flex-direction: row;
-    color: #00bfff;
-    list-style-type: none;
-    padding: 10px;
-    li {
-      border-radius: 10px;
 
-      a {
-        margin: 0.5rem;
-        cursor: pointer;
-      }
-    }
-  }
-  .break-me {
-    cursor: default;
-  }
-  .active {
-    border-color: transparent;
-    background-color: #add8e6;
-    color: #5c16c5;
-  }
-`

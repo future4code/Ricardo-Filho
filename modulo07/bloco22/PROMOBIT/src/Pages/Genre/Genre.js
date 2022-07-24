@@ -1,5 +1,4 @@
 import React, { useContext } from 'react'
-import { IoCloseCircleSharp } from 'react-icons/io5'
 import { MoviesContext } from '../../Services/getMovies'
 
 import {
@@ -31,11 +30,7 @@ export default function Genres() {
               onClick={() => handleFilterGenres(genre.id)}
             >
               {genre.name}
-              {filters.includes(genre.id) ? (
-                <IoCloseCircleSharp color="#FFF" />
-              ) : (
-                <></>
-              )}
+              {filters.includes(genre.id) }
             </GenreButton>
           ))}
         </Content>

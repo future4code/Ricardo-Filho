@@ -1,18 +1,20 @@
 import { useContext } from 'react'
 import Genres from '../Genre/Genre'
 import { Link } from 'react-router-dom'
-import ReactPaginate from 'react-paginate'
 import Movie from '../../Components/Movies/Movies'
 import { MoviesContext } from '../../Services/getMovies'
+import Paginate from '../../Services/Paginate/paginate'
 
 import {
   Container,
-  Content,
-  StyledPaginateContainer
+  Content
 } from './style'
 
 export default function HomePage() {
-  const { movies, filteredMovies, setPage } = useContext(MoviesContext)
+  const {
+    movies,
+    filteredMovies
+  } = useContext(MoviesContext)
 
   return (
     <>
@@ -50,22 +52,7 @@ export default function HomePage() {
         {filteredMovies.length > 1 ? (
           <></>
         ) : (
-          <StyledPaginateContainer>
-            <ReactPaginate
-              previousLabel="⏪"
-              nextLabel="⏩"
-              breakLabel="..."
-              breakClassName="break-me"
-              pageCount={18}
-              marginPagesDisplayed={2}
-              pageRangeDisplayed={3}
-              onPageChange={pagination => {
-                setPage(pagination.selected + 1)
-              }}
-              containerClassName="pagination"
-              activeClassName="active"
-            />
-          </StyledPaginateContainer>
+          <Paginate />
         )}
       </Container>
     </>

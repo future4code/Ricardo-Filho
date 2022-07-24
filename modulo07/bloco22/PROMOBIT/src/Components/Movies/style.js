@@ -10,14 +10,14 @@ export const Card = styled.div`
   cursor: pointer;
 `
 
-export const TitleMovie = styled.strong`
+export const MovieTitle = styled.strong`
   margin-top: 0.5rem;
   font-size: 1rem;
   font-weight: bold;
   color: black;
 `
 
-export const DateMovie = styled.p`
+export const MovieDate = styled.p`
   margin-top: 0.3rem;
   font-size: 0.875rem;
   font-weight: bold;

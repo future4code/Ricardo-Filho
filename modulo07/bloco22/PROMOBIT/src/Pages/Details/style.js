@@ -5,28 +5,6 @@ export const Container = styled.div`
   flex-direction: column;
   padding-top: 40px;
 `
-export const Top = styled.div`
-  @media screen and (min-device-width: 481px) {
-    display: flex;
-    position: absolute;
-    background-color: #5c16c5;
-    align-items: center;
-    img {
-      width: 12.77vw;
-      margin-left: 7.77vw;
-    }
-  }
-  @media screen and (max-device-width: 480px) {
-    display: flex;
-    background-color: #5c16c5;
-    align-items: center;
-    img {
-      margin: auto;
-      width: 148px;
-    }
-  }
-`
-
 export const Content = styled.div`
   display: flex;
   flex-direction: row;
@@ -61,10 +39,10 @@ export const MovieDetail = styled.div`
   margin-bottom: 15px;
 `
 
-export const TitleMovie = styled.h1`
+export const MovieTitle = styled.h1`
   font-size: 2rem;
 `
-export const InfoMovie = styled.p`
+export const MovieInfo = styled.p`
   margin-top: 0.5rem;
   font-size: 1.125rem;
 `
@@ -81,17 +59,12 @@ export const Assessment = styled.div`
   }
 `
 
-export const ImageAssessment = styled.img`
-  width: 3.8125rem;
-  height: 3.8125rem;
-`
-
 export const Synopsis = styled.h1`
   font-size: 1.25rem;
   margin-top: 2.0375rem;
 `
 
-export const TextSynopsis = styled.p`
+export const SynopsisText = styled.p`
   margin-top: 0.5rem;
   font-weight: 400;
   font-size: 1rem;
@@ -100,7 +73,7 @@ export const TextSynopsis = styled.p`
   text-align: justify;
 `
 
-export const PeopleMovieContainer = styled.div`
+export const CrewContainer = styled.div`
   display: flex;
   margin-top: 1.5rem;
   flex-direction: row;
@@ -108,21 +81,21 @@ export const PeopleMovieContainer = styled.div`
   gap: 33px;
 `
 
-export const PeopleMovieContent = styled.div`
+export const CrewContent = styled.div`
   margin-left: 2rem;
 `
 
-export const TitlePeople = styled.h1`
+export const CrewTitle = styled.h1`
   font-size: 1rem;
 `
 
-export const InfoPeople = styled.p`
+export const CrewInfo = styled.p`
   margin-top: 0.5rem;
   font-size: 0.875rem;
   font-weight: 400;
 `
 
-export const ContentMidia = styled.div`
+export const MidiaContent = styled.div`
   display: flex;
   margin: 3.75rem 7rem;
   flex-direction: column;
@@ -156,13 +129,13 @@ export const CastCard = styled.div`
     width: 10.938rem;
   }
 `
-export const NameCast = styled.h1`
+export const CastName = styled.h1`
   margin-top: 1rem;
   font-size: 1.125rem;
   font-weight: 700;
   color: var(--black);
 `
-export const NameCharacter = styled.p`
+export const CharacterName = styled.p`
   margin-top: 0.25rem;
   color: var(--black);
   font-size: 1rem;

@@ -20,7 +20,7 @@
     "jsonwebtoken": "^8.5.1",
     "knex": "^2.1.0",
     "mysql": "^2.18.1",
-    "ts-node-dev": "^2.0.0",
+    "ts-node-dev": "^1.0.0-pre.63",
     "ts-node": "^10.8.2",
     "uuid": "^8.3.2",
     "jest": "^28.1.3",

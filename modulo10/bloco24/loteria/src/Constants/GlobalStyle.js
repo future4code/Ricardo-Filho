@@ -6,7 +6,7 @@ export const GlobalStyle = createGlobalStyle`
     --black:#000000;
     --background:#EFEFEF;
     --text-number:#333333;
-    --mega:#6BEFA3;
+    --mega: url('');
     --quina:#8666EF;
     --lotofacil:#DD7AC6;
     --lotomania:#FFAB64;
@@ -14,12 +14,13 @@ export const GlobalStyle = createGlobalStyle`
     --diadesorte:#BFAF83;
     --text-obs:#595959
   }
+
   * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
   }
-font-family: 'Inter', sans-serif;
-font-family: 'Montserrat', sans-serif;
-font-family: 'Source Code Pro', monospace;
+  font-family: 'Inter', sans-serif;
+  font-family: 'Montserrat', sans-serif;
+  font-family: 'Source Code Pro', monospace;
 `

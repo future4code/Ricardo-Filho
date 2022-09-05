@@ -1,4 +1,10 @@
 import styled from "styled-components"
+import backgroundMega from "../assets/images/mega.svg"
+import backgroundDiaDeSorte from "../assets/images/diadesorte.svg"
+import backgroundLotoFacil from "../assets/images/lotofacil.svg"
+import backgroundLotoMania from "../assets/images/lotomania.svg"
+import backgroundQuina from "../assets/images/quina.svg"
+import backgroundTimeMania from "../assets/images/timemania.svg"
 
 export const GeneralContainer = styled.div`
   display: flex;
@@ -20,7 +26,8 @@ export const LeftColMega = styled.div`
   left: 0;
   width: 300px;
   height: 100vh;
-  background: var(--mega);
+  background-image: url(${backgroundMega});
+  background-repeat: no-repeat;
   z-index: 0;
   transform-origin: right bottom;
   position: relative;
@@ -45,7 +52,8 @@ export const LeftColQuina = styled.div`
   left: 0;
   width: 300px;
   height: 100vh;
-  background: var(--quina);
+  background-image: url(${backgroundQuina});
+  background-repeat: no-repeat;
   z-index: 0;
   transform-origin: right bottom;
   position: relative;
@@ -70,7 +78,8 @@ export const LeftColLotoFacil = styled.div`
   left: 0;
   width: 300px;
   height: 100vh;
-  background: var(--lotofacil);
+  background-image: url(${backgroundLotoFacil});
+  background-repeat: no-repeat;
   z-index: 0;
   transform-origin: right bottom;
   position: relative;
@@ -96,7 +105,8 @@ export const LeftColLotoMania = styled.div`
   left: 0;
   width: 300px;
   height: 100vh;
-  background: var(--lotomania);
+  background-image: url(${backgroundLotoMania});
+  background-repeat: no-repeat;
   z-index: 0;
   transform-origin: right bottom;
   position: relative;
@@ -122,7 +132,8 @@ export const LeftColTimeMania = styled.div`
   left: 0;
   width: 300px;
   height: 100vh;
-  background: var(--timemania);
+  background-image: url(${backgroundTimeMania});
+  background-repeat: no-repeat;
   z-index: 0;
   transform-origin: right bottom;
   position: relative;
@@ -147,7 +158,8 @@ export const LeftColDiaDeSorte = styled.div`
   left: 0;
   width: 300px;
   height: 100vh;
-  background: var(--diadesorte);
+  background-image: url(${backgroundDiaDeSorte});
+  background-repeat: no-repeat;
   z-index: 0;
   transform-origin: right bottom;
   position: relative;
@@ -171,9 +183,6 @@ export const RightCol = styled.div`
   justify-content: center;
   align-items: center;
   margin-left: -450px;
-  -webkit-clip-path: ellipse(45px at 69px 55px);
-    clip-path: ellipse(850px 1000px at 900px 450px);
-    z-index: 1;
   @media screen and (max-width: 900px) {
     flex: 0.6;
     margin-top: 23rem;
@@ -298,5 +307,63 @@ export const Obs = styled.p`
   @media screen and (min-width: 900px) {
     position: absolute;
     bottom: 10%;
+  }
+`
+
+export const MainContainer = styled.div `
+    background-color: transparent;
+    position: absolute;
+    display: flex;
+    z-index: 2;
+    width: auto;
+    height: 2.8rem;
+    left: 5rem;
+    top: 10%;
+    
+    @media screen and (max-width: 900px) {
+        top: unset;
+        left: unset;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        margin-top: 2.5em;
+    }
+`
+export const SelectStyled = styled.select`
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.8rem;
+  border-radius: 10px;
+  border: none;
+  background-color: white;
+  width: 13.5rem;
+  font-size: 1.1rem;
+  display: flex;
+  cursor: pointer;
+  outline: 0;
+  color: var(--text-number);
+  transition: all 0.3s ease-in-out;
+  option {
+    background: white;
+    display: flex;
+    white-space: pre;
+    min-height: 20px;
+    padding: 2px 2px 1px;
+    color: var(--text-number);
+  }
+`
+
+export const Lista = styled.li`
+  background-color: #fff;
+  border-radius: 50%;
+  padding: 1.5em;
+  margin: 20px;
+  font-size: 1.7rem;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @media screen and (max-width: 900px) {
+    padding: 1em;
   }
 `

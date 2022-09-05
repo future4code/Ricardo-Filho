@@ -39,6 +39,7 @@ export default function Quina () {
 
   useEffect(() => {
     getRelacaoConcursos()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   useEffect(() => {

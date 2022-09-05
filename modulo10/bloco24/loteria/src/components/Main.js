@@ -1,4 +1,4 @@
-import { MainContainer, SelectStyled } from "./MainStyle"
+import { MainContainer, SelectStyled } from "../constants/StyledGlobal"
 import { useNavigate } from "react-router-dom"
 
 export default function Main ({data}) {

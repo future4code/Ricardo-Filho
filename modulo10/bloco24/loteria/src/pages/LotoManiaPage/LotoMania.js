@@ -39,6 +39,7 @@ export default function Lotomania () {
 
   useEffect(() => {
     getRelacaoConcursos()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   useEffect(() => {

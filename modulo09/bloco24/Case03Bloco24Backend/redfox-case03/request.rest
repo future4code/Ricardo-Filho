@@ -1,0 +1,15 @@
+### 01- 
+GET http://localhost:3003/pokemon/getpoke
+Content-Type: application/json
+
+### 02 -
+GET http://localhost:3003/pokemon/searchPoke?Name=Venusaur
+Content-Type: application/json
+
+### 03 - 
+GET http://localhost:3003/pokemon/page?page=2
+Content-Type: application/json
+
+### 04 - 
+GET http://localhost:3003/pokemon/filters
+Content-Type: application/json
